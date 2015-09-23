@@ -1,0 +1,6 @@
+site_name: Taolijie轻兼职接口文档
+pages:
+- 概述: index.md
+- 任务系统: quest.md
+
+theme: yeti
