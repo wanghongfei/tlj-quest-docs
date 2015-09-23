@@ -1,3 +1,15 @@
+# 开发者联系方式
+
+王鸿飞: brucewhf^gmail.com
+
+王富诚: wangfucheng56^gmail.com
+
+
+
+> 最后更新时间: 2015-9-23
+
+
+
 # 权限认证
 
 ## Token
@@ -54,8 +66,6 @@ Demo:
 | data.resultCount |  N   | 如果返回的数据有多条(如一次查询多个用户信息), 则data.resultCount表示结果的总条数(用于计算页码) |                     | 
 |    data.list     |  N   | 如果返回的数据有多条(如一次查询多个用户信息), 则data字段是一个名为lis的JSON数组 |                     | 
 
-
-
 带返回数据的Demo:
 
 ``` 
@@ -104,12 +114,3 @@ Demo:
 |  16  | 已经喜欢/收藏过了 | 
 |  17  |   非法数字    | 
 
-
-
-
-
-# 开发者联系方式
-
-brucewhf^gmail.com
-
-wangfucheng56^gmail.com
