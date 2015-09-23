@@ -85,31 +85,37 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#_1">权限认证</a></li>
+        <li class="main active"><a href="#_1">开发者联系方式</a></li>
+        
+    
+        <li class="main "><a href="#_2">权限认证</a></li>
         
             <li><a href="#token">Token</a></li>
         
     
-        <li class="main "><a href="#_5">服务器返回报文格式</a></li>
+        <li class="main "><a href="#_6">服务器返回报文格式</a></li>
         
     
-        <li class="main "><a href="#_6">错误代码表</a></li>
-        
-    
-        <li class="main "><a href="#_7">开发者联系方式</a></li>
+        <li class="main "><a href="#_7">错误代码表</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="_1">权限认证</h1>
+<h1 id="_1">开发者联系方式</h1>
+<p>王鸿飞: brucewhf^gmail.com</p>
+<p>王富诚: wangfucheng56^gmail.com</p>
+<blockquote>
+<p>最后更新时间: 2015-9-23</p>
+</blockquote>
+<h1 id="_2">权限认证</h1>
 <h2 id="token">Token</h2>
-<h3 id="_2">生成</h3>
+<h3 id="_3">生成</h3>
 <p>由于所有接口都以<code>HTTP RESTful</code>的形式提供，因此在非Web环境下我们采用Token进行客户端身份识别。用户在app登陆后，服务器会返回一个<strong>由字母组成、20位长的随机字符串</strong>，后续请求带上该参数即可。</p>
-<h3 id="_3">有效期</h3>
+<h3 id="_4">有效期</h3>
 <p>Token一旦生成不会自动过期。只有当用户主动注销登陆时，当前Token才会失效。<strong>每个用户仅有一个token</strong>，如果用户未注销前再次登陆，则上次的token自动失效，服务器最新返回的token有效。</p>
-<h3 id="_4">使用方式</h3>
+<h3 id="_5">使用方式</h3>
 <p>如果接口接受<code>GET</code>请求，则需将token添加到URL Query String中：</p>
 <pre><code>GET /api/job/list?token=WEFEIASIWEdfrilkzxcv
 </code></pre>
@@ -119,7 +125,7 @@
 </code></pre>
 
 <p>​</p>
-<h1 id="_5">服务器返回报文格式</h1>
+<h1 id="_6">服务器返回报文格式</h1>
 <p>Demo:</p>
 <pre><code>{
   &quot;message&quot;: &quot;success&quot;,
@@ -198,7 +204,7 @@
 }
 </code></pre>
 
-<h1 id="_6">错误代码表</h1>
+<h1 id="_7">错误代码表</h1>
 <table>
 <thead>
 <tr>
@@ -284,10 +290,7 @@
 <td>非法数字</td>
 </tr>
 </tbody>
-</table>
-<h1 id="_7">开发者联系方式</h1>
-<p>brucewhf^gmail.com</p>
-<p>wangfucheng56^gmail.com</p></div>
+</table></div>
         </div>
 
         <footer class="col-md-12">
