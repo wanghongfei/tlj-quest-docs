@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="./img/favicon.ico">
+
+	<title>Taolijie轻兼职接口文档</title>
+
+        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/highlight.css">
+        <link href="./css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href=".">Taolijie轻兼职接口文档</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li class="active">
+                    <a href=".">概述</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="quest/">任务系统</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="disabled">
+                    <a rel="next" >
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="quest/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#_1">权限认证</a></li>
+        
+            <li><a href="#token">Token</a></li>
+        
+    
+        <li class="main "><a href="#_5">服务器返回报文格式</a></li>
+        
+    
+        <li class="main "><a href="#_6">错误代码表</a></li>
+        
+    
+        <li class="main "><a href="#_7">开发者联系方式</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="_1">权限认证</h1>
+<h2 id="token">Token</h2>
+<h3 id="_2">生成</h3>
+<p>由于所有接口都以<code>HTTP RESTful</code>的形式提供，因此在非Web环境下我们采用Token进行客户端身份识别。用户在app登陆后，服务器会返回一个<strong>由字母组成、20位长的随机字符串</strong>，后续请求带上该参数即可。</p>
+<h3 id="_3">有效期</h3>
+<p>Token一旦生成不会自动过期。只有当用户主动注销登陆时，当前Token才会失效。<strong>每个用户仅有一个token</strong>，如果用户未注销前再次登陆，则上次的token自动失效，服务器最新返回的token有效。</p>
+<h3 id="_4">使用方式</h3>
+<p>如果接口接受<code>GET</code>请求，则需将token添加到URL Query String中：</p>
+<pre><code>GET /api/job/list?token=WEFEIASIWEdfrilkzxcv
+</code></pre>
+
+<p>如果接口接受<code>POST</code>请求，则需将token添加到请求Body中：</p>
+<pre><code>paramA=XXXX&amp;paramB=XXXX&amp;token=WEFEIASIWEdfrilkzxcv
+</code></pre>
+
+<p>​</p>
+<h1 id="_5">服务器返回报文格式</h1>
+<p>Demo:</p>
+<pre><code>{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0, // 0表示操作成功
+  &quot;data&quot;: null,  // 没有返回数据
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<p>参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td>Y</td>
+<td>返回信息简短的文字说明</td>
+<td>not logged in(未登陆时)</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Y</td>
+<td>错误代码</td>
+<td></td>
+</tr>
+<tr>
+<td>ok</td>
+<td>Y</td>
+<td>本次操作是否成功</td>
+<td>true / false</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Y</td>
+<td>本次操作返回的业务数据，根据业务的不同格式也不同。</td>
+<td></td>
+</tr>
+<tr>
+<td>data.resultCount</td>
+<td>N</td>
+<td>如果返回的数据有多条(如一次查询多个用户信息), 则data.resultCount表示结果的总条数(用于计算页码)</td>
+<td></td>
+</tr>
+<tr>
+<td>data.list</td>
+<td>N</td>
+<td>如果返回的数据有多条(如一次查询多个用户信息), 则data字段是一个名为lis的JSON数组</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>带返回数据的Demo:</p>
+<pre><code>{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: { // data字段是一个名为list的json数组
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;cate1&quot;,
+        &quot;memo&quot;: null,
+        &quot;themeColor&quot;: null,
+        &quot;level&quot;: 1
+      }
+    ],
+    &quot;resultCount&quot;: 2  // 表示一共有2条数据，但本次只请求了第1条
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h1 id="_6">错误代码表</h1>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-1</td>
+<td>操作失败</td>
+</tr>
+<tr>
+<td>0</td>
+<td>操作成功</td>
+</tr>
+<tr>
+<td>1</td>
+<td>操作过于频繁</td>
+</tr>
+<tr>
+<td>2</td>
+<td>用户名不合法</td>
+</tr>
+<tr>
+<td>3</td>
+<td>密码错误</td>
+</tr>
+<tr>
+<td>4</td>
+<td>用户不存在</td>
+</tr>
+<tr>
+<td>5</td>
+<td>用户已存在</td>
+</tr>
+<tr>
+<td>6</td>
+<td>用户被封号</td>
+</tr>
+<tr>
+<td>7</td>
+<td>未登陆</td>
+</tr>
+<tr>
+<td>8</td>
+<td>两次输入不一致</td>
+</tr>
+<tr>
+<td>9</td>
+<td>分类不为空</td>
+</tr>
+<tr>
+<td>10</td>
+<td>必填字段为空</td>
+</tr>
+<tr>
+<td>11</td>
+<td>非法参数</td>
+</tr>
+<tr>
+<td>12</td>
+<td>不存在</td>
+</tr>
+<tr>
+<td>13</td>
+<td>权限不足</td>
+</tr>
+<tr>
+<td>14</td>
+<td>不能删除当前用户</td>
+</tr>
+<tr>
+<td>15</td>
+<td>已经存在</td>
+</tr>
+<tr>
+<td>16</td>
+<td>已经喜欢/收藏过了</td>
+</tr>
+<tr>
+<td>17</td>
+<td>非法数字</td>
+</tr>
+</tbody>
+</table>
+<h1 id="_7">开发者联系方式</h1>
+<p>brucewhf^gmail.com</p>
+<p>wangfucheng56^gmail.com</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="./js/jquery-1.10.2.min.js"></script>
+        <script src="./js/bootstrap-3.0.3.min.js"></script>
+        <script src="./js/highlight.pack.js"></script>
+        <script src="./js/base.js"></script>
+    </body>
+</html>
