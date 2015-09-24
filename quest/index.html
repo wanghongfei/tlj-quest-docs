@@ -100,14 +100,18 @@
         
             <li><a href="#_6">任务领取</a></li>
         
+            <li><a href="#_7">提交任务完成申请</a></li>
+        
     
-        <li class="main "><a href="#_7">后台管理接口</a></li>
+        <li class="main "><a href="#_8">后台管理接口</a></li>
         
-            <li><a href="#_8">创建轻兼职分类</a></li>
+            <li><a href="#_9">创建轻兼职分类</a></li>
         
-            <li><a href="#_9">更新分类信息</a></li>
+            <li><a href="#_10">更新分类信息</a></li>
         
-            <li><a href="#_10">删除分类</a></li>
+            <li><a href="#_11">删除分类</a></li>
+        
+            <li><a href="#_12">任务完成审核</a></li>
         
     
     </ul>
@@ -381,15 +385,58 @@
 </blockquote>
 <h2 id="_6">任务领取</h2>
 <p>只有登陆状态下的学生用户才可以领取任务。</p>
-<pre><code>POST /api/quest/assign/{questId}
+<pre><code>POST /api/user/quest/assign/{questId}
 </code></pre>
 
 <blockquote>
 <p>questId: 要领取的任务的id</p>
 </blockquote>
-<h1 id="_7">后台管理接口</h1>
+<h2 id="_7">提交任务完成申请</h2>
+<p>学生用户完成任务以后，在线提交申请，等待管理员审核。</p>
+<blockquote>
+<p>只有已登陆的学生用户才能发起该请求。</p>
+</blockquote>
+<pre><code>POST /api/user/quest/submit/{questId}
+</code></pre>
+
+<blockquote>
+<p>questId: 已完成的任务的id</p>
+</blockquote>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>description</td>
+<td>Y</td>
+<td>说明文字</td>
+</tr>
+<tr>
+<td>imageIds</td>
+<td>Y</td>
+<td>图片说明。以;分隔的图片id。 如：1;2;3</td>
+</tr>
+<tr>
+<td>name</td>
+<td>N</td>
+<td>申请人姓名</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>N</td>
+<td>备注</td>
+</tr>
+</tbody>
+</table>
+<h1 id="_8">后台管理接口</h1>
 <p>以下所有接口需要以管理员身份登陆才能成功调用。</p>
-<h2 id="_8">创建轻兼职分类</h2>
+<h2 id="_9">创建轻兼职分类</h2>
 <pre><code>POST /api/manage/quest/cate
 </code></pre>
 
@@ -435,7 +482,7 @@
 }
 </code></pre>
 
-<h2 id="_9">更新分类信息</h2>
+<h2 id="_10">更新分类信息</h2>
 <pre><code>PUT /api/quest/cate/{cateId}
 </code></pre>
 
@@ -477,13 +524,69 @@
 <blockquote>
 <p>注：以上参数中需至少填写一项</p>
 </blockquote>
-<h2 id="_10">删除分类</h2>
+<h2 id="_11">删除分类</h2>
 <pre><code class="html">DELETE /api/quest/cate/{cateId}
 </code></pre>
 
 <blockquote>
 <p>cateId: 要删除的分类的id号</p>
 <p>只有当该分类下没有帖子时才能成功删除，否则返回错误代码9.</p>
+</blockquote>
+<h2 id="_12">任务完成审核</h2>
+<p>学生提交任务完成申请后，管理员审核是否通过。</p>
+<pre><code>PUT /api/manage/quest/submit/{reqId}
+</code></pre>
+
+<blockquote>
+<p>reqId: 任务完成申请的id</p>
+</blockquote>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>Y</td>
+<td>审核结果</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>N</td>
+<td>审核备注</td>
+</tr>
+</tbody>
+</table>
+<p>其中，status参数取值如下：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>审核通过</td>
+</tr>
+<tr>
+<td>01</td>
+<td>等待审核</td>
+</tr>
+<tr>
+<td>02</td>
+<td>审核不通过</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>如果审核不通过，应当传入memo参数说明审核失败的原因。</p>
 </blockquote></div>
         </div>
 
