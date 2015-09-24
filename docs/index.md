@@ -1,8 +1,8 @@
 # 开发者联系方式
 
-王鸿飞: brucewhf^gmail.com
+王鸿飞(后端): brucewhf^gmail.com
 
-王富诚: wangfucheng56^gmail.com
+王富诚(前端): wangfucheng56^gmail.com
 
 
 

@@ -125,7 +125,6 @@ POST /api/quest
 | 参数名           | 必填   | 说明              | 
 | ------------- | ---- | --------------- | 
 | title         | Y    | 任务标题            | 
-|               |      |                 | 
 | quest_cate_id | Y    | 任务分类的id         | 
 | startTime     | Y    | 任务开始时间          | 
 | endTime       | Y    | 任务结束时间          | 
