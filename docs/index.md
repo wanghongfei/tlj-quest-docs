@@ -6,7 +6,7 @@
 
 
 
-> 最后更新时间: 2015-9-23
+> 最后更新时间: 2015-9-24
 
 
 
@@ -31,13 +31,13 @@ Token一旦生成不会自动过期。只有当用户主动注销登陆时，当
 如果接口接受`GET`请求，则需将token添加到URL Query String中：
 
 ``` 
-GET /api/job/list?token=WEFEIASIWEdfrilkzxcv
+GET /api/job/list?appToken=WEFEIASIWEdfrilkzxcv
 ```
 
 如果接口接受`POST`请求，则需将token添加到请求Body中：
 
 ``` 
-paramA=XXXX&paramB=XXXX&token=WEFEIASIWEdfrilkzxcv
+paramA=XXXX&paramB=XXXX&appToken=WEFEIASIWEdfrilkzxcv
 ```
 
 ​
@@ -113,4 +113,5 @@ Demo:
 |  15  |   已经存在    | 
 |  16  | 已经喜欢/收藏过了 | 
 |  17  |   非法数字    | 
-
+|  18  |  账户余额不足   | 
+|  19  |  现金账户不存在  | 
