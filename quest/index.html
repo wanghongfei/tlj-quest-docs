@@ -85,19 +85,31 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#_1">任务模块</a></li>
+        <li class="main active"><a href="#_1">查询任务分类</a></li>
         
-            <li><a href="#_2">查询任务分类</a></li>
+            <li><a href="#_2">查询分类列表</a></li>
+        
+            <li><a href="#id">通过id查询分类</a></li>
+        
+            <li><a href="#_3">通过分类名查询分类信息</a></li>
+        
+    
+        <li class="main "><a href="#_4">后台管理接口</a></li>
+        
+            <li><a href="#_5">创建轻兼职分类</a></li>
+        
+            <li><a href="#_6">更新分类信息</a></li>
+        
+            <li><a href="#_7">删除分类</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="_1">任务模块</h1>
-<h2 id="_2">查询任务分类</h2>
+<h1 id="_1">查询任务分类</h1>
 <p>任务分类是任务的类型，每一个任务都有且仅属于一个分类。</p>
-<h3 id="_3">查询分类列表</h3>
+<h2 id="_2">查询分类列表</h2>
 <pre><code class="html">GET /api/quest/cate/list
 </code></pre>
 
@@ -180,7 +192,169 @@
 <td></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+<h2 id="id">通过id查询分类</h2>
+<pre><code>GET /api/quest/cate/{id}
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>Y</td>
+<td>分类的id号</td>
+</tr>
+</tbody>
+</table>
+<p>返回报文data字段：</p>
+<p>data字段中直接是分类JSON对象, 若不存在则为<code>data: null</code></p>
+<pre><code class="json">&quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;cate1&quot;,
+        &quot;memo&quot;: null,
+        &quot;themeColor&quot;: null,
+        &quot;level&quot;: 1
+  }
+</code></pre>
+
+<h2 id="_3">通过分类名查询分类信息</h2>
+<pre><code>GET /api/quest/cate/name/{name}
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>Y</td>
+<td>分类名</td>
+</tr>
+</tbody>
+</table>
+<p>返回报文data字段：</p>
+<p>data字段中直接是分类JSON对象, 若不存在则为<code>data: null</code></p>
+<pre><code class="json">&quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;cate1&quot;,
+        &quot;memo&quot;: null,
+        &quot;themeColor&quot;: null,
+        &quot;level&quot;: 1
+  }
+</code></pre>
+
+<h1 id="_4">后台管理接口</h1>
+<p>以下所有接口需要以管理员身份登陆才能成功调用。</p>
+<h2 id="_5">创建轻兼职分类</h2>
+<pre><code>POST /api/manage/quest/cate
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>Y</td>
+<td>要创建的分类的名字</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>N</td>
+<td>分类备注</td>
+</tr>
+<tr>
+<td>themeColor</td>
+<td>N</td>
+<td>分类的颜色，以十六进制表示，如#FFFFFF</td>
+</tr>
+<tr>
+<td>level</td>
+<td>N</td>
+<td>分类的层级，暂时无用</td>
+</tr>
+</tbody>
+</table>
+<p>返回报文data字段：</p>
+<p>如果操作成功，则data字段为刚刚创建的<strong>新分类的id</strong>。</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: 5, // 新分类的id为5
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="_6">更新分类信息</h2>
+<pre><code>PUT /api/quest/cate/{cateId}
+</code></pre>
+
+<blockquote>
+<p>cateId: 要更新的分类的id号</p>
+</blockquote>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>N</td>
+<td>要创建的分类的名字</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>N</td>
+<td>分类备注</td>
+</tr>
+<tr>
+<td>themeColor</td>
+<td>N</td>
+<td>分类的颜色，以十六进制表示，如#FFFFFF</td>
+</tr>
+<tr>
+<td>level</td>
+<td>N</td>
+<td>分类的层级，暂时无用</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注：以上参数中需至少填写一项</p>
+</blockquote>
+<h2 id="_7">删除分类</h2>
+<pre><code class="html">DELETE /api/quest/cate/{cateId}
+</code></pre>
+
+<blockquote>
+<p>cateId: 要删除的分类的id号</p>
+<p>只有当该分类下没有帖子时才能成功删除，否则返回错误代码9.</p>
+</blockquote></div>
         </div>
 
         <footer class="col-md-12">
