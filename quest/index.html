@@ -61,6 +61,18 @@
                 </li>
             
             
+            
+                <li >
+                    <a href="../acc/">账户系统</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../admin/">后台接口</a>
+                </li>
+            
+            
             </ul>
 
             <!-- Search, Navigation and Repo links -->
@@ -70,8 +82,8 @@
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
-                <li class="disabled">
-                    <a rel="prev" >
+                <li >
+                    <a rel="prev" href="../acc/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -101,17 +113,6 @@
             <li><a href="#_6">任务领取</a></li>
         
             <li><a href="#_7">提交任务完成申请</a></li>
-        
-    
-        <li class="main "><a href="#_8">后台管理接口</a></li>
-        
-            <li><a href="#_9">创建轻兼职分类</a></li>
-        
-            <li><a href="#_10">更新分类信息</a></li>
-        
-            <li><a href="#_11">删除分类</a></li>
-        
-            <li><a href="#_12">任务完成审核</a></li>
         
     
     </ul>
@@ -433,161 +434,7 @@
 <td>备注</td>
 </tr>
 </tbody>
-</table>
-<h1 id="_8">后台管理接口</h1>
-<p>以下所有接口需要以管理员身份登陆才能成功调用。</p>
-<h2 id="_9">创建轻兼职分类</h2>
-<pre><code>POST /api/manage/quest/cate
-</code></pre>
-
-<p>参数：</p>
-<table>
-<thead>
-<tr>
-<th>参数名</th>
-<th>必填</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>Y</td>
-<td>要创建的分类的名字</td>
-</tr>
-<tr>
-<td>memo</td>
-<td>N</td>
-<td>分类备注</td>
-</tr>
-<tr>
-<td>themeColor</td>
-<td>N</td>
-<td>分类的颜色，以十六进制表示，如#FFFFFF</td>
-</tr>
-<tr>
-<td>level</td>
-<td>N</td>
-<td>分类的层级，暂时无用</td>
-</tr>
-</tbody>
-</table>
-<p>返回报文data字段：</p>
-<p>如果操作成功，则data字段为刚刚创建的<strong>新分类的id</strong>。</p>
-<pre><code class="json">{
-  &quot;message&quot;: &quot;success&quot;,
-  &quot;code&quot;: 0,
-  &quot;data&quot;: 5, // 新分类的id为5
-  &quot;ok&quot;: true
-}
-</code></pre>
-
-<h2 id="_10">更新分类信息</h2>
-<pre><code>PUT /api/quest/cate/{cateId}
-</code></pre>
-
-<blockquote>
-<p>cateId: 要更新的分类的id号</p>
-</blockquote>
-<p>参数：</p>
-<table>
-<thead>
-<tr>
-<th>参数名</th>
-<th>必填</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>N</td>
-<td>要创建的分类的名字</td>
-</tr>
-<tr>
-<td>memo</td>
-<td>N</td>
-<td>分类备注</td>
-</tr>
-<tr>
-<td>themeColor</td>
-<td>N</td>
-<td>分类的颜色，以十六进制表示，如#FFFFFF</td>
-</tr>
-<tr>
-<td>level</td>
-<td>N</td>
-<td>分类的层级，暂时无用</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>注：以上参数中需至少填写一项</p>
-</blockquote>
-<h2 id="_11">删除分类</h2>
-<pre><code class="html">DELETE /api/quest/cate/{cateId}
-</code></pre>
-
-<blockquote>
-<p>cateId: 要删除的分类的id号</p>
-<p>只有当该分类下没有帖子时才能成功删除，否则返回错误代码9.</p>
-</blockquote>
-<h2 id="_12">任务完成审核</h2>
-<p>学生提交任务完成申请后，管理员审核是否通过。</p>
-<pre><code>PUT /api/manage/quest/submit/{reqId}
-</code></pre>
-
-<blockquote>
-<p>reqId: 任务完成申请的id</p>
-</blockquote>
-<p>参数：</p>
-<table>
-<thead>
-<tr>
-<th>参数名</th>
-<th>必填</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td>Y</td>
-<td>审核结果</td>
-</tr>
-<tr>
-<td>memo</td>
-<td>N</td>
-<td>审核备注</td>
-</tr>
-</tbody>
-</table>
-<p>其中，status参数取值如下：</p>
-<table>
-<thead>
-<tr>
-<th>取值</th>
-<th>含意</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>00</td>
-<td>审核通过</td>
-</tr>
-<tr>
-<td>01</td>
-<td>等待审核</td>
-</tr>
-<tr>
-<td>02</td>
-<td>审核不通过</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>如果审核不通过，应当传入memo参数说明审核失败的原因。</p>
-</blockquote></div>
+</table></div>
         </div>
 
         <footer class="col-md-12">

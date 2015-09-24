@@ -2,6 +2,8 @@ site_name: Taolijie轻兼职接口文档
 pages:
 - 概述: index.md
 - 任务系统: quest.md
+- 账户系统: acc.md
+- 后台接口: admin.md
 
 theme: yeti
 site_author: 王鸿飞
