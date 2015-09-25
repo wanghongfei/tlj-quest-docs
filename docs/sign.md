@@ -10,6 +10,8 @@ GET /api/sign
 | ------- | ---- | ----- | 
 | picType | Y    | 图片的类型 | 
 
+> 其它参数与又拍HTML FORM上传接口中的参数一致。
+
 `picType`的取值为：
 
 | 取值   | 含意       | 
@@ -38,4 +40,3 @@ GET /api/sign?picType=1&expiration=827716
   "ok": true
 }
 ```
-
