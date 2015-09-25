@@ -107,6 +107,10 @@
         
             <li><a href="#_5">任务完成审核</a></li>
         
+            <li><a href="#_6">提现申请审核</a></li>
+        
+            <li><a href="#_7">充值申请审核</a></li>
+        
     
     </ul>
 </div></div>
@@ -265,6 +269,125 @@
 </table>
 <blockquote>
 <p>如果审核不通过，应当传入memo参数说明审核失败的原因。</p>
+</blockquote>
+<h2 id="_6">提现申请审核</h2>
+<p>用户提交提现申请后，管理员审核是否通过。</p>
+<pre><code>PUT /api/manage/acc/withdraw
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>drawId</td>
+<td>Y</td>
+<td>等待审核的提现申请的id</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Y</td>
+<td>审核结果</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>N</td>
+<td>审核结果说明</td>
+</tr>
+</tbody>
+</table>
+<p>其中，<code>status</code>参数的取值如下：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>等待审核</td>
+</tr>
+<tr>
+<td>01</td>
+<td>审核通过，等待派现</td>
+</tr>
+<tr>
+<td>02</td>
+<td>已派现</td>
+</tr>
+<tr>
+<td>03</td>
+<td>审核未通过</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注：如果审核失败，应当传入<code>memo</code>参数以说明失败原因。</p>
+</blockquote>
+<h2 id="_7">充值申请审核</h2>
+<pre><code>PUT /api/manage/acc/charge
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>orderId</td>
+<td>Y</td>
+<td>订单id</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Y</td>
+<td>审核结果</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>N</td>
+<td>审核说明</td>
+</tr>
+</tbody>
+</table>
+<p><code>status</code>取值如下：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>等待审核</td>
+</tr>
+<tr>
+<td>01</td>
+<td>审核通过</td>
+</tr>
+<tr>
+<td>02</td>
+<td>审核未通过</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>如果审核未通过，则应填写<code>memo</code>参数说明原因。</p>
 </blockquote></div>
         </div>
 

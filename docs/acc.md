@@ -3,7 +3,7 @@
 该接口需要登陆。
 
 ``` 
-POST /api/acc
+POST /api/user/acc
 ```
 
 参数:
@@ -23,7 +23,7 @@ POST /api/acc
 需要登陆。
 
 ``` 
-GET /api/code
+GET /api/user/code
 ```
 
 参数：
@@ -33,3 +33,41 @@ GET /api/code
 | mobile | Y    | 手机号  | 
 
 > 验证码有效时间为5分钟。
+
+
+
+## 发起提现申请
+
+商家、学生都可以申请提现。
+
+``` 
+POST /api/user/acc/withdraw
+```
+
+参数：
+
+| 参数名       | 必填   | 说明    | 
+| --------- | ---- | ----- | 
+| amt       | Y    | 提现金额  | 
+| alipayAcc | N    | 支付宝账户 | 
+| bankAcc   | N    | 银行卡号  | 
+
+`alipayAcc`和`bankAcc`至少填写一项。
+
+
+
+## 发起充值申请
+
+商家、学生都可以发起充值申请，待管理员审核完成后账户金额自动增加。
+
+``` 
+POST /api/user/acc/charge
+```
+
+参数:
+
+| 参数名      | 必填   | 说明     | 
+| -------- | ---- | ------ | 
+| amt      | Y    | 充值金额   | 
+| tradeNum | Y    | 支付宝交易号 | 
+

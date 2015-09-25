@@ -102,6 +102,10 @@
     
         <li class="main "><a href="#_2">发送短信验证码</a></li>
         
+            <li><a href="#_3">发起提现申请</a></li>
+        
+            <li><a href="#_4">发起充值申请</a></li>
+        
     
     </ul>
 </div></div>
@@ -109,7 +113,7 @@
 
 <h1 id="_1">开通现金账户(钱包)</h1>
 <p>该接口需要登陆。</p>
-<pre><code>POST /api/acc
+<pre><code>POST /api/user/acc
 </code></pre>
 
 <p>参数:</p>
@@ -152,7 +156,7 @@
 <p><code>code</code>参数是用户手机收到的短信验证码，可以调用<code>发送短信验证码</code>接口来发送短信。</p>
 <h1 id="_2">发送短信验证码</h1>
 <p>需要登陆。</p>
-<pre><code>GET /api/code
+<pre><code>GET /api/user/code
 </code></pre>
 
 <p>参数：</p>
@@ -174,7 +178,67 @@
 </table>
 <blockquote>
 <p>验证码有效时间为5分钟。</p>
-</blockquote></div>
+</blockquote>
+<h2 id="_3">发起提现申请</h2>
+<p>商家、学生都可以申请提现。</p>
+<pre><code>POST /api/user/acc/withdraw
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>amt</td>
+<td>Y</td>
+<td>提现金额</td>
+</tr>
+<tr>
+<td>alipayAcc</td>
+<td>N</td>
+<td>支付宝账户</td>
+</tr>
+<tr>
+<td>bankAcc</td>
+<td>N</td>
+<td>银行卡号</td>
+</tr>
+</tbody>
+</table>
+<p><code>alipayAcc</code>和<code>bankAcc</code>至少填写一项。</p>
+<h2 id="_4">发起充值申请</h2>
+<p>商家、学生都可以发起充值申请，待管理员审核完成后账户金额自动增加。</p>
+<pre><code>POST /api/user/acc/charge
+</code></pre>
+
+<p>参数:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>amt</td>
+<td>Y</td>
+<td>充值金额</td>
+</tr>
+<tr>
+<td>tradeNum</td>
+<td>Y</td>
+<td>支付宝交易号</td>
+</tr>
+</tbody>
+</table></div>
         </div>
 
         <footer class="col-md-12">
