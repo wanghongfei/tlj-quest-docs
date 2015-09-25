@@ -103,15 +103,28 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#_1">生成又拍上传凭证</a></li>
+        <li class="main active"><a href="#_1">图片上传流程</a></li>
+        
+    
+        <li class="main "><a href="#_2">生成又拍上传凭证</a></li>
+        
+    
+        <li class="main "><a href="#url">更新二手帖子图片URL</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="_1">生成又拍上传凭证</h1>
-<pre><code>GET /api/sign
+<h1 id="_1">图片上传流程</h1>
+<p>S1: 用户进入图片上传页面并选择要上传的图片。</p>
+<p>S2: 浏览器调用<code>生成又拍上传凭证</code>接口，获取上传参数。</p>
+<p>S3: 浏览器调用又拍<code>HTML Form</code>上传接口，传入刚刚获取到的参数。</p>
+<p>S4: 上传成功后，浏览器调用<code>更新二手帖子图片URL</code>接口。</p>
+<h1 id="_2">生成又拍上传凭证</h1>
+<p>调用此接口需要登陆。</p>
+<p>同一用户最小调用间隔时间为<code>2s</code>。</p>
+<pre><code>GET /api/user/sign
 </code></pre>
 
 <p>部分参数：</p>
@@ -172,7 +185,45 @@
   },
   &quot;ok&quot;: true
 }
-</code></pre></div>
+</code></pre>
+
+<h1 id="url">更新二手帖子图片URL</h1>
+<p>用户在浏览器中上传图片到又拍成功后需调用此接口，将图片地址传入。</p>
+<pre><code>PUT /api/u/{shId}/pic
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shId</td>
+<td>Y</td>
+<td>二手id, 在URL中包含该参数</td>
+</tr>
+<tr>
+<td>picAddr</td>
+<td>Y</td>
+<td>图片地址</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>其中，<code>picAddr</code>是一个以<code>;</code>分隔的字符串，每个字符串表示图片在<code>bucket</code>中的路径。如：</p>
+<pre><code>/sh/1.jpg;/sh/121.jpg;/sh/888.jpg
+</code></pre>
+
+<p>表示该帖子有3张图片。</p></div>
         </div>
 
         <footer class="col-md-12">
