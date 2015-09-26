@@ -118,6 +118,12 @@
             <li><a href="#_7">充值申请审核</a></li>
         
     
+        <li class="main "><a href="#_8">商家身份审核</a></li>
+        
+    
+        <li class="main "><a href="#_9">学生身份审核</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
@@ -394,7 +400,68 @@
 </table>
 <blockquote>
 <p>如果审核未通过，则应填写<code>memo</code>参数说明原因。</p>
-</blockquote></div>
+</blockquote>
+<h1 id="_8">商家身份审核</h1>
+<p>管理员审核商家提交的身份认证信息。</p>
+<pre><code>PUT /api/manage/certi/emp
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>certiId</td>
+<td>Y</td>
+<td>申请单的id</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Y</td>
+<td>审核结果</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>N</td>
+<td>结果说明</td>
+</tr>
+</tbody>
+</table>
+<p><code>status</code>取值如下：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>等待审核</td>
+</tr>
+<tr>
+<td>01</td>
+<td>审核通过</td>
+</tr>
+<tr>
+<td>02</td>
+<td>审核未通过</td>
+</tr>
+</tbody>
+</table>
+<h1 id="_9">学生身份审核</h1>
+<p>管理员审核学生上传的身份认证信息。</p>
+<pre><code>PUT /api/manage/certi/stu
+</code></pre>
+
+<p>参数和取值同<code>商家身份审核</code>。</p></div>
         </div>
 
         <footer class="col-md-12">

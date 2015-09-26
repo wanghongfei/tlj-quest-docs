@@ -113,6 +113,12 @@
             <li><a href="#_4">发起充值申请</a></li>
         
     
+        <li class="main "><a href="#_5">商家申请身份认证</a></li>
+        
+    
+        <li class="main "><a href="#_6">学生申请身份认证</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
@@ -244,7 +250,83 @@
 <td>支付宝交易号</td>
 </tr>
 </tbody>
-</table></div>
+</table>
+<h1 id="_5">商家申请身份认证</h1>
+<p>只有商家用户在登陆状态时才可以调用该接口。</p>
+<pre><code>POST /api/user/certi/emp
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compName</td>
+<td>Y</td>
+<td>公司全名</td>
+</tr>
+<tr>
+<td>addr</td>
+<td>Y</td>
+<td>公司地址</td>
+</tr>
+<tr>
+<td>picIds</td>
+<td>Y</td>
+<td>照片上传</td>
+</tr>
+</tbody>
+</table>
+<p><code>picIds</code>参数为以<code>;</code>分隔的图片在又拍云的路径, 如:</p>
+<pre><code>/a.jpg;/b.jpg
+</code></pre>
+
+<h1 id="_6">学生申请身份认证</h1>
+<p>只有学生用户在登陆状态时才可以调用该接口。</p>
+<pre><code>POST /api/user/certi/emp
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>Y</td>
+<td>真实姓名</td>
+</tr>
+<tr>
+<td>collegeId</td>
+<td>Y</td>
+<td>所在大学的id</td>
+</tr>
+<tr>
+<td>schoolId</td>
+<td>Y</td>
+<td>学在学院的id</td>
+</tr>
+<tr>
+<td>picIds</td>
+<td>Y</td>
+<td>上传的认证图片</td>
+</tr>
+</tbody>
+</table>
+<p><code>picIds</code>参数为以<code>;</code>分隔的图片在又拍云的路径, 如:</p>
+<pre><code>/a.jpg;/b.jpg
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
