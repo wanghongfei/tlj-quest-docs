@@ -103,7 +103,7 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#_1">后台管理接口</a></li>
+        <li class="main active"><a href="#_1">分类操作</a></li>
         
             <li><a href="#_2">创建轻兼职分类</a></li>
         
@@ -111,25 +111,28 @@
         
             <li><a href="#_4">删除分类</a></li>
         
-            <li><a href="#_5">任务完成审核</a></li>
-        
-            <li><a href="#_6">提现申请审核</a></li>
-        
-            <li><a href="#_7">充值申请审核</a></li>
-        
     
-        <li class="main "><a href="#_8">商家身份审核</a></li>
+        <li class="main "><a href="#_5">审核操作</a></li>
         
-    
-        <li class="main "><a href="#_9">学生身份审核</a></li>
+            <li><a href="#_6">任务完成审核</a></li>
+        
+            <li><a href="#_7">提现申请审核</a></li>
+        
+            <li><a href="#_8">充值申请审核</a></li>
+        
+            <li><a href="#_9">商家身份审核</a></li>
+        
+            <li><a href="#_10">学生身份审核</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="_1">后台管理接口</h1>
+<blockquote>
 <p>以下所有接口需要以管理员身份登陆才能成功调用。</p>
+</blockquote>
+<h1 id="_1">分类操作</h1>
 <h2 id="_2">创建轻兼职分类</h2>
 <pre><code>POST /api/manage/quest/cate
 </code></pre>
@@ -226,7 +229,8 @@
 <p>cateId: 要删除的分类的id号</p>
 <p>只有当该分类下没有帖子时才能成功删除，否则返回错误代码9.</p>
 </blockquote>
-<h2 id="_5">任务完成审核</h2>
+<h1 id="_5">审核操作</h1>
+<h2 id="_6">任务完成审核</h2>
 <p>学生提交任务完成申请后，管理员审核是否通过。</p>
 <pre><code>PUT /api/manage/quest/submit/{reqId}
 </code></pre>
@@ -282,7 +286,7 @@
 <blockquote>
 <p>如果审核不通过，应当传入memo参数说明审核失败的原因。</p>
 </blockquote>
-<h2 id="_6">提现申请审核</h2>
+<h2 id="_7">提现申请审核</h2>
 <p>用户提交提现申请后，管理员审核是否通过。</p>
 <pre><code>PUT /api/manage/acc/withdraw
 </code></pre>
@@ -344,7 +348,7 @@
 <blockquote>
 <p>注：如果审核失败，应当传入<code>memo</code>参数以说明失败原因。</p>
 </blockquote>
-<h2 id="_7">充值申请审核</h2>
+<h2 id="_8">充值申请审核</h2>
 <pre><code>PUT /api/manage/acc/charge
 </code></pre>
 
@@ -401,7 +405,7 @@
 <blockquote>
 <p>如果审核未通过，则应填写<code>memo</code>参数说明原因。</p>
 </blockquote>
-<h1 id="_8">商家身份审核</h1>
+<h2 id="_9">商家身份审核</h2>
 <p>管理员审核商家提交的身份认证信息。</p>
 <pre><code>PUT /api/manage/certi/emp
 </code></pre>
@@ -456,7 +460,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="_9">学生身份审核</h1>
+<h2 id="_10">学生身份审核</h2>
 <p>管理员审核学生上传的身份认证信息。</p>
 <pre><code>PUT /api/manage/certi/stu
 </code></pre>

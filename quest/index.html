@@ -129,6 +129,8 @@
         
             <li><a href="#_11">查询所有任务</a></li>
         
+            <li><a href="#id_1">根据id查询任务</a></li>
+        
     
     </ul>
 </div></div>
@@ -617,7 +619,42 @@
 <p>只填写<code>min</code>不填<code>max</code>表示查询赏金<code>&gt;= min</code>的任务。</p>
 <p>只填写<code>max</code>不填<code>min</code>表示查询赏金<code>&lt;= max</code>的任务。</p>
 <p>同时填写表示查询赏金在<code>min</code>与<code>max</code>之间的任务。</p>
-</blockquote></div>
+</blockquote>
+<h2 id="id_1">根据id查询任务</h2>
+<p>不需要登陆。</p>
+<pre><code>GET /api/quest/{questId}
+</code></pre>
+
+<blockquote>
+<p>questId: 任务id</p>
+</blockquote>
+<p>返回报文的<code>data</code>字段中有一个<code>status</code>参数，该参数的取值和含意如下：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>未领取</td>
+</tr>
+<tr>
+<td>1</td>
+<td>已领取</td>
+</tr>
+<tr>
+<td>2</td>
+<td>已结束</td>
+</tr>
+<tr>
+<td>3</td>
+<td>已完成</td>
+</tr>
+</tbody>
+</table></div>
         </div>
 
         <footer class="col-md-12">
