@@ -20,10 +20,9 @@ GET /api/user/sign
 
 部分参数：
 
-| 参数名      | 必填   | 说明        | 
-| -------- | ---- | --------- | 
-| picType  | Y    | 图片的类型     | 
-| fileName | Y    | 用户上传时的文件名 | 
+| 参数名     | 必填   | 说明    | 
+| ------- | ---- | ----- | 
+| picType | Y    | 图片的类型 | 
 
 > 其它参数与又拍HTML FORM上传接口中的参数一致。
 
@@ -50,7 +49,7 @@ GET /api/sign?picType=1&expiration=827716
   "data": {
     "sign": "2b405758a6bbd83de95a3cc2beb2ac8d",
     "policy": "eyJzYXZlLWtleSI6Ii8yMDE1LzgvMjcvam9iLTE4LWdpcmwuanBnIiwiYnVja2V0IjoidGFvbGlqaWUtcGljIiwiZXhwaXJhdGlvbiI6MTU0MzIyOTc1OH0=",
-    "saveKey": "/2015/8/27/sh-18-girl.jpg"
+    "saveKey": "/2015/8/27/sh-18"
   },
   "ok": true
 }
