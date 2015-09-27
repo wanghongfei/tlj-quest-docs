@@ -121,6 +121,15 @@
             <li><a href="#_7">提交任务完成申请</a></li>
         
     
+        <li class="main "><a href="#_8">任务查询</a></li>
+        
+            <li><a href="#_9">查询任务发布记录</a></li>
+        
+            <li><a href="#_10">查询任务领取记录</a></li>
+        
+            <li><a href="#_11">查询所有任务</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
@@ -440,7 +449,175 @@
 <td>备注</td>
 </tr>
 </tbody>
-</table></div>
+</table>
+<h1 id="_8">任务查询</h1>
+<h2 id="_9">查询任务发布记录</h2>
+<p>需要商家用户登陆。</p>
+<pre><code>GET /api/user/quest/publish/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td>显示第几页. default = 0</td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td>一页多少条记录. default = 8</td>
+</tr>
+</tbody>
+</table>
+<p>返回示例：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;quest1&quot;,
+        &quot;createdTime&quot;: &quot;2015-09-24 09:17:30&quot;,
+        &quot;questCateId&quot;: 1,
+        &quot;startTime&quot;: &quot;2015-10-09 16:00:00&quot;,
+        &quot;endTime&quot;: &quot;2015-12-31 16:00:00&quot;,
+        &quot;limitTime&quot;: 2,
+        &quot;totalAmt&quot;: 10,
+        &quot;leftAmt&quot;: 9,
+        &quot;award&quot;: 1,
+        &quot;memberId&quot;: 1,
+        &quot;finalAward&quot;: 1,
+        &quot;contactName&quot;: &quot;whf&quot;,
+        &quot;contactPhone&quot;: &quot;11111111111&quot;,
+        &quot;description&quot;: &quot;task&quot;,
+        &quot;questDetail&quot;: &quot;task&quot;,
+        &quot;url&quot;: null,
+        &quot;memo&quot;: null,
+        &quot;offline&quot;: false,
+        &quot;provinceId&quot;: 1,
+        &quot;cityId&quot;: 1,
+        &quot;regionId&quot;: 1,
+        &quot;collegeId&quot;: null,
+        &quot;schoolId&quot;: null
+      }
+    ],
+    &quot;resultCount&quot;: 1
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="_10">查询任务领取记录</h2>
+<p>需要学生用户登陆。</p>
+<pre><code>GET /api/user/quest/assign/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>N</td>
+<td>根据任务状态过虑，不填写表示查询所有</td>
+</tr>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>返回示例：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;memberId&quot;: 1,
+        &quot;username&quot;: &quot;hanxinxin&quot;,
+        &quot;questId&quot;: 1,
+        &quot;questTitle&quot;: &quot;quest1&quot;,
+        &quot;assignTime&quot;: &quot;2015-10-09 16:00:00&quot;,
+        &quot;status&quot;: &quot;00&quot;
+      }
+    ],
+    &quot;resultCount&quot;: 1
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="_11">查询所有任务</h2>
+<p>任何人都可以调用该接口.</p>
+<pre><code>GET /api/quest/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cateId</td>
+<td>N</td>
+<td>填写表示根据分类过虑结果</td>
+</tr>
+<tr>
+<td>min</td>
+<td>N</td>
+<td>任务的最低赏金(include)</td>
+</tr>
+<tr>
+<td>max</td>
+<td>N</td>
+<td>任务的最高赏金(include)</td>
+</tr>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>只填写<code>min</code>不填<code>max</code>表示查询赏金<code>&gt;= min</code>的任务。</p>
+<p>只填写<code>max</code>不填<code>min</code>表示查询赏金<code>&lt;= max</code>的任务。</p>
+<p>同时填写表示查询赏金在<code>min</code>与<code>max</code>之间的任务。</p>
+</blockquote></div>
         </div>
 
         <footer class="col-md-12">

@@ -182,3 +182,130 @@ POST /api/user/quest/submit/{questId}
 | name        | N    | 申请人姓名                   | 
 | memo        | N    | 备注                      | 
 
+
+
+# 任务查询
+
+## 查询任务发布记录
+
+需要商家用户登陆。
+
+``` 
+GET /api/user/quest/publish/list
+```
+
+参数：
+
+| 参数名  | 必填   | 说明                   | 
+| ---- | ---- | -------------------- | 
+| pn   | N    | 显示第几页. default = 0   | 
+| ps   | N    | 一页多少条记录. default = 8 | 
+
+返回示例：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "title": "quest1",
+        "createdTime": "2015-09-24 09:17:30",
+        "questCateId": 1,
+        "startTime": "2015-10-09 16:00:00",
+        "endTime": "2015-12-31 16:00:00",
+        "limitTime": 2,
+        "totalAmt": 10,
+        "leftAmt": 9,
+        "award": 1,
+        "memberId": 1,
+        "finalAward": 1,
+        "contactName": "whf",
+        "contactPhone": "11111111111",
+        "description": "task",
+        "questDetail": "task",
+        "url": null,
+        "memo": null,
+        "offline": false,
+        "provinceId": 1,
+        "cityId": 1,
+        "regionId": 1,
+        "collegeId": null,
+        "schoolId": null
+      }
+    ],
+    "resultCount": 1
+  },
+  "ok": true
+}
+```
+
+
+
+## 查询任务领取记录
+
+需要学生用户登陆。
+
+``` 
+GET /api/user/quest/assign/list
+```
+
+参数：
+
+| 参数名    | 必填   | 说明                 | 
+| ------ | ---- | ------------------ | 
+| status | N    | 根据任务状态过虑，不填写表示查询所有 | 
+| pn     | N    |                    | 
+| ps     | N    |                    | 
+
+返回示例：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "memberId": 1,
+        "username": "hanxinxin",
+        "questId": 1,
+        "questTitle": "quest1",
+        "assignTime": "2015-10-09 16:00:00",
+        "status": "00"
+      }
+    ],
+    "resultCount": 1
+  },
+  "ok": true
+}
+```
+
+
+
+## 查询所有任务
+
+任何人都可以调用该接口.
+
+``` 
+GET /api/quest/list
+```
+
+参数：
+
+| 参数名    | 必填   | 说明               | 
+| ------ | ---- | ---------------- | 
+| cateId | N    | 填写表示根据分类过虑结果     | 
+| min    | N    | 任务的最低赏金(include) | 
+| max    | N    | 任务的最高赏金(include) | 
+| pn     | N    |                  | 
+| ps     | N    |                  | 
+
+> 只填写`min`不填`max`表示查询赏金`>= min`的任务。
+> 
+> 只填写`max`不填`min`表示查询赏金`<= max`的任务。
+> 
+> 同时填写表示查询赏金在`min`与`max`之间的任务。
