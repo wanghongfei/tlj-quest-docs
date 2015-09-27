@@ -125,6 +125,19 @@
             <li><a href="#_10">学生身份审核</a></li>
         
     
+        <li class="main "><a href="#_11">查询操作</a></li>
+        
+            <li><a href="#_12">查询提现申请列表</a></li>
+        
+            <li><a href="#_13">查询单条提现申请</a></li>
+        
+            <li><a href="#_14">查询充值申请列表</a></li>
+        
+            <li><a href="#_15">查询单条充值申请</a></li>
+        
+            <li><a href="#_16">查询指定用户的现金账户信息</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
@@ -465,7 +478,91 @@
 <pre><code>PUT /api/manage/certi/stu
 </code></pre>
 
-<p>参数和取值同<code>商家身份审核</code>。</p></div>
+<p>参数和取值同<code>商家身份审核</code>。</p>
+<h1 id="_11">查询操作</h1>
+<h2 id="_12">查询提现申请列表</h2>
+<pre><code>GET /api/manage/acc/withdraw/list
+</code></pre>
+
+<p>参数:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>N</td>
+<td>是否根据状态过虑结果</td>
+</tr>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_13">查询单条提现申请</h2>
+<pre><code>GET /api/manage/acc/withdraw/{drawId}
+</code></pre>
+
+<blockquote>
+<p>drawId: 提现申请的id</p>
+</blockquote>
+<h2 id="_14">查询充值申请列表</h2>
+<pre><code>GET /api/manage/charge/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>N</td>
+<td>是否根据状态过虑结果</td>
+</tr>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_15">查询单条充值申请</h2>
+<pre><code>GET /api/manage/charge/{orderId}
+</code></pre>
+
+<blockquote>
+<p>orderId: 充值订单的id</p>
+</blockquote>
+<h2 id="_16">查询指定用户的现金账户信息</h2>
+<pre><code>GET /api/manage/acc/query/{memId}
+</code></pre>
+
+<blockquote>
+<p>memId: 要查询的用户的id</p>
+</blockquote></div>
         </div>
 
         <footer class="col-md-12">

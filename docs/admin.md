@@ -175,8 +175,6 @@ PUT /api/manage/certi/emp
 | 01   | 审核通过  | 
 | 02   | 审核未通过 | 
 
-
-
 ## 学生身份审核
 
 管理员审核学生上传的身份认证信息。
@@ -186,3 +184,65 @@ PUT /api/manage/certi/stu
 ```
 
 参数和取值同`商家身份审核`。
+
+
+
+# 查询操作
+
+## 查询提现申请列表
+
+``` 
+GET /api/manage/acc/withdraw/list
+```
+
+参数:
+
+| 参数名    | 必填   | 说明         | 
+| ------ | ---- | ---------- | 
+| status | N    | 是否根据状态过虑结果 | 
+| pn     | N    |            | 
+| ps     | N    |            | 
+
+
+
+## 查询单条提现申请
+
+``` 
+GET /api/manage/acc/withdraw/{drawId}
+```
+
+> drawId: 提现申请的id
+
+
+
+## 查询充值申请列表
+
+``` 
+GET /api/manage/charge/list
+```
+
+参数：
+
+| 参数名    | 必填   | 说明         | 
+| ------ | ---- | ---------- | 
+| status | N    | 是否根据状态过虑结果 | 
+| pn     | N    |            | 
+| ps     | N    |            | 
+
+## 查询单条充值申请
+
+``` 
+GET /api/manage/charge/{orderId}
+```
+
+> orderId: 充值订单的id
+
+
+
+## 查询指定用户的现金账户信息
+
+``` 
+GET /api/manage/acc/query/{memId}
+```
+
+> memId: 要查询的用户的id
