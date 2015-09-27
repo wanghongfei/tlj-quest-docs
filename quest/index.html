@@ -127,7 +127,9 @@
         
             <li><a href="#_10">查询任务领取记录</a></li>
         
-            <li><a href="#_11">查询所有任务</a></li>
+            <li><a href="#_11">查询任务提交记录</a></li>
+        
+            <li><a href="#_12">查询所有任务</a></li>
         
             <li><a href="#id_1">根据id查询任务</a></li>
         
@@ -573,7 +575,34 @@
 }
 </code></pre>
 
-<h2 id="_11">查询所有任务</h2>
+<h2 id="_11">查询任务提交记录</h2>
+<p>需要学生用户登陆状态。</p>
+<pre><code>GET /api/user/quest/submit/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_12">查询所有任务</h2>
 <p>任何人都可以调用该接口.</p>
 <pre><code>GET /api/quest/list
 </code></pre>

@@ -182,8 +182,6 @@ POST /api/user/quest/submit/{questId}
 | name        | N    | 申请人姓名                   | 
 | memo        | N    | 备注                      | 
 
-
-
 # 任务查询
 
 ## 查询任务发布记录
@@ -283,6 +281,23 @@ GET /api/user/quest/assign/list
   "ok": true
 }
 ```
+
+
+
+## 查询任务提交记录
+
+需要学生用户登陆状态。
+
+``` 
+GET /api/user/quest/submit/list
+```
+
+参数：
+
+| 参数名  | 必填   | 说明   | 
+| ---- | ---- | ---- | 
+| pn   | N    |      | 
+| ps   | N    |      | 
 
 
 
