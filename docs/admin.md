@@ -71,8 +71,10 @@ DELETE /api/quest/cate/{cateId}
 
 学生提交任务完成申请后，管理员审核是否通过。
 
+> 商家也可以调用该接口，但只能审核自己发布的任务。
+
 ``` 
-PUT /api/manage/quest/submit/{reqId}
+PUT /api/user/quest/submit/{reqId}
 ```
 
 > reqId: 任务完成申请的id
@@ -202,8 +204,6 @@ GET /api/manage/acc/withdraw/list
 | status | N    | 是否根据状态过虑结果 | 
 | pn     | N    |            | 
 | ps     | N    |            | 
-
-
 
 ## 查询单条提现申请
 

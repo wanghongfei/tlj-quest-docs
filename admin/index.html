@@ -245,7 +245,10 @@
 <h1 id="_5">审核操作</h1>
 <h2 id="_6">任务完成审核</h2>
 <p>学生提交任务完成申请后，管理员审核是否通过。</p>
-<pre><code>PUT /api/manage/quest/submit/{reqId}
+<blockquote>
+<p>商家也可以调用该接口，但只能审核自己发布的任务。</p>
+</blockquote>
+<pre><code>PUT /api/user/quest/submit/{reqId}
 </code></pre>
 
 <blockquote>
