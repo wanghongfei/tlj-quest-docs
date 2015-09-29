@@ -122,26 +122,26 @@ POST /api/quest
 
 参数：
 
-| 参数名           | 必填   | 说明              | 
-| ------------- | ---- | --------------- | 
-| title         | Y    | 任务标题            | 
-| quest_cate_id | Y    | 任务分类的id         | 
-| startTime     | Y    | 任务开始时间          | 
-| endTime       | Y    | 任务结束时间          | 
-| totalAmt      | Y    | 任务总数量           | 
-| award         | Y    | 单个任务的赏金         | 
-| contactName   | Y    | 联系人姓名           | 
-| contactPhone  | Y    | 联系人手机号          | 
-| description   | Y    | 任务简述(100字以内)    | 
-| questDetail   | Y    | 任务详细描述(1000字以内) | 
-| url           | N    | 任务链接            | 
-| memo          | N    | 任务备注            | 
-| province_id   | Y    | 任务对象：省          | 
-| city_id       | Y    | 任务对象：市          | 
-| region_id     | Y    | 任务对象：区          | 
-| college_id    | N    | 任务对象：大学         | 
-| school_id     | N    | 任务对象：学院         | 
-|               |      |                 | 
+| 参数名           | 必填   | 说明                              | 
+| ------------- | ---- | ------------------------------- | 
+| title         | Y    | 任务标题                            | 
+| quest_cate_id | Y    | 任务分类的id                         | 
+| startTime     | Y    | 任务开始时间                          | 
+| endTime       | Y    | 任务结束时间                          | 
+| totalAmt      | Y    | 任务总数量                           | 
+| award         | Y    | 单个任务的赏金                         | 
+| contactName   | Y    | 联系人姓名                           | 
+| contactPhone  | Y    | 联系人手机号                          | 
+| description   | Y    | 任务简述(100字以内)                    | 
+| questDetail   | Y    | 任务详细描述(1000字以内)                 | 
+| url           | N    | 任务链接                            | 
+| memo          | N    | 任务备注                            | 
+| province_id   | Y    | 任务对象：省                          | 
+| city_id       | Y    | 任务对象：市                          | 
+| region_id     | Y    | 任务对象：区                          | 
+| collegeIds    | N    | 任务对象：大学. 以`;`分隔的id字符串，如`1;2;3`  | 
+| schoolIds     | N    | 任务对象：学院. 以`;`分隔的id字符串，如`2;5;19` | 
+|               |      |                                 | 
 
 接口调用后，服务器会自动计算总任务赏金，并从发布者的现金账户中扣除可用余额。
 
@@ -298,6 +298,31 @@ GET /api/user/quest/submit/list
 | ---- | ---- | ---- | 
 | pn   | N    |      | 
 | ps   | N    |      | 
+
+
+
+## 查询指定任务的提交记录
+
+只有商家和ADMIN可以调用。
+
+``` 
+GET /api/user/quest/submit/{questId}/list
+```
+
+| 参数名     | 必填   | 说明         | 
+| ------- | ---- | ---------- | 
+| questId | Y    | 任务id       | 
+| status  | N    | 根据任务状态筛选结果 | 
+| pn      | N    |            | 
+| ps      | N    |            | 
+
+`status`取值如下：
+
+| 取值   | 含意    | 
+| ---- | ----- | 
+| 00   | 已通过审核 | 
+| 01   | 待审核   | 
+| 02   | 审核失败  | 
 
 
 

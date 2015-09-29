@@ -129,7 +129,9 @@
         
             <li><a href="#_11">查询任务提交记录</a></li>
         
-            <li><a href="#_12">查询所有任务</a></li>
+            <li><a href="#_12">查询指定任务的提交记录</a></li>
+        
+            <li><a href="#_13">查询所有任务</a></li>
         
             <li><a href="#id_1">根据id查询任务</a></li>
         
@@ -383,14 +385,14 @@
 <td>任务对象：区</td>
 </tr>
 <tr>
-<td>college_id</td>
+<td>collegeIds</td>
 <td>N</td>
-<td>任务对象：大学</td>
+<td>任务对象：大学. 以<code>;</code>分隔的id字符串，如<code>1;2;3</code></td>
 </tr>
 <tr>
-<td>school_id</td>
+<td>schoolIds</td>
 <td>N</td>
-<td>任务对象：学院</td>
+<td>任务对象：学院. 以<code>;</code>分隔的id字符串，如<code>2;5;19</code></td>
 </tr>
 <tr>
 <td></td>
@@ -602,7 +604,66 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_12">查询所有任务</h2>
+<h2 id="_12">查询指定任务的提交记录</h2>
+<p>只有商家和ADMIN可以调用。</p>
+<pre><code>GET /api/user/quest/submit/{questId}/list
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>questId</td>
+<td>Y</td>
+<td>任务id</td>
+</tr>
+<tr>
+<td>status</td>
+<td>N</td>
+<td>根据任务状态筛选结果</td>
+</tr>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>status</code>取值如下：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>已通过审核</td>
+</tr>
+<tr>
+<td>01</td>
+<td>待审核</td>
+</tr>
+<tr>
+<td>02</td>
+<td>审核失败</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_13">查询所有任务</h2>
 <p>任何人都可以调用该接口.</p>
 <pre><code>GET /api/quest/list
 </code></pre>
