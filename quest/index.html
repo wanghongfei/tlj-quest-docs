@@ -136,6 +136,13 @@
             <li><a href="#id_1">根据id查询任务</a></li>
         
     
+        <li class="main "><a href="#taolijie">Taolijie代审核</a></li>
+        
+            <li><a href="#_15">计算桃李街代审核费用</a></li>
+        
+            <li><a href="#taolijie_1">申请Taolijie代审核任务</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
@@ -755,7 +762,73 @@
 <td>已完成</td>
 </tr>
 </tbody>
-</table></div>
+</table>
+<h1 id="taolijie">Taolijie代审核</h1>
+<h2 id="_15">计算桃李街代审核费用</h2>
+<p>商家可以申请桃李街代审核任务完成申请。</p>
+<pre><code>GET /api/user/quest/audit/fee
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>amt</td>
+<td>Y</td>
+<td>代审核的任务数量</td>
+</tr>
+</tbody>
+</table>
+<p>如，对于请求</p>
+<pre><code>GET /api/user/quest/audit/fee?amt=56&amp;appToken=XXXXX
+</code></pre>
+
+<p>返回结果为：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: 56, // 需要56元
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="taolijie_1">申请Taolijie代审核任务</h2>
+<p>商家可以申请桃李街代审核任务完成申请。</p>
+<pre><code>POST /api/user/quest/audit
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>questId</td>
+<td>Y</td>
+<td>要申请的任务id</td>
+</tr>
+<tr>
+<td>amt</td>
+<td>Y</td>
+<td>代审核的数量</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注: 同一个任务只能申请一次，重复申请会失败。</p>
+</blockquote></div>
         </div>
 
         <footer class="col-md-12">

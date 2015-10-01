@@ -322,7 +322,7 @@ GET /api/user/quest/submit/{questId}/list
 | 01   | 待审核   | 
 | 02   | 审核失败  | 
 
-## 
+##  
 
 ## 条件查询
 
@@ -370,3 +370,58 @@ GET /api/quest/{questId}
 | 1    | 已领取  | 
 | 2    | 已结束  | 
 | 3    | 已完成  | 
+
+
+
+# Taolijie代审核
+
+## 计算桃李街代审核费用
+
+商家可以申请桃李街代审核任务完成申请。
+
+``` 
+GET /api/user/quest/audit/fee
+```
+
+参数：
+
+| 参数名  | 必填   | 说明       | 
+| ---- | ---- | -------- | 
+| amt  | Y    | 代审核的任务数量 | 
+
+如，对于请求
+
+``` 
+GET /api/user/quest/audit/fee?amt=56&appToken=XXXXX
+```
+
+返回结果为：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": 56, // 需要56元
+  "ok": true
+}
+```
+
+
+
+## 申请Taolijie代审核任务
+
+商家可以申请桃李街代审核任务完成申请。
+
+``` 
+POST /api/user/quest/audit
+```
+
+参数：
+
+| 参数名     | 必填   | 说明       | 
+| ------- | ---- | -------- | 
+| questId | Y    | 要申请的任务id | 
+| amt     | Y    | 代审核的数量   | 
+
+> 注: 同一个任务只能申请一次，重复申请会失败。
+
