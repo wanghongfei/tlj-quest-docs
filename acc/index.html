@@ -103,36 +103,41 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#_1">发送短信验证码</a></li>
+        <li class="main active"><a href="#_1">验证码</a></li>
+        
+            <li><a href="#_2">发送验证码到手机</a></li>
+        
+            <li><a href="#6">生成一个6位图片验证码</a></li>
         
     
-        <li class="main "><a href="#_2">更新操作</a></li>
+        <li class="main "><a href="#_3">更新操作</a></li>
         
-            <li><a href="#_3">开通现金账户(钱包)</a></li>
+            <li><a href="#_4">开通现金账户(钱包)</a></li>
         
-            <li><a href="#_4">发起提现申请</a></li>
+            <li><a href="#_5">发起提现申请</a></li>
         
-            <li><a href="#_5">发起充值申请</a></li>
+            <li><a href="#_6">发起充值申请</a></li>
         
-            <li><a href="#_6">商家身份认证申请</a></li>
+            <li><a href="#_7">商家身份认证申请</a></li>
         
-            <li><a href="#_7">学生身份认证申请</a></li>
+            <li><a href="#_8">学生身份认证申请</a></li>
         
     
-        <li class="main "><a href="#_8">查询操作</a></li>
+        <li class="main "><a href="#_9">查询操作</a></li>
         
-            <li><a href="#_9">查询当前用户的现金账户</a></li>
+            <li><a href="#_10">查询当前用户的现金账户</a></li>
         
-            <li><a href="#_10">查询账户资金变化记录</a></li>
+            <li><a href="#_11">查询账户资金变化记录</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="_1">发送短信验证码</h1>
+<h1 id="_1">验证码</h1>
+<h2 id="_2">发送验证码到手机</h2>
 <p>需要登陆。</p>
-<pre><code>GET /api/user/code
+<pre><code>GET /api/user/code/sms
 </code></pre>
 
 <p>参数：</p>
@@ -150,13 +155,41 @@
 <td>Y</td>
 <td>手机号</td>
 </tr>
+<tr>
+<td>code</td>
+<td>Y</td>
+<td>用户在页面上填写的验证码, 只有该验证码正确时才会真正发送短信</td>
+</tr>
 </tbody>
 </table>
 <blockquote>
-<p>验证码有效时间为5分钟。</p>
+<p>手机短信中的验证码有效时间为5分钟。</p>
 </blockquote>
-<h1 id="_2">更新操作</h1>
-<h2 id="_3">开通现金账户(钱包)</h2>
+<h2 id="6">生成一个6位图片验证码</h2>
+<p>该接口用于生成一个随机验图片证码，防机器人</p>
+<p>需要登陆。</p>
+<pre><code>GET /gen.do
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mId</td>
+<td>Y</td>
+<td>当前登陆用户的id</td>
+</tr>
+</tbody>
+</table>
+<h1 id="_3">更新操作</h1>
+<h2 id="_4">开通现金账户(钱包)</h2>
 <p>该接口需要登陆。</p>
 <pre><code>POST /api/user/acc
 </code></pre>
@@ -199,7 +232,7 @@
 </tbody>
 </table>
 <p><code>code</code>参数是用户手机收到的短信验证码，可以调用<code>发送短信验证码</code>接口来发送短信。</p>
-<h2 id="_4">发起提现申请</h2>
+<h2 id="_5">发起提现申请</h2>
 <p>商家、学生都可以申请提现。</p>
 <pre><code>POST /api/user/acc/withdraw
 </code></pre>
@@ -237,7 +270,7 @@
 </tbody>
 </table>
 <p><code>alipayAcc</code>和<code>bankAcc</code>至少填写一项。</p>
-<h2 id="_5">发起充值申请</h2>
+<h2 id="_6">发起充值申请</h2>
 <p>商家、学生都可以发起充值申请，待管理员审核完成后账户金额自动增加。</p>
 <pre><code>POST /api/user/acc/charge
 </code></pre>
@@ -264,7 +297,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_6">商家身份认证申请</h2>
+<h2 id="_7">商家身份认证申请</h2>
 <p>只有商家用户在登陆状态时才可以调用该接口。</p>
 <pre><code>POST /api/user/certi/emp
 </code></pre>
@@ -300,7 +333,7 @@
 <pre><code>/a.jpg;/b.jpg
 </code></pre>
 
-<h2 id="_7">学生身份认证申请</h2>
+<h2 id="_8">学生身份认证申请</h2>
 <p>只有学生用户在登陆状态时才可以调用该接口。</p>
 <pre><code>POST /api/user/certi/emp
 </code></pre>
@@ -341,14 +374,14 @@
 <pre><code>/a.jpg;/b.jpg
 </code></pre>
 
-<h1 id="_8">查询操作</h1>
-<h2 id="_9">查询当前用户的现金账户</h2>
+<h1 id="_9">查询操作</h1>
+<h2 id="_10">查询当前用户的现金账户</h2>
 <p>需要登陆。</p>
 <pre><code>GET /api/user/acc
 </code></pre>
 
 <p>该接口不需要参数。</p>
-<h2 id="_10">查询账户资金变化记录</h2>
+<h2 id="_11">查询账户资金变化记录</h2>
 <p>需要登陆。</p>
 <pre><code>GET /api/user/acc/flow
 </code></pre>
