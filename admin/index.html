@@ -124,18 +124,22 @@
         
             <li><a href="#_10">学生身份审核</a></li>
         
+            <li><a href="#_11">计算桃李街代审核费用</a></li>
+        
+            <li><a href="#taolijie">申请Taolijie代审核任务</a></li>
+        
     
-        <li class="main "><a href="#_11">查询操作</a></li>
+        <li class="main "><a href="#_12">查询操作</a></li>
         
-            <li><a href="#_12">查询提现申请列表</a></li>
+            <li><a href="#_13">查询提现申请列表</a></li>
         
-            <li><a href="#_13">查询单条提现申请</a></li>
+            <li><a href="#_14">查询单条提现申请</a></li>
         
-            <li><a href="#_14">查询充值申请列表</a></li>
+            <li><a href="#_15">查询充值申请列表</a></li>
         
-            <li><a href="#_15">查询单条充值申请</a></li>
+            <li><a href="#_16">查询单条充值申请</a></li>
         
-            <li><a href="#_16">查询指定用户的现金账户信息</a></li>
+            <li><a href="#_17">查询指定用户的现金账户信息</a></li>
         
     
     </ul>
@@ -286,8 +290,8 @@
 </thead>
 <tbody>
 <tr>
-<td>00</td>
-<td>审核通过</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>01</td>
@@ -296,6 +300,14 @@
 <tr>
 <td>02</td>
 <td>审核不通过</td>
+</tr>
+<tr>
+<td>04</td>
+<td>审核通过，由商家审核</td>
+</tr>
+<tr>
+<td>05</td>
+<td>审核通过，由桃李街审核</td>
 </tr>
 </tbody>
 </table>
@@ -482,8 +494,73 @@
 </code></pre>
 
 <p>参数和取值同<code>商家身份审核</code>。</p>
-<h1 id="_11">查询操作</h1>
-<h2 id="_12">查询提现申请列表</h2>
+<h2 id="_11">计算桃李街代审核费用</h2>
+<p>商家可以申请桃李街代审核任务完成申请。</p>
+<pre><code>GET /api/user/quest/audit/fee
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>amt</td>
+<td>Y</td>
+<td>代审核的任务数量</td>
+</tr>
+</tbody>
+</table>
+<p>如，对于请求</p>
+<pre><code>GET /api/user/quest/audit/fee?amt=56&amp;appToken=XXXXX
+</code></pre>
+
+<p>返回结果为：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: 56, // 需要56元
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="taolijie">申请Taolijie代审核任务</h2>
+<p>商家可以申请桃李街代审核任务完成申请。</p>
+<pre><code>POST /api/user/quest/audit
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>questId</td>
+<td>Y</td>
+<td>要申请的任务id</td>
+</tr>
+<tr>
+<td>amt</td>
+<td>Y</td>
+<td>代审核的数量</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注: 同一个任务只能申请一次，重复申请会失败。</p>
+</blockquote>
+<h1 id="_12">查询操作</h1>
+<h2 id="_13">查询提现申请列表</h2>
 <pre><code>GET /api/manage/acc/withdraw/list
 </code></pre>
 
@@ -514,14 +591,14 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_13">查询单条提现申请</h2>
+<h2 id="_14">查询单条提现申请</h2>
 <pre><code>GET /api/manage/acc/withdraw/{drawId}
 </code></pre>
 
 <blockquote>
 <p>drawId: 提现申请的id</p>
 </blockquote>
-<h2 id="_14">查询充值申请列表</h2>
+<h2 id="_15">查询充值申请列表</h2>
 <pre><code>GET /api/manage/charge/list
 </code></pre>
 
@@ -552,14 +629,14 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_15">查询单条充值申请</h2>
+<h2 id="_16">查询单条充值申请</h2>
 <pre><code>GET /api/manage/charge/{orderId}
 </code></pre>
 
 <blockquote>
 <p>orderId: 充值订单的id</p>
 </blockquote>
-<h2 id="_16">查询指定用户的现金账户信息</h2>
+<h2 id="_17">查询指定用户的现金账户信息</h2>
 <pre><code>GET /api/manage/acc/query/{memId}
 </code></pre>
 

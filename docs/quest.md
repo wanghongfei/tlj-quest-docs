@@ -299,8 +299,6 @@ GET /api/user/quest/submit/list
 | pn   | N    |      | 
 | ps   | N    |      | 
 
-
-
 ## 查询指定任务的提交记录
 
 只有商家和ADMIN可以调用。
@@ -324,9 +322,9 @@ GET /api/user/quest/submit/{questId}/list
 | 01   | 待审核   | 
 | 02   | 审核失败  | 
 
+## 
 
-
-## 查询所有任务
+## 条件查询
 
 任何人都可以调用该接口.
 
@@ -336,13 +334,15 @@ GET /api/quest/list
 
 参数：
 
-| 参数名    | 必填   | 说明               | 
-| ------ | ---- | ---------------- | 
-| cateId | N    | 填写表示根据分类过虑结果     | 
-| min    | N    | 任务的最低赏金(include) | 
-| max    | N    | 任务的最高赏金(include) | 
-| pn     | N    |                  | 
-| ps     | N    |                  | 
+| 参数名      | 必填   | 说明               | 
+| -------- | ---- | ---------------- | 
+| cateId   | N    | 填写表示根据分类过虑结果     | 
+| min      | N    | 任务的最低赏金(include) | 
+| max      | N    | 任务的最高赏金(include) | 
+| pn       | N    |                  | 
+| ps       | N    |                  | 
+| regionId | N    | 区域id             | 
+| schoolId | N    | 学校id             | 
 
 > 只填写`min`不填`max`表示查询赏金`>= min`的任务。
 > 
