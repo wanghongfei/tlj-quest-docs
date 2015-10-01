@@ -118,16 +118,20 @@
         
             <li><a href="#_6">发起充值申请</a></li>
         
-            <li><a href="#_7">商家身份认证申请</a></li>
+            <li><a href="#_7">解绑手机号</a></li>
         
-            <li><a href="#_8">学生身份认证申请</a></li>
+            <li><a href="#_8">绑定新手机号</a></li>
+        
+            <li><a href="#_9">商家身份认证申请</a></li>
+        
+            <li><a href="#_10">学生身份认证申请</a></li>
         
     
-        <li class="main "><a href="#_9">查询操作</a></li>
+        <li class="main "><a href="#_11">查询操作</a></li>
         
-            <li><a href="#_10">查询当前用户的现金账户</a></li>
+            <li><a href="#_12">查询当前用户的现金账户</a></li>
         
-            <li><a href="#_11">查询账户资金变化记录</a></li>
+            <li><a href="#_13">查询账户资金变化记录</a></li>
         
     
     </ul>
@@ -297,7 +301,57 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_7">商家身份认证申请</h2>
+<h2 id="_7">解绑手机号</h2>
+<pre><code>PUT /api/user/acc/unPhone
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>Y</td>
+<td>发送到用户老手机上的验证码</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_8">绑定新手机号</h2>
+<pre><code>PUT /api/user/acc/chPhone
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>Y</td>
+<td>发送到用户新手机上的验证码</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>Y</td>
+<td>新手机号</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：只有当用户先解绑手机后才能成功调用该接口。</p>
+</blockquote>
+<h2 id="_9">商家身份认证申请</h2>
 <p>只有商家用户在登陆状态时才可以调用该接口。</p>
 <pre><code>POST /api/user/certi/emp
 </code></pre>
@@ -333,7 +387,7 @@
 <pre><code>/a.jpg;/b.jpg
 </code></pre>
 
-<h2 id="_8">学生身份认证申请</h2>
+<h2 id="_10">学生身份认证申请</h2>
 <p>只有学生用户在登陆状态时才可以调用该接口。</p>
 <pre><code>POST /api/user/certi/emp
 </code></pre>
@@ -374,14 +428,14 @@
 <pre><code>/a.jpg;/b.jpg
 </code></pre>
 
-<h1 id="_9">查询操作</h1>
-<h2 id="_10">查询当前用户的现金账户</h2>
+<h1 id="_11">查询操作</h1>
+<h2 id="_12">查询当前用户的现金账户</h2>
 <p>需要登陆。</p>
 <pre><code>GET /api/user/acc
 </code></pre>
 
 <p>该接口不需要参数。</p>
-<h2 id="_11">查询账户资金变化记录</h2>
+<h2 id="_13">查询账户资金变化记录</h2>
 <p>需要登陆。</p>
 <pre><code>GET /api/user/acc/flow
 </code></pre>
