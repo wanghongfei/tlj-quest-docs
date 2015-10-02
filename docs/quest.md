@@ -442,3 +442,58 @@ GET /api/user/quest/audit/list
 | questId | N    | 代审核的任务的id | 
 | pn      | N    |           | 
 | ps      | N    |           | 
+
+
+
+# 收藏
+
+## 收藏任务
+
+``` 
+POST /api/user/co
+```
+
+参数：
+
+| 参数名     | 必填   | 说明   | 
+| ------- | ---- | ---- | 
+| questId | Y    | 任务   | 
+
+
+
+## 取消收藏任务
+
+``` 
+DELETE /api/user/co/quest/{questId}
+```
+
+> questId: 任务id
+
+
+
+## 查询收藏列表
+
+``` 
+GET /api/user/co/list
+```
+
+参数：
+
+| 参数名  | 必填   | 说明   | 
+| ---- | ---- | ---- | 
+| pn   | N    |      | 
+| ps   | N    |      | 
+
+
+
+## 查询任务是否已经收藏
+
+``` 
+GET /api/user/po/check
+```
+
+参数：
+
+| 参数名     | 必填   | 说明   | 
+| ------- | ---- | ---- | 
+| questId | Y    | 任务id | 

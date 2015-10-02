@@ -151,6 +151,17 @@
             <li><a href="#_16">查询代审核明细</a></li>
         
     
+        <li class="main "><a href="#_17">收藏</a></li>
+        
+            <li><a href="#_18">收藏任务</a></li>
+        
+            <li><a href="#_19">取消收藏任务</a></li>
+        
+            <li><a href="#_20">查询收藏列表</a></li>
+        
+            <li><a href="#_21">查询任务是否已经收藏</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
@@ -867,6 +878,82 @@
 <td>ps</td>
 <td>N</td>
 <td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="_17">收藏</h1>
+<h2 id="_18">收藏任务</h2>
+<pre><code>POST /api/user/co
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>questId</td>
+<td>Y</td>
+<td>任务</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_19">取消收藏任务</h2>
+<pre><code>DELETE /api/user/co/quest/{questId}
+</code></pre>
+
+<blockquote>
+<p>questId: 任务id</p>
+</blockquote>
+<h2 id="_20">查询收藏列表</h2>
+<pre><code>GET /api/user/co/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_21">查询任务是否已经收藏</h2>
+<pre><code>GET /api/user/po/check
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>questId</td>
+<td>Y</td>
+<td>任务id</td>
 </tr>
 </tbody>
 </table></div>

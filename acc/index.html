@@ -245,7 +245,7 @@
 </tr>
 <tr>
 <td>phone</td>
-<td>Y</td>
+<td>N</td>
 <td>用户手机号</td>
 </tr>
 <tr>
@@ -266,6 +266,9 @@
 </tbody>
 </table>
 <p><code>code</code>参数是用户手机收到的短信验证码，可以调用<code>发送短信验证码</code>接口来发送短信。</p>
+<blockquote>
+<p>如果用户是通过手机号码注册的，则不需要填写<code>phone</code>参数。如果为非手机号注册，则<code>phone</code>参数必填。</p>
+</blockquote>
 <h2 id="_6">发起提现申请</h2>
 <p>商家、学生都可以申请提现。</p>
 <pre><code>POST /api/user/acc/withdraw
