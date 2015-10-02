@@ -250,3 +250,23 @@ GET /api/manage/acc/query/{memId}
 ```
 
 > memId: 要查询的用户的id
+
+
+
+## 查询代审核列表
+
+管理员在后台可查询商家提交的代审核申请。
+
+``` 
+GET /api/manage/audit/list
+```
+
+参数：
+
+| 参数名     | 必填   | 说明                      | 
+| ------- | ---- | ----------------------- | 
+| questId | N    | 任务id                    | 
+| minLeft | N    | 根据剩余数量筛选, 区间下限(include) | 
+| maxLeft | N    | 根据剩余数量筛选, 区间上限()        | 
+| pn      | N    |                         | 
+| ps      | N    |                         | 

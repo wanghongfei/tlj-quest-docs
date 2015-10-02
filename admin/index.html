@@ -57,6 +57,12 @@
             
             
                 <li >
+                    <a href="../register/">登陆注册</a>
+                </li>
+            
+            
+            
+                <li >
                     <a href="../quest/">任务系统</a>
                 </li>
             
@@ -136,6 +142,8 @@
             <li><a href="#_15">查询单条充值申请</a></li>
         
             <li><a href="#_16">查询指定用户的现金账户信息</a></li>
+        
+            <li><a href="#_17">查询代审核列表</a></li>
         
     
     </ul>
@@ -573,7 +581,49 @@
 
 <blockquote>
 <p>memId: 要查询的用户的id</p>
-</blockquote></div>
+</blockquote>
+<h2 id="_17">查询代审核列表</h2>
+<p>管理员在后台可查询商家提交的代审核申请。</p>
+<pre><code>GET /api/manage/audit/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>questId</td>
+<td>N</td>
+<td>任务id</td>
+</tr>
+<tr>
+<td>minLeft</td>
+<td>N</td>
+<td>根据剩余数量筛选, 区间下限(include)</td>
+</tr>
+<tr>
+<td>maxLeft</td>
+<td>N</td>
+<td>根据剩余数量筛选, 区间上限()</td>
+</tr>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
         </div>
 
         <footer class="col-md-12">

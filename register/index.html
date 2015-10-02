@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
 
-	<title>签名生成 - Taolijie轻兼职接口文档</title>
+	<title>登陆注册 - Taolijie轻兼职接口文档</title>
 
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -56,8 +56,8 @@
             
             
             
-                <li >
-                    <a href="../register/">登陆注册</a>
+                <li class="active">
+                    <a href="./">登陆注册</a>
                 </li>
             
             
@@ -80,8 +80,8 @@
             
             
             
-                <li class="active">
-                    <a href="./">签名生成</a>
+                <li >
+                    <a href="../sign/">签名生成</a>
                 </li>
             
             
@@ -90,12 +90,12 @@
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
                 <li >
-                    <a rel="next" href="../admin/">
+                    <a rel="next" href="..">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
-                <li class="disabled">
-                    <a rel="prev" >
+                <li >
+                    <a rel="prev" href="../quest/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -109,93 +109,25 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#_1">图片上传流程</a></li>
+        <li class="main active"><a href="#_1">注册流程</a></li>
         
-    
-        <li class="main "><a href="#_2">生成又拍上传凭证</a></li>
+            <li><a href="#app">App注册</a></li>
         
-    
-        <li class="main "><a href="#url">更新二手帖子图片URL</a></li>
+            <li><a href="#app_1">请求短信验证码(App注册时)</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="_1">图片上传流程</h1>
-<p>S1: 用户进入图片上传页面并选择要上传的图片。</p>
-<p>S2: 浏览器调用<code>生成又拍上传凭证</code>接口，获取上传参数。</p>
-<p>S3: 浏览器调用又拍<code>HTML Form</code>上传接口，传入刚刚获取到的参数。</p>
-<p>S4: 上传成功后，浏览器调用<code>更新二手帖子图片URL</code>接口。</p>
-<h1 id="_2">生成又拍上传凭证</h1>
-<p>调用此接口需要登陆。</p>
-<p>同一用户最小调用间隔时间为<code>2s</code>。</p>
-<pre><code>GET /api/user/sign
-</code></pre>
-
-<p>部分参数：</p>
-<table>
-<thead>
-<tr>
-<th>参数名</th>
-<th>必填</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>picType</td>
-<td>Y</td>
-<td>图片的类型</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>其它参数与又拍HTML FORM上传接口中的参数一致。</p>
-</blockquote>
-<p><code>picType</code>的取值为：</p>
-<table>
-<thead>
-<tr>
-<th>取值</th>
-<th>含意</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>与兼职相关的图片</td>
-</tr>
-<tr>
-<td>1</td>
-<td>与二手相关的图片</td>
-</tr>
-<tr>
-<td>2</td>
-<td>用户头像</td>
-</tr>
-</tbody>
-</table>
-<p>如，对于请求</p>
-<pre><code>GET /api/sign?picType=1&amp;expiration=827716
-</code></pre>
-
-<p>返回报文为：</p>
-<pre><code class="json">{
-  &quot;message&quot;: &quot;success&quot;,
-  &quot;code&quot;: 0,
-  &quot;data&quot;: {
-    &quot;sign&quot;: &quot;2b405758a6bbd83de95a3cc2beb2ac8d&quot;,
-    &quot;policy&quot;: &quot;eyJzYXZlLWtleSI6Ii8yMDE1LzgvMjcvam9iLTE4LWdpcmwuanBnIiwiYnVja2V0IjoidGFvbGlqaWUtcGljIiwiZXhwaXJhdGlvbiI6MTU0MzIyOTc1OH0=&quot;,
-    &quot;saveKey&quot;: &quot;/2015/8/27/sh-18&quot;
-  },
-  &quot;ok&quot;: true
-}
-</code></pre>
-
-<h1 id="url">更新二手帖子图片URL</h1>
-<p>用户在浏览器中上传图片到又拍成功后需调用此接口，将图片地址传入。</p>
-<pre><code>PUT /api/u/{shId}/pic
+<h1 id="_1">注册流程</h1>
+<ol>
+<li>调用<code>请求短信验证码</code>接口向用户手机发送短信，并得到服务器返回的15位标识符。</li>
+<li>调用<code>App注册</code>接口，传入Step 1中得到的标识符和短信验证码，完成注册。</li>
+</ol>
+<h2 id="app">App注册</h2>
+<p>用户通过App注册账号，账号为手机号码。 </p>
+<pre><code>POST /register
 </code></pre>
 
 <p>参数：</p>
@@ -209,27 +141,82 @@
 </thead>
 <tbody>
 <tr>
-<td>shId</td>
+<td>m</td>
 <td>Y</td>
-<td>二手id, 在URL中包含该参数</td>
+<td>该参数必须传递1</td>
 </tr>
 <tr>
-<td>picAddr</td>
+<td>code</td>
 <td>Y</td>
-<td>图片地址</td>
+<td>用户收到的短信验证码</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td>identifier</td>
+<td>Y</td>
+<td>用户请求发送短信验证码时服务器返回的字符串</td>
+</tr>
+<tr>
+<td>username</td>
+<td>Y</td>
+<td>手机号，作为登陆名使用. 6 ~ 12个字符</td>
+</tr>
+<tr>
+<td>password</td>
+<td>Y</td>
+<td>登陆密码, 6 ~25个字符</td>
+</tr>
+<tr>
+<td>rePassword</td>
+<td>Y</td>
+<td>重复密码</td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>Y</td>
+<td>昵称</td>
+</tr>
+<tr>
+<td>isEmployer</td>
+<td>Y</td>
+<td>传递true表示开通商家账户，false开通学生账户</td>
 </tr>
 </tbody>
 </table>
-<p>其中，<code>picAddr</code>是一个以<code>;</code>分隔的字符串，每个字符串表示图片在<code>bucket</code>中的路径。如：</p>
-<pre><code>/sh/1.jpg;/sh/121.jpg;/sh/888.jpg
+<h2 id="app_1">请求短信验证码(App注册时)</h2>
+<p>该接口会向目标手机号发送一条短信验证码。</p>
+<pre><code>GET /register/sms
 </code></pre>
 
-<p>表示该帖子有3张图片。</p></div>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mobile</td>
+<td>Y</td>
+<td>手机号</td>
+</tr>
+</tbody>
+</table>
+<p>服务器返回15位标识符：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: &quot;LgWwtTjhAHooqmW&quot;, // 15位标识符
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<p>标识符号需作为<code>App注册</code>接口的<code>identifer</code>参数传递。</p>
+<blockquote>
+<p>验证码有效时间为5分钟。</p>
+</blockquote></div>
         </div>
 
         <footer class="col-md-12">

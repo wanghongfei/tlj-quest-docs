@@ -56,6 +56,12 @@
             
             
             
+                <li >
+                    <a href="../register/">登陆注册</a>
+                </li>
+            
+            
+            
                 <li class="active">
                     <a href="./">任务系统</a>
                 </li>
@@ -84,7 +90,7 @@
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
                 <li >
-                    <a rel="next" href="..">
+                    <a rel="next" href="../register/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
@@ -141,6 +147,8 @@
             <li><a href="#_15">计算桃李街代审核费用</a></li>
         
             <li><a href="#taolijie_1">申请Taolijie代审核任务</a></li>
+        
+            <li><a href="#_16">查询代审核明细</a></li>
         
     
     </ul>
@@ -828,7 +836,40 @@
 </table>
 <blockquote>
 <p>注: 同一个任务只能申请一次，重复申请会失败。</p>
-</blockquote></div>
+</blockquote>
+<h2 id="_16">查询代审核明细</h2>
+<p>商家可以查询自己申请过的代码审核状态。</p>
+<p>只有商家才能调用该接口。</p>
+<pre><code>GET /api/user/quest/audit/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>questId</td>
+<td>N</td>
+<td>代审核的任务的id</td>
+</tr>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
         </div>
 
         <footer class="col-md-12">
