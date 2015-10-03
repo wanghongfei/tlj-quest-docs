@@ -55,6 +55,8 @@ GET /gen.do
 
 该接口需要登陆。
 
+用户在第一次进入钱包时调用该接口。
+
 ``` 
 POST /api/user/acc
 ```
@@ -72,6 +74,32 @@ POST /api/user/acc
 `code`参数是用户手机收到的短信验证码，可以调用`发送短信验证码`接口来发送短信。
 
 > 如果用户是通过手机号码注册的，则不需要填写`phone`参数。如果为非手机号注册，则`phone`参数必填。
+
+## 修改支付宝账号
+
+``` 
+PUT /api/user/acc/alipay
+```
+
+参数：
+
+| 参数名    | 必填   | 说明     | 
+| ------ | ---- | ------ | 
+| alipay | Y    | 新支付宝账户 | 
+| code   | Y    | 手机验证码  | 
+
+## 修改银行卡账号
+
+``` 
+PUT/ api/user/acc/bank
+```
+
+参数：
+
+| 参数名     | 必填   | 说明    | 
+| ------- | ---- | ----- | 
+| bankAcc | Y    | 新银行卡号 | 
+| code    | Y    | 手机验证码 | 
 
 
 
@@ -114,7 +142,7 @@ POST /api/user/acc/charge
 ## 解绑手机号
 
 ``` 
-PUT /api/user/acc/unPhone
+DELETE /api/user/acc/phone
 ```
 
 参数：
@@ -126,7 +154,7 @@ PUT /api/user/acc/unPhone
 ## 绑定新手机号
 
 ``` 
-PUT /api/user/acc/chPhone
+PUT /api/user/acc/phone
 ```
 
 参数：
