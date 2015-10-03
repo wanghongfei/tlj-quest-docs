@@ -62,11 +62,16 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#_1">注册流程</a></li>
+                <li class="toctree-l3"><a href="#_1">注册</a></li>
                 
                     <li><a class="toctree-l4" href="#a1-app">A1: App注册</a></li>
                 
                     <li><a class="toctree-l4" href="#a2-app">A2: 请求短信验证码(App注册时)</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#_2">登陆</a></li>
+                
+                    <li><a class="toctree-l4" href="#_3">登陆接口</a></li>
                 
             
             </ul>
@@ -134,7 +139,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">注册流程</h1>
+                <h1 id="_1">注册</h1>
 <ol>
 <li>调用<code>请求短信验证码</code>接口向用户手机发送短信，并得到服务器返回的15位标识符。</li>
 <li>调用<code>App注册</code>接口，传入Step 1中得到的标识符和短信验证码，完成注册。</li>
@@ -231,6 +236,63 @@
 <blockquote>
 <p>验证码有效时间为5分钟。</p>
 </blockquote>
+<h1 id="_2">登陆</h1>
+<h2 id="_3">登陆接口</h2>
+<pre><code>POST /login
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>Y</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td>password</td>
+<td>Y</td>
+<td>密码</td>
+</tr>
+<tr>
+<td>rememberMe</td>
+<td>N</td>
+<td>false/true, 默认为false</td>
+</tr>
+<tr>
+<td>m</td>
+<td>N</td>
+<td>如果是从移动端口登陆，则需传递1</td>
+</tr>
+</tbody>
+</table>
+<p>当参数<code>m</code>不填写时，返回报文如下：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: null,
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<p>当<code>m = 1</code>时，返回报文如下：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;id&quot;: 3, // 用户的id号
+    &quot;appToken&quot;: &quot;SwONnQnfIEaKDYHwSzXY&quot;
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
               
             </div>
           </div>

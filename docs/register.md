@@ -1,4 +1,4 @@
-# 注册流程
+# 注册
 
 1. 调用`请求短信验证码`接口向用户手机发送短信，并得到服务器返回的15位标识符。
 2. 调用`App注册`接口，传入Step 1中得到的标识符和短信验证码，完成注册。
@@ -54,3 +54,48 @@ GET /register/sms
 标识符号需作为`App注册`接口的`identifer`参数传递。
 
 >  验证码有效时间为5分钟。
+
+
+
+# 登陆
+
+## 登陆接口
+
+``` 
+POST /login
+```
+
+参数：
+
+| 参数名        | 必填   | 说明                   | 
+| ---------- | ---- | -------------------- | 
+| username   | Y    | 用户名                  | 
+| password   | Y    | 密码                   | 
+| rememberMe | N    | false/true, 默认为false | 
+| m          | N    | 如果是从移动端口登陆，则需传递1     | 
+
+当参数`m`不填写时，返回报文如下：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": null,
+  "ok": true
+}
+```
+
+当`m = 1`时，返回报文如下：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "id": 3, // 用户的id号
+    "appToken": "SwONnQnfIEaKDYHwSzXY"
+  },
+  "ok": true
+}
+```
+
