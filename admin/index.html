@@ -85,39 +85,39 @@
             
                 <li class="toctree-l3"><a href="#_1">分类操作</a></li>
                 
-                    <li><a class="toctree-l4" href="#_2">创建轻兼职分类</a></li>
+                    <li><a class="toctree-l4" href="#d1">D1 创建轻兼职分类</a></li>
                 
-                    <li><a class="toctree-l4" href="#_3">更新分类信息</a></li>
+                    <li><a class="toctree-l4" href="#d2">D2 更新分类信息</a></li>
                 
-                    <li><a class="toctree-l4" href="#_4">删除分类</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#_5">审核操作</a></li>
-                
-                    <li><a class="toctree-l4" href="#_6">任务完成审核</a></li>
-                
-                    <li><a class="toctree-l4" href="#_7">提现申请审核</a></li>
-                
-                    <li><a class="toctree-l4" href="#_8">充值申请审核</a></li>
-                
-                    <li><a class="toctree-l4" href="#_9">商家身份审核</a></li>
-                
-                    <li><a class="toctree-l4" href="#_10">学生身份审核</a></li>
+                    <li><a class="toctree-l4" href="#d3">D3 删除分类</a></li>
                 
             
-                <li class="toctree-l3"><a href="#_11">查询操作</a></li>
+                <li class="toctree-l3"><a href="#_2">审核操作</a></li>
                 
-                    <li><a class="toctree-l4" href="#_12">查询提现申请列表</a></li>
+                    <li><a class="toctree-l4" href="#d4">D4 任务完成审核</a></li>
                 
-                    <li><a class="toctree-l4" href="#_13">查询单条提现申请</a></li>
+                    <li><a class="toctree-l4" href="#d5">D5 提现申请审核</a></li>
                 
-                    <li><a class="toctree-l4" href="#_14">查询充值申请列表</a></li>
+                    <li><a class="toctree-l4" href="#d6">D6 充值申请审核</a></li>
                 
-                    <li><a class="toctree-l4" href="#_15">查询单条充值申请</a></li>
+                    <li><a class="toctree-l4" href="#d7">D7 商家身份审核</a></li>
                 
-                    <li><a class="toctree-l4" href="#_16">查询指定用户的现金账户信息</a></li>
+                    <li><a class="toctree-l4" href="#d8">D8 学生身份审核</a></li>
                 
-                    <li><a class="toctree-l4" href="#_17">查询代审核列表</a></li>
+            
+                <li class="toctree-l3"><a href="#_3">查询操作</a></li>
+                
+                    <li><a class="toctree-l4" href="#d9">D9 查询提现申请列表</a></li>
+                
+                    <li><a class="toctree-l4" href="#d10">D10 查询单条提现申请</a></li>
+                
+                    <li><a class="toctree-l4" href="#d11">D11 查询充值申请列表</a></li>
+                
+                    <li><a class="toctree-l4" href="#d12">D12 查询单条充值申请</a></li>
+                
+                    <li><a class="toctree-l4" href="#d13">D13 查询指定用户的现金账户信息</a></li>
+                
+                    <li><a class="toctree-l4" href="#d14">D14 查询代审核列表</a></li>
                 
             
             </ul>
@@ -168,7 +168,7 @@
 <p>以下所有接口需要以管理员身份登陆才能成功调用。</p>
 </blockquote>
 <h1 id="_1">分类操作</h1>
-<h2 id="_2">创建轻兼职分类</h2>
+<h2 id="d1">D1 创建轻兼职分类</h2>
 <pre><code>POST /api/manage/quest/cate
 </code></pre>
 
@@ -214,7 +214,7 @@
 }
 </code></pre>
 
-<h2 id="_3">更新分类信息</h2>
+<h2 id="d2">D2 更新分类信息</h2>
 <pre><code>PUT /api/quest/cate/{cateId}
 </code></pre>
 
@@ -256,7 +256,7 @@
 <blockquote>
 <p>注：以上参数中需至少填写一项</p>
 </blockquote>
-<h2 id="_4">删除分类</h2>
+<h2 id="d3">D3 删除分类</h2>
 <pre><code class="html">DELETE /api/quest/cate/{cateId}
 </code></pre>
 
@@ -264,8 +264,8 @@
 <p>cateId: 要删除的分类的id号</p>
 <p>只有当该分类下没有帖子时才能成功删除，否则返回错误代码9.</p>
 </blockquote>
-<h1 id="_5">审核操作</h1>
-<h2 id="_6">任务完成审核</h2>
+<h1 id="_2">审核操作</h1>
+<h2 id="d4">D4 任务完成审核</h2>
 <p>学生提交任务完成申请后，管理员审核是否通过。</p>
 <blockquote>
 <p>商家也可以调用该接口，但只能审核自己发布的任务。</p>
@@ -332,7 +332,7 @@
 <blockquote>
 <p>如果审核不通过，应当传入memo参数说明审核失败的原因。</p>
 </blockquote>
-<h2 id="_7">提现申请审核</h2>
+<h2 id="d5">D5 提现申请审核</h2>
 <p>用户提交提现申请后，管理员审核是否通过。</p>
 <pre><code>PUT /api/manage/acc/withdraw
 </code></pre>
@@ -394,7 +394,7 @@
 <blockquote>
 <p>注：如果审核失败，应当传入<code>memo</code>参数以说明失败原因。</p>
 </blockquote>
-<h2 id="_8">充值申请审核</h2>
+<h2 id="d6">D6 充值申请审核</h2>
 <pre><code>PUT /api/manage/acc/charge
 </code></pre>
 
@@ -451,7 +451,7 @@
 <blockquote>
 <p>如果审核未通过，则应填写<code>memo</code>参数说明原因。</p>
 </blockquote>
-<h2 id="_9">商家身份审核</h2>
+<h2 id="d7">D7 商家身份审核</h2>
 <p>管理员审核商家提交的身份认证信息。</p>
 <pre><code>PUT /api/manage/certi/emp
 </code></pre>
@@ -506,14 +506,14 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_10">学生身份审核</h2>
+<h2 id="d8">D8 学生身份审核</h2>
 <p>管理员审核学生上传的身份认证信息。</p>
 <pre><code>PUT /api/manage/certi/stu
 </code></pre>
 
 <p>参数和取值同<code>商家身份审核</code>。</p>
-<h1 id="_11">查询操作</h1>
-<h2 id="_12">查询提现申请列表</h2>
+<h1 id="_3">查询操作</h1>
+<h2 id="d9">D9 查询提现申请列表</h2>
 <pre><code>GET /api/manage/acc/withdraw/list
 </code></pre>
 
@@ -544,14 +544,14 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_13">查询单条提现申请</h2>
+<h2 id="d10">D10 查询单条提现申请</h2>
 <pre><code>GET /api/manage/acc/withdraw/{drawId}
 </code></pre>
 
 <blockquote>
 <p>drawId: 提现申请的id</p>
 </blockquote>
-<h2 id="_14">查询充值申请列表</h2>
+<h2 id="d11">D11 查询充值申请列表</h2>
 <pre><code>GET /api/manage/charge/list
 </code></pre>
 
@@ -582,21 +582,21 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_15">查询单条充值申请</h2>
+<h2 id="d12">D12 查询单条充值申请</h2>
 <pre><code>GET /api/manage/charge/{orderId}
 </code></pre>
 
 <blockquote>
 <p>orderId: 充值订单的id</p>
 </blockquote>
-<h2 id="_16">查询指定用户的现金账户信息</h2>
+<h2 id="d13">D13 查询指定用户的现金账户信息</h2>
 <pre><code>GET /api/manage/acc/query/{memId}
 </code></pre>
 
 <blockquote>
 <p>memId: 要查询的用户的id</p>
 </blockquote>
-<h2 id="_17">查询代审核列表</h2>
+<h2 id="d14">D14 查询代审核列表</h2>
 <p>管理员在后台可查询商家提交的代审核申请。</p>
 <pre><code>GET /api/manage/audit/list
 </code></pre>

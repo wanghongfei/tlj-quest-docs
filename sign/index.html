@@ -93,10 +93,10 @@
                 <li class="toctree-l3"><a href="#_1">图片上传流程</a></li>
                 
             
-                <li class="toctree-l3"><a href="#_2">生成又拍上传凭证</a></li>
+                <li class="toctree-l3"><a href="#e1">E1 生成又拍上传凭证</a></li>
                 
             
-                <li class="toctree-l3"><a href="#url">更新二手帖子图片URL</a></li>
+                <li class="toctree-l3"><a href="#e2-url">E2 更新二手帖子图片URL</a></li>
                 
             
             </ul>
@@ -141,7 +141,7 @@
 <p>S2: 浏览器调用<code>生成又拍上传凭证</code>接口，获取上传参数。</p>
 <p>S3: 浏览器调用又拍<code>HTML Form</code>上传接口，传入刚刚获取到的参数。</p>
 <p>S4: 上传成功后，浏览器调用<code>更新二手帖子图片URL</code>接口。</p>
-<h1 id="_2">生成又拍上传凭证</h1>
+<h1 id="e1">E1 生成又拍上传凭证</h1>
 <p>调用此接口需要登陆。</p>
 <p>同一用户最小调用间隔时间为<code>2s</code>。</p>
 <pre><code>GET /api/user/sign
@@ -207,7 +207,7 @@
 }
 </code></pre>
 
-<h1 id="url">更新二手帖子图片URL</h1>
+<h1 id="e2-url">E2 更新二手帖子图片URL</h1>
 <p>用户在浏览器中上传图片到又拍成功后需调用此接口，将图片地址传入。</p>
 <pre><code>PUT /api/u/{shId}/pic
 </code></pre>

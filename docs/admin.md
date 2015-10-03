@@ -2,7 +2,7 @@
 
 # 分类操作
 
-## 创建轻兼职分类
+## D1 创建轻兼职分类
 
 ``` 
 POST /api/manage/quest/cate
@@ -32,7 +32,7 @@ POST /api/manage/quest/cate
 
 
 
-## 更新分类信息
+## D2 更新分类信息
 
 ``` 
 PUT /api/quest/cate/{cateId}
@@ -53,7 +53,7 @@ PUT /api/quest/cate/{cateId}
 
 
 
-## 删除分类
+## D3 删除分类
 
 ``` html
 DELETE /api/quest/cate/{cateId}
@@ -67,7 +67,7 @@ DELETE /api/quest/cate/{cateId}
 
 # 审核操作
 
-## 任务完成审核
+## D4 任务完成审核
 
 学生提交任务完成申请后，管理员审核是否通过。
 
@@ -100,7 +100,7 @@ PUT /api/user/quest/submit/{reqId}
 
 
 
-## 提现申请审核
+## D5 提现申请审核
 
 用户提交提现申请后，管理员审核是否通过。
 
@@ -129,7 +129,7 @@ PUT /api/manage/acc/withdraw
 
 
 
-## 充值申请审核
+## D6 充值申请审核
 
 ``` 
 PUT /api/manage/acc/charge
@@ -155,7 +155,7 @@ PUT /api/manage/acc/charge
 
 
 
-## 商家身份审核
+## D7 商家身份审核
 
 管理员审核商家提交的身份认证信息。
 
@@ -179,7 +179,7 @@ PUT /api/manage/certi/emp
 | 01   | 审核通过  | 
 | 02   | 审核未通过 | 
 
-## 学生身份审核
+## D8 学生身份审核
 
 管理员审核学生上传的身份认证信息。
 
@@ -195,7 +195,7 @@ PUT /api/manage/certi/stu
 
 # 查询操作
 
-## 查询提现申请列表
+## D9 查询提现申请列表
 
 ``` 
 GET /api/manage/acc/withdraw/list
@@ -209,7 +209,7 @@ GET /api/manage/acc/withdraw/list
 | pn     | N    |            | 
 | ps     | N    |            | 
 
-## 查询单条提现申请
+## D10 查询单条提现申请
 
 ``` 
 GET /api/manage/acc/withdraw/{drawId}
@@ -219,7 +219,7 @@ GET /api/manage/acc/withdraw/{drawId}
 
 
 
-## 查询充值申请列表
+## D11 查询充值申请列表
 
 ``` 
 GET /api/manage/charge/list
@@ -233,7 +233,7 @@ GET /api/manage/charge/list
 | pn     | N    |            | 
 | ps     | N    |            | 
 
-## 查询单条充值申请
+## D12 查询单条充值申请
 
 ``` 
 GET /api/manage/charge/{orderId}
@@ -243,7 +243,7 @@ GET /api/manage/charge/{orderId}
 
 
 
-## 查询指定用户的现金账户信息
+## D13 查询指定用户的现金账户信息
 
 ``` 
 GET /api/manage/acc/query/{memId}
@@ -253,7 +253,7 @@ GET /api/manage/acc/query/{memId}
 
 
 
-## 查询代审核列表
+## D14 查询代审核列表
 
 管理员在后台可查询商家提交的代审核申请。
 

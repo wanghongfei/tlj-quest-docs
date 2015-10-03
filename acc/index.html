@@ -78,39 +78,39 @@
             
                 <li class="toctree-l3"><a href="#_1">验证码</a></li>
                 
-                    <li><a class="toctree-l4" href="#_2">发送验证码到指定手机</a></li>
+                    <li><a class="toctree-l4" href="#c1">C1 发送验证码到指定手机</a></li>
                 
-                    <li><a class="toctree-l4" href="#_3">发送验证码到当前登陆用户手机</a></li>
+                    <li><a class="toctree-l4" href="#c2">C2 发送验证码到当前登陆用户手机</a></li>
                 
-                    <li><a class="toctree-l4" href="#6">生成一个6位图片验证码</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#_4">更新操作</a></li>
-                
-                    <li><a class="toctree-l4" href="#_5">开通现金账户(钱包)</a></li>
-                
-                    <li><a class="toctree-l4" href="#_6">修改支付宝账号</a></li>
-                
-                    <li><a class="toctree-l4" href="#_7">修改银行卡账号</a></li>
-                
-                    <li><a class="toctree-l4" href="#_8">发起提现申请</a></li>
-                
-                    <li><a class="toctree-l4" href="#_9">发起充值申请</a></li>
-                
-                    <li><a class="toctree-l4" href="#_10">解绑手机号</a></li>
-                
-                    <li><a class="toctree-l4" href="#_11">绑定新手机号</a></li>
-                
-                    <li><a class="toctree-l4" href="#_12">商家身份认证申请</a></li>
-                
-                    <li><a class="toctree-l4" href="#_13">学生身份认证申请</a></li>
+                    <li><a class="toctree-l4" href="#c3-6">C3 生成一个6位图片验证码</a></li>
                 
             
-                <li class="toctree-l3"><a href="#_14">查询操作</a></li>
+                <li class="toctree-l3"><a href="#_2">更新操作</a></li>
                 
-                    <li><a class="toctree-l4" href="#_15">查询当前用户的现金账户</a></li>
+                    <li><a class="toctree-l4" href="#c4">C4 开通现金账户(钱包)</a></li>
                 
-                    <li><a class="toctree-l4" href="#_16">查询账户资金变化记录</a></li>
+                    <li><a class="toctree-l4" href="#c5">C5 修改支付宝账号</a></li>
+                
+                    <li><a class="toctree-l4" href="#c6">C6 修改银行卡账号</a></li>
+                
+                    <li><a class="toctree-l4" href="#c7">C7 发起提现申请</a></li>
+                
+                    <li><a class="toctree-l4" href="#c8">C8 发起充值申请</a></li>
+                
+                    <li><a class="toctree-l4" href="#c9">C9 解绑手机号</a></li>
+                
+                    <li><a class="toctree-l4" href="#c10">C10 绑定新手机号</a></li>
+                
+                    <li><a class="toctree-l4" href="#c11">C11 商家身份认证申请</a></li>
+                
+                    <li><a class="toctree-l4" href="#c12">C12 学生身份认证申请</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#_3">查询操作</a></li>
+                
+                    <li><a class="toctree-l4" href="#c13">C13 查询当前用户的现金账户</a></li>
+                
+                    <li><a class="toctree-l4" href="#c14">C14 查询账户资金变化记录</a></li>
                 
             
             </ul>
@@ -165,7 +165,7 @@
             <div class="section">
               
                 <h1 id="_1">验证码</h1>
-<h2 id="_2">发送验证码到指定手机</h2>
+<h2 id="c1">C1 发送验证码到指定手机</h2>
 <p>需要登陆。</p>
 <pre><code>GET /api/user/code/sms
 </code></pre>
@@ -195,7 +195,7 @@
 <blockquote>
 <p>手机短信中的验证码有效时间为5分钟。</p>
 </blockquote>
-<h2 id="_3">发送验证码到当前登陆用户手机</h2>
+<h2 id="c2">C2 发送验证码到当前登陆用户手机</h2>
 <p>需要登陆。</p>
 <pre><code>POST /api/user/code/sms
 </code></pre>
@@ -217,7 +217,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="6">生成一个6位图片验证码</h2>
+<h2 id="c3-6">C3 生成一个6位图片验证码</h2>
 <p>该接口用于生成一个随机验图片证码，防机器人</p>
 <p>需要登陆。</p>
 <pre><code>GET /gen.do
@@ -240,8 +240,8 @@
 </tr>
 </tbody>
 </table>
-<h1 id="_4">更新操作</h1>
-<h2 id="_5">开通现金账户(钱包)</h2>
+<h1 id="_2">更新操作</h1>
+<h2 id="c4">C4 开通现金账户(钱包)</h2>
 <p>该接口需要登陆。</p>
 <p>用户在第一次进入钱包时调用该接口。</p>
 <pre><code>POST /api/user/acc
@@ -288,7 +288,7 @@
 <blockquote>
 <p>如果用户是通过手机号码注册的，则不需要填写<code>phone</code>参数。如果为非手机号注册，则<code>phone</code>参数必填。</p>
 </blockquote>
-<h2 id="_6">修改支付宝账号</h2>
+<h2 id="c5">C5 修改支付宝账号</h2>
 <pre><code>PUT /api/user/acc/alipay
 </code></pre>
 
@@ -314,7 +314,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_7">修改银行卡账号</h2>
+<h2 id="c6">C6 修改银行卡账号</h2>
 <pre><code>PUT/ api/user/acc/bank
 </code></pre>
 
@@ -340,7 +340,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_8">发起提现申请</h2>
+<h2 id="c7">C7 发起提现申请</h2>
 <p>商家、学生都可以申请提现。</p>
 <pre><code>POST /api/user/acc/withdraw
 </code></pre>
@@ -378,7 +378,7 @@
 </tbody>
 </table>
 <p><code>alipayAcc</code>和<code>bankAcc</code>至少填写一项。</p>
-<h2 id="_9">发起充值申请</h2>
+<h2 id="c8">C8 发起充值申请</h2>
 <p>商家、学生都可以发起充值申请，待管理员审核完成后账户金额自动增加。</p>
 <pre><code>POST /api/user/acc/charge
 </code></pre>
@@ -405,7 +405,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_10">解绑手机号</h2>
+<h2 id="c9">C9 解绑手机号</h2>
 <pre><code>DELETE /api/user/acc/phone
 </code></pre>
 
@@ -426,7 +426,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_11">绑定新手机号</h2>
+<h2 id="c10">C10 绑定新手机号</h2>
 <pre><code>PUT /api/user/acc/phone
 </code></pre>
 
@@ -455,7 +455,7 @@
 <blockquote>
 <p>注意：只有当用户先解绑手机后才能成功调用该接口。</p>
 </blockquote>
-<h2 id="_12">商家身份认证申请</h2>
+<h2 id="c11">C11 商家身份认证申请</h2>
 <p>只有商家用户在登陆状态时才可以调用该接口。</p>
 <pre><code>POST /api/user/certi/emp
 </code></pre>
@@ -491,7 +491,7 @@
 <pre><code>/a.jpg;/b.jpg
 </code></pre>
 
-<h2 id="_13">学生身份认证申请</h2>
+<h2 id="c12">C12 学生身份认证申请</h2>
 <p>只有学生用户在登陆状态时才可以调用该接口。</p>
 <pre><code>POST /api/user/certi/emp
 </code></pre>
@@ -532,14 +532,14 @@
 <pre><code>/a.jpg;/b.jpg
 </code></pre>
 
-<h1 id="_14">查询操作</h1>
-<h2 id="_15">查询当前用户的现金账户</h2>
+<h1 id="_3">查询操作</h1>
+<h2 id="c13">C13 查询当前用户的现金账户</h2>
 <p>需要登陆。</p>
 <pre><code>GET /api/user/acc
 </code></pre>
 
 <p>该接口不需要参数。</p>
-<h2 id="_16">查询账户资金变化记录</h2>
+<h2 id="c14">C14 查询账户资金变化记录</h2>
 <p>需要登陆。</p>
 <pre><code>GET /api/user/acc/flow
 </code></pre>
