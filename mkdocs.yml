@@ -7,5 +7,5 @@ pages:
 - 后台接口: admin.md
 - 签名生成: sign.md
 
-theme: yeti
+theme: readthedocs
 site_author: 王鸿飞
