@@ -66,12 +66,14 @@
                 
                     <li><a class="toctree-l4" href="#a1-app">A1: App注册</a></li>
                 
-                    <li><a class="toctree-l4" href="#a2-app">A2: 请求短信验证码(App注册时)</a></li>
+                    <li><a class="toctree-l4" href="#a2-app">A2: 请求短信验证码(App使用)</a></li>
                 
             
                 <li class="toctree-l3"><a href="#_2">登陆</a></li>
                 
                     <li><a class="toctree-l4" href="#a3">A3 登陆接口</a></li>
+                
+                    <li><a class="toctree-l4" href="#_3">通过手机找回密码</a></li>
                 
             
             </ul>
@@ -201,7 +203,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="a2-app">A2: 请求短信验证码(App注册时)</h2>
+<h2 id="a2-app">A2: 请求短信验证码(App使用)</h2>
 <p>该接口会向目标手机号发送一条短信验证码。</p>
 <pre><code>GET /register/sms
 </code></pre>
@@ -293,6 +295,44 @@
   &quot;ok&quot;: true
 }
 </code></pre>
+
+<h2 id="_3">通过手机找回密码</h2>
+<p>用户输入账号绑定的手机号码，通过验证码的方式重设密码。</p>
+<pre><code>POST /findPwd
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mobile</td>
+<td>Y</td>
+<td>手机号</td>
+</tr>
+<tr>
+<td>newPwd</td>
+<td>Y</td>
+<td>新密码</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Y</td>
+<td>手机验证码</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td>Y</td>
+<td>调用接口<code>A2</code>时返回的15位标识符</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
