@@ -111,7 +111,7 @@
                     <li><a class="toctree-l4" href="#b15">B15 查询代审核明细</a></li>
                 
             
-                <li class="toctree-l3"><a href="#_5">收藏</a></li>
+                <li class="toctree-l3"><a href="#_4">收藏</a></li>
                 
                     <li><a class="toctree-l4" href="#b16">B16 收藏任务</a></li>
                 
@@ -533,26 +533,26 @@
       {
         &quot;id&quot;: 1,
         &quot;title&quot;: &quot;quest1&quot;,
-        &quot;createdTime&quot;: &quot;2015-09-24 09:17:30&quot;,
-        &quot;questCateId&quot;: 1,
-        &quot;startTime&quot;: &quot;2015-10-09 16:00:00&quot;,
-        &quot;endTime&quot;: &quot;2015-12-31 16:00:00&quot;,
-        &quot;limitTime&quot;: 2,
-        &quot;totalAmt&quot;: 10,
-        &quot;leftAmt&quot;: 9,
-        &quot;award&quot;: 1,
-        &quot;memberId&quot;: 1,
-        &quot;finalAward&quot;: 1,
-        &quot;contactName&quot;: &quot;whf&quot;,
+        &quot;createdTime&quot;: &quot;2015-09-24 09:17:30&quot;, // 创建时间
+        &quot;questCateId&quot;: 1,   // 任务分类id
+        &quot;startTime&quot;: &quot;2015-10-09 16:00:00&quot;, // 任务开始时间
+        &quot;endTime&quot;: &quot;2015-12-31 16:00:00&quot;, // 任务结束时间 
+        &quot;limitTime&quot;: 2, // 任务领取后完成限制时间
+        &quot;totalAmt&quot;: 10, // 任务总数量
+        &quot;leftAmt&quot;: 9, // 任务剩余数量
+        &quot;award&quot;: 1, // 单个任务赏金
+        &quot;memberId&quot;: 1, // 任务发布者id
+        &quot;finalAward&quot;: 1, // 计算费率后的单个任务赏金
+        &quot;contactName&quot;: &quot;whf&quot;, // 联系人姓名
         &quot;contactPhone&quot;: &quot;11111111111&quot;,
-        &quot;description&quot;: &quot;task&quot;,
-        &quot;questDetail&quot;: &quot;task&quot;,
-        &quot;url&quot;: null,
+        &quot;description&quot;: &quot;task&quot;, // 任务简述
+        &quot;questDetail&quot;: &quot;task&quot;, // 任务详细
+        &quot;url&quot;: null, // 任务链接地址
         &quot;memo&quot;: null,
-        &quot;offline&quot;: false,
-        &quot;provinceId&quot;: 1,
-        &quot;cityId&quot;: 1,
-        &quot;regionId&quot;: 1,
+        &quot;offline&quot;: false, // 是否已经下线
+        &quot;provinceId&quot;: 1, // 任务对象：省id
+        &quot;cityId&quot;: 1, // 任务对象：城市id
+        &quot;regionId&quot;: 1, // 任务对象：区域id
         &quot;collegeId&quot;: null,
         &quot;schoolId&quot;: null
       }
@@ -603,12 +603,12 @@
     &quot;list&quot;: [
       {
         &quot;id&quot;: 1,
-        &quot;memberId&quot;: 1,
-        &quot;username&quot;: &quot;hanxinxin&quot;,
-        &quot;questId&quot;: 1,
-        &quot;questTitle&quot;: &quot;quest1&quot;,
-        &quot;assignTime&quot;: &quot;2015-10-09 16:00:00&quot;,
-        &quot;status&quot;: &quot;00&quot;
+        &quot;memberId&quot;: 1, // 领取者id
+        &quot;username&quot;: &quot;hanxinxin&quot;, // 领取者用户名
+        &quot;questId&quot;: 1, // 领取的任务id
+        &quot;questTitle&quot;: &quot;quest1&quot;, // 领取的任务标题
+        &quot;assignTime&quot;: &quot;2015-10-09 16:00:00&quot;, // 领取日期
+        &quot;status&quot;: &quot;00&quot; // 领取状态
       }
     ],
     &quot;resultCount&quot;: 1
@@ -644,6 +644,32 @@
 </tr>
 </tbody>
 </table>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 7,
+        &quot;questId&quot;: 1,
+        &quot;memberId&quot;: 2, // 提交者id
+        &quot;username&quot;: &quot;taolijie&quot;, // 提交者用户名
+        &quot;createdTime&quot;: &quot;2015-10-01 07:21:50&quot;, // 提交时间
+        &quot;auditTime&quot;: &quot;2015-10-01 07:22:00&quot;, // 审核时间
+        &quot;description&quot;: &quot;I'm done&quot;, // 提交理由
+        &quot;imageIds&quot;: &quot;1;2;3;4;5&quot;,
+        &quot;status&quot;: &quot;03&quot;,
+        &quot;memo&quot;: &quot;&quot;,
+        &quot;name&quot;: null // 提交者姓名
+      }
+    ],
+    &quot;resultCount&quot;: 1
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
 <h2 id="b10">B10 查询指定任务的提交记录</h2>
 <p>只有商家和ADMIN可以调用。</p>
 <pre><code>GET /api/user/quest/submit/{questId}/list
@@ -703,7 +729,32 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_4"></h2>
+<p>返回报文:</p>
+<pre><code class="JSON">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 7,
+        &quot;questId&quot;: 1,
+        &quot;memberId&quot;: 2, // 任务提交用户的id
+        &quot;username&quot;: &quot;taolijie&quot;, // 任务提交用户的用户名
+        &quot;createdTime&quot;: &quot;2015-10-01 07:21:50&quot;, // 提交时间
+        &quot;auditTime&quot;: &quot;2015-10-01 07:22:00&quot;, // 审核时间
+        &quot;description&quot;: &quot;I'm done&quot;,
+        &quot;imageIds&quot;: &quot;1;2;3;4;5&quot;,
+        &quot;status&quot;: &quot;03&quot;,
+        &quot;memo&quot;: &quot;&quot;,
+        &quot;name&quot;: null
+      }
+    ],
+    &quot;resultCount&quot;: 1
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
 <h2 id="b11">B11 条件查询</h2>
 <p>任何人都可以调用该接口.</p>
 <pre><code>GET /api/quest/list
@@ -761,6 +812,47 @@
 <p>只填写<code>max</code>不填<code>min</code>表示查询赏金<code>&lt;= max</code>的任务。</p>
 <p>同时填写表示查询赏金在<code>min</code>与<code>max</code>之间的任务。</p>
 </blockquote>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 5,
+        &quot;title&quot;: &quot;newQuest&quot;, // 任务标题
+        &quot;createdTime&quot;: &quot;2015-09-29 09:53:00&quot;, // 任务创建时间
+        &quot;questCateId&quot;: 1, // 任务分类id
+        &quot;startTime&quot;: &quot;2015-10-09 16:00:00&quot;, // 任务开始时间
+        &quot;endTime&quot;: &quot;2015-10-15 16:00:00&quot;, // 任务结束时间
+        &quot;limitTime&quot;: 2, // 任务完成限制时间
+        &quot;totalAmt&quot;: 1, // 任务总数
+        &quot;leftAmt&quot;: 1, // 任务剩余数量
+        &quot;award&quot;: 0.1, // 单个任务赏金
+        &quot;memberId&quot;: 1, // 发布者id
+        &quot;finalAward&quot;: 0.1, // 计算费率后的单个任务赏金
+        &quot;contactName&quot;: &quot;whf&quot;,
+        &quot;contactPhone&quot;: &quot;1111111&quot;,
+        &quot;description&quot;: &quot;des&quot;,
+        &quot;questDetail&quot;: &quot;detail&quot;,
+        &quot;url&quot;: null,
+        &quot;memo&quot;: null,
+        &quot;offline&quot;: false,
+        &quot;provinceId&quot;: 1,
+        &quot;cityId&quot;: 1,
+        &quot;regionId&quot;: 1,
+        &quot;collegeId&quot;: null,
+        &quot;schoolId&quot;: null,
+        &quot;status&quot;: null
+      }
+
+    ],
+    &quot;resultCount&quot;: 1
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
 <h2 id="b12-id">B12 根据id查询任务</h2>
 <p>不需要登陆。</p>
 <pre><code>GET /api/quest/{questId}
@@ -863,7 +955,7 @@
 <p>注: 同一个任务只能申请一次，重复申请会失败。</p>
 </blockquote>
 <h2 id="b15">B15 查询代审核明细</h2>
-<p>商家可以查询自己申请过的代码审核状态。</p>
+<p>商家可以查询自己申请过的代审核状态。</p>
 <p>只有商家才能调用该接口。</p>
 <pre><code>GET /api/user/quest/audit/list
 </code></pre>
@@ -895,7 +987,30 @@
 </tr>
 </tbody>
 </table>
-<h1 id="_5">收藏</h1>
+<p>返回报文：</p>
+<pre><code class="JSON">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 2,
+        &quot;questId&quot;: 1, // 代审核的任务is
+        &quot;questTitle&quot;: &quot;quest1&quot;, // 代审核的任务的标题
+        &quot;totAmt&quot;: 5, // 代审核总数量
+        &quot;leftAmt&quot;: 5, // 代审核剩余数量
+        &quot;empId&quot;: 1, // 申请者用户id
+        &quot;empUsername&quot;: &quot;hanxinxin&quot;, // 申请者用户名
+        &quot;createdTime&quot;: &quot;2015-10-15 16:00:00&quot; // 申请时间
+      }
+    ],
+    &quot;resultCount&quot;: 1
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h1 id="_4">收藏</h1>
 <h2 id="b16">B16 收藏任务</h2>
 <pre><code>POST /api/user/co
 </code></pre>
@@ -950,8 +1065,28 @@
 </tr>
 </tbody>
 </table>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;createdTime&quot;: &quot;2015-05-09 16:00:00&quot;, // 收藏时间
+        &quot;memberId&quot;: 1, // 收藏者用户id
+        &quot;questId&quot;: 1, // 收藏的任务id
+        &quot;questTitle&quot;: &quot;quset1&quot; // 收藏的任务标题
+      }
+    ],
+    &quot;resultCount&quot;: 1
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
 <h2 id="b19">B19 查询任务是否已经收藏</h2>
-<pre><code>GET /api/user/po/check
+<pre><code>GET /api/user/co/check
 </code></pre>
 
 <p>参数：</p>
@@ -971,6 +1106,14 @@
 </tr>
 </tbody>
 </table>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: true, // 表示已经收藏
+  &quot;ok&quot;: true
+}
+</code></pre>
               
             </div>
           </div>

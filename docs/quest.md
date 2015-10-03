@@ -210,26 +210,26 @@ GET /api/user/quest/publish/list
       {
         "id": 1,
         "title": "quest1",
-        "createdTime": "2015-09-24 09:17:30",
-        "questCateId": 1,
-        "startTime": "2015-10-09 16:00:00",
-        "endTime": "2015-12-31 16:00:00",
-        "limitTime": 2,
-        "totalAmt": 10,
-        "leftAmt": 9,
-        "award": 1,
-        "memberId": 1,
-        "finalAward": 1,
-        "contactName": "whf",
+        "createdTime": "2015-09-24 09:17:30", // 创建时间
+        "questCateId": 1,	// 任务分类id
+        "startTime": "2015-10-09 16:00:00", // 任务开始时间
+        "endTime": "2015-12-31 16:00:00", // 任务结束时间	
+        "limitTime": 2, // 任务领取后完成限制时间
+        "totalAmt": 10, // 任务总数量
+        "leftAmt": 9, // 任务剩余数量
+        "award": 1, // 单个任务赏金
+        "memberId": 1, // 任务发布者id
+        "finalAward": 1, // 计算费率后的单个任务赏金
+        "contactName": "whf", // 联系人姓名
         "contactPhone": "11111111111",
-        "description": "task",
-        "questDetail": "task",
-        "url": null,
+        "description": "task", // 任务简述
+        "questDetail": "task", // 任务详细
+        "url": null, // 任务链接地址
         "memo": null,
-        "offline": false,
-        "provinceId": 1,
-        "cityId": 1,
-        "regionId": 1,
+        "offline": false, // 是否已经下线
+        "provinceId": 1, // 任务对象：省id
+        "cityId": 1, // 任务对象：城市id
+        "regionId": 1, // 任务对象：区域id
         "collegeId": null,
         "schoolId": null
       }
@@ -268,12 +268,12 @@ GET /api/user/quest/assign/list
     "list": [
       {
         "id": 1,
-        "memberId": 1,
-        "username": "hanxinxin",
-        "questId": 1,
-        "questTitle": "quest1",
-        "assignTime": "2015-10-09 16:00:00",
-        "status": "00"
+        "memberId": 1, // 领取者id
+        "username": "hanxinxin", // 领取者用户名
+        "questId": 1, // 领取的任务id
+        "questTitle": "quest1", // 领取的任务标题
+        "assignTime": "2015-10-09 16:00:00", // 领取日期
+        "status": "00" // 领取状态
       }
     ],
     "resultCount": 1
@@ -299,6 +299,38 @@ GET /api/user/quest/submit/list
 | pn   | N    |      | 
 | ps   | N    |      | 
 
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "id": 7,
+        "questId": 1,
+        "memberId": 2, // 提交者id
+        "username": "taolijie", // 提交者用户名
+        "createdTime": "2015-10-01 07:21:50", // 提交时间
+        "auditTime": "2015-10-01 07:22:00", // 审核时间
+        "description": "I'm done", // 提交理由
+        "imageIds": "1;2;3;4;5",
+        "status": "03",
+        "memo": "",
+        "name": null // 提交者姓名
+      }
+    ],
+    "resultCount": 1
+  },
+  "ok": true
+}
+```
+
+
+
+
+
 ## B10 查询指定任务的提交记录
 
 只有商家和ADMIN可以调用。
@@ -322,7 +354,37 @@ GET /api/user/quest/submit/{questId}/list
 | 01   | 待审核   | 
 | 02   | 审核失败  | 
 
-##  
+返回报文:
+
+``` JSON
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "id": 7,
+        "questId": 1,
+        "memberId": 2, // 任务提交用户的id
+        "username": "taolijie", // 任务提交用户的用户名
+        "createdTime": "2015-10-01 07:21:50", // 提交时间
+        "auditTime": "2015-10-01 07:22:00", // 审核时间
+        "description": "I'm done",
+        "imageIds": "1;2;3;4;5",
+        "status": "03",
+        "memo": "",
+        "name": null
+      }
+    ],
+    "resultCount": 1
+  },
+  "ok": true
+}
+```
+
+
+
+
 
 ## B11 条件查询
 
@@ -349,6 +411,51 @@ GET /api/quest/list
 > 只填写`max`不填`min`表示查询赏金`<= max`的任务。
 > 
 > 同时填写表示查询赏金在`min`与`max`之间的任务。
+
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "id": 5,
+        "title": "newQuest", // 任务标题
+        "createdTime": "2015-09-29 09:53:00", // 任务创建时间
+        "questCateId": 1, // 任务分类id
+        "startTime": "2015-10-09 16:00:00", // 任务开始时间
+        "endTime": "2015-10-15 16:00:00", // 任务结束时间
+        "limitTime": 2, // 任务完成限制时间
+        "totalAmt": 1, // 任务总数
+        "leftAmt": 1, // 任务剩余数量
+        "award": 0.1, // 单个任务赏金
+        "memberId": 1, // 发布者id
+        "finalAward": 0.1, // 计算费率后的单个任务赏金
+        "contactName": "whf",
+        "contactPhone": "1111111",
+        "description": "des",
+        "questDetail": "detail",
+        "url": null,
+        "memo": null,
+        "offline": false,
+        "provinceId": 1,
+        "cityId": 1,
+        "regionId": 1,
+        "collegeId": null,
+        "schoolId": null,
+        "status": null
+      }
+    
+    ],
+    "resultCount": 1
+  },
+  "ok": true
+}
+```
+
+
 
 
 
@@ -427,7 +534,7 @@ POST /api/user/quest/audit
 
 ## B15 查询代审核明细
 
-商家可以查询自己申请过的代码审核状态。
+商家可以查询自己申请过的代审核状态。
 
 只有商家才能调用该接口。
 
@@ -442,6 +549,35 @@ GET /api/user/quest/audit/list
 | questId | N    | 代审核的任务的id | 
 | pn      | N    |           | 
 | ps      | N    |           | 
+
+返回报文：
+
+``` JSON
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "id": 2,
+        "questId": 1, // 代审核的任务is
+        "questTitle": "quest1", // 代审核的任务的标题
+        "totAmt": 5, // 代审核总数量
+        "leftAmt": 5, // 代审核剩余数量
+        "empId": 1, // 申请者用户id
+        "empUsername": "hanxinxin", // 申请者用户名
+        "createdTime": "2015-10-15 16:00:00" // 申请时间
+      }
+    ],
+    "resultCount": 1
+  },
+  "ok": true
+}
+```
+
+
+
+
 
 # 收藏
 
@@ -480,10 +616,36 @@ GET /api/user/co/list
 | pn   | N    |      | 
 | ps   | N    |      | 
 
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "createdTime": "2015-05-09 16:00:00", // 收藏时间
+        "memberId": 1, // 收藏者用户id
+        "questId": 1, // 收藏的任务id
+        "questTitle": "quset1" // 收藏的任务标题
+      }
+    ],
+    "resultCount": 1
+  },
+  "ok": true
+}
+```
+
+
+
+
+
 ## B19 查询任务是否已经收藏
 
 ``` 
-GET /api/user/po/check
+GET /api/user/co/check
 ```
 
 参数：
@@ -491,3 +653,15 @@ GET /api/user/po/check
 | 参数名     | 必填   | 说明   | 
 | ------- | ---- | ---- | 
 | questId | Y    | 任务id | 
+
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": true, // 表示已经收藏
+  "ok": true
+}
+```
+
