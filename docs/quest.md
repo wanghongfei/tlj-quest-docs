@@ -2,7 +2,7 @@
 
 任务分类是任务的类型，每一个任务都有且仅属于一个分类。
 
-## 查询分类列表
+## B-1 查询分类列表
 
 ``` html
 GET /api/quest/cate/list
@@ -52,7 +52,7 @@ data字段是一个名为”list”的JSON数组，数组中的每一个元素�
 | memo  |     备注     |       | 
 | level | 分类层级，暂时无用  |       | 
 
-## 通过id查询分类
+## B-2 通过id查询分类
 
 ``` 
 GET /api/quest/cate/{id}
@@ -80,7 +80,7 @@ data字段中直接是分类JSON对象, 若不存在则为`data: null`
 
 
 
-## 通过分类名查询分类信息
+## B-3 通过分类名查询分类信息
 
 ``` 
 GET /api/quest/cate/name/{name}
@@ -112,7 +112,7 @@ data字段中直接是分类JSON对象, 若不存在则为`data: null`
 
 任务的发布、修改、审核和领取相关接口
 
-## 商家发布任务
+## B-4 商家发布任务
 
 ``` 
 POST /api/quest
@@ -149,7 +149,7 @@ POST /api/quest
 
 
 
-## 任务领取
+## B-5 任务领取
 
 只有登陆状态下的学生用户才可以领取任务。
 
@@ -161,7 +161,7 @@ POST /api/user/quest/assign/{questId}
 
 
 
-## 提交任务完成申请
+## B-6 提交任务完成申请
 
 学生用户完成任务以后，在线提交申请，等待管理员审核。
 
@@ -184,7 +184,7 @@ POST /api/user/quest/submit/{questId}
 
 # 任务查询
 
-## 查询任务发布记录
+## B-7 查询任务发布记录
 
 需要商家用户登陆。
 
@@ -242,7 +242,7 @@ GET /api/user/quest/publish/list
 
 
 
-## 查询任务领取记录
+## B-8 查询任务领取记录
 
 需要学生用户登陆。
 
@@ -284,7 +284,7 @@ GET /api/user/quest/assign/list
 
 
 
-## 查询任务提交记录
+## B-9 查询任务提交记录
 
 需要学生用户登陆状态。
 
@@ -299,7 +299,7 @@ GET /api/user/quest/submit/list
 | pn   | N    |      | 
 | ps   | N    |      | 
 
-## 查询指定任务的提交记录
+## B-10 查询指定任务的提交记录
 
 只有商家和ADMIN可以调用。
 
@@ -324,7 +324,7 @@ GET /api/user/quest/submit/{questId}/list
 
 ##  
 
-## 条件查询
+## B-11 条件查询
 
 任何人都可以调用该接口.
 
@@ -352,7 +352,7 @@ GET /api/quest/list
 
 
 
-## 根据id查询任务
+## B-12 根据id查询任务
 
 不需要登陆。
 
@@ -373,7 +373,7 @@ GET /api/quest/{questId}
 
 # Taolijie代审核
 
-## 计算桃李街代审核费用
+## B-13 计算桃李街代审核费用
 
 商家可以申请桃李街代审核任务完成申请。
 
@@ -406,7 +406,7 @@ GET /api/user/quest/audit/fee?amt=56&appToken=XXXXX
 
 
 
-## 申请Taolijie代审核任务
+## B-14 申请Taolijie代审核任务
 
 商家可以申请桃李街代审核任务完成申请。
 
@@ -425,7 +425,7 @@ POST /api/user/quest/audit
 
 
 
-## 查询代审核明细
+## B-15 查询代审核明细
 
 商家可以查询自己申请过的代码审核状态。
 
@@ -443,11 +443,9 @@ GET /api/user/quest/audit/list
 | pn      | N    |           | 
 | ps      | N    |           | 
 
-
-
 # 收藏
 
-## 收藏任务
+## B-16 收藏任务
 
 ``` 
 POST /api/user/co
@@ -459,9 +457,7 @@ POST /api/user/co
 | ------- | ---- | ---- | 
 | questId | Y    | 任务   | 
 
-
-
-## 取消收藏任务
+## B-17 取消收藏任务
 
 ``` 
 DELETE /api/user/co/quest/{questId}
@@ -471,7 +467,7 @@ DELETE /api/user/co/quest/{questId}
 
 
 
-## 查询收藏列表
+## B-18 查询收藏列表
 
 ``` 
 GET /api/user/co/list
@@ -484,9 +480,7 @@ GET /api/user/co/list
 | pn   | N    |      | 
 | ps   | N    |      | 
 
-
-
-## 查询任务是否已经收藏
+## B-19 查询任务是否已经收藏
 
 ``` 
 GET /api/user/po/check

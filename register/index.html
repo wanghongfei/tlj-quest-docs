@@ -64,9 +64,9 @@
             
                 <li class="toctree-l3"><a href="#_1">注册流程</a></li>
                 
-                    <li><a class="toctree-l4" href="#app">App注册</a></li>
+                    <li><a class="toctree-l4" href="#a-1-app">A-1 App注册</a></li>
                 
-                    <li><a class="toctree-l4" href="#app_1">请求短信验证码(App注册时)</a></li>
+                    <li><a class="toctree-l4" href="#a-2-app">A-2 请求短信验证码(App注册时)</a></li>
                 
             
             </ul>
@@ -139,7 +139,7 @@
 <li>调用<code>请求短信验证码</code>接口向用户手机发送短信，并得到服务器返回的15位标识符。</li>
 <li>调用<code>App注册</code>接口，传入Step 1中得到的标识符和短信验证码，完成注册。</li>
 </ol>
-<h2 id="app">App注册</h2>
+<h2 id="a-1-app">A-1 App注册</h2>
 <p>用户通过App注册账号，账号为手机号码。 </p>
 <pre><code>POST /register
 </code></pre>
@@ -196,7 +196,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="app_1">请求短信验证码(App注册时)</h2>
+<h2 id="a-2-app">A-2 请求短信验证码(App注册时)</h2>
 <p>该接口会向目标手机号发送一条短信验证码。</p>
 <pre><code>GET /register/sms
 </code></pre>
