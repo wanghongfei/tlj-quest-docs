@@ -539,6 +539,27 @@
 </code></pre>
 
 <p>该接口不需要参数。</p>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;id&quot;: 2,
+    &quot;availableBalance&quot;: 1, // 可用余额
+    &quot;frozenBalance&quot;: 0, // 无用字段
+    &quot;totalBalance&quot;: 1, // 无用字段
+    &quot;status&quot;: &quot;00&quot;, // 账户状态
+    &quot;updateTime&quot;: &quot;2015-09-24 12:50:54&quot;, // 最后更新时间
+    &quot;createdTime&quot;: &quot;2015-09-24 12:50:54&quot;, // 开户时间
+    &quot;memberId&quot;: 2, // 账户所有者id
+    &quot;username&quot;: &quot;taolijie&quot;, // 所有者用户名
+    &quot;memberRole&quot;: &quot;STUDENT&quot;, // 所有者用户类型
+    &quot;phoneNumber&quot;: &quot;1828312368&quot; // 所有者手机号
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
 <h2 id="c14">C14 查询账户资金变化记录</h2>
 <p>需要登陆。</p>
 <pre><code>GET /api/user/acc/flow
@@ -576,6 +597,48 @@
 </tr>
 </tbody>
 </table>
+<p>对于请求</p>
+<pre><code>/api/user/acc/flow?appToken=token&amp;ps=2
+</code></pre>
+
+<p>返回报文为：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 14,
+        &quot;createdTime&quot;: &quot;2015-10-01 14:07:06&quot;,
+        &quot;accId&quot;: 1, // 现金账户id
+        &quot;actionType&quot;: &quot;00&quot;, // 资金变动的原因
+        &quot;avaBalanceCh&quot;: -5, // 可用余额变化值
+        &quot;froBalanceCh&quot;: 0, // 无用字段
+        &quot;totBalanceCh&quot;: 0, // 无用字段
+        &quot;avaBalanceNew&quot;: 186.9, // 可用余额变化后的新值 
+        &quot;froBalanceNew&quot;: 0, // 无用
+        &quot;totBalanceNew&quot;: 0, // 无用
+        &quot;memo&quot;: null
+      },
+      {
+        &quot;id&quot;: 12,
+        &quot;createdTime&quot;: &quot;2015-09-29 09:53:00&quot;,
+        &quot;accId&quot;: 1,
+        &quot;actionType&quot;: &quot;00&quot;,
+        &quot;avaBalanceCh&quot;: -0.1,
+        &quot;froBalanceCh&quot;: 0,
+        &quot;totBalanceCh&quot;: 0,
+        &quot;avaBalanceNew&quot;: 191.9,
+        &quot;froBalanceNew&quot;: 0,
+        &quot;totBalanceNew&quot;: 0,
+        &quot;memo&quot;: null
+      }
+    ],
+    &quot;resultCount&quot;: 8
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
               
             </div>
           </div>

@@ -101,8 +101,6 @@ PUT/ api/user/acc/bank
 | bankAcc | Y    | 新银行卡号 | 
 | code    | Y    | 手机验证码 | 
 
-
-
 ## C7 发起提现申请
 
 商家、学生都可以申请提现。
@@ -231,6 +229,31 @@ GET /api/user/acc
 
 该接口不需要参数。
 
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "id": 2,
+    "availableBalance": 1, // 可用余额
+    "frozenBalance": 0, // 无用字段
+    "totalBalance": 1, // 无用字段
+    "status": "00", // 账户状态
+    "updateTime": "2015-09-24 12:50:54", // 最后更新时间
+    "createdTime": "2015-09-24 12:50:54", // 开户时间
+    "memberId": 2, // 账户所有者id
+    "username": "taolijie", // 所有者用户名
+    "memberRole": "STUDENT", // 所有者用户类型
+    "phoneNumber": "1828312368" // 所有者手机号
+  },
+  "ok": true
+}
+```
+
+
+
 
 
 ## C14 查询账户资金变化记录
@@ -249,3 +272,51 @@ GET /api/user/acc/flow
 | end   | N    | 结束日期。如，2015-9-20  | 
 | pn    | N    |                   | 
 | ps    | N    |                   | 
+
+对于请求
+
+``` 
+/api/user/acc/flow?appToken=token&ps=2
+```
+
+返回报文为：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "id": 14,
+        "createdTime": "2015-10-01 14:07:06",
+        "accId": 1, // 现金账户id
+        "actionType": "00", // 资金变动的原因
+        "avaBalanceCh": -5, // 可用余额变化值
+        "froBalanceCh": 0, // 无用字段
+        "totBalanceCh": 0, // 无用字段
+        "avaBalanceNew": 186.9, // 可用余额变化后的新值 
+        "froBalanceNew": 0, // 无用
+        "totBalanceNew": 0, // 无用
+        "memo": null
+      },
+      {
+        "id": 12,
+        "createdTime": "2015-09-29 09:53:00",
+        "accId": 1,
+        "actionType": "00",
+        "avaBalanceCh": -0.1,
+        "froBalanceCh": 0,
+        "totBalanceCh": 0,
+        "avaBalanceNew": 191.9,
+        "froBalanceNew": 0,
+        "totBalanceNew": 0,
+        "memo": null
+      }
+    ],
+    "resultCount": 8
+  },
+  "ok": true
+}
+```
+
