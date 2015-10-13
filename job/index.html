@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>兼职 - Taolijie轻兼职接口文档</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "兼职";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Taolijie轻兼职接口文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">概述</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../register/">登陆注册</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../quest/">任务系统</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../acc/">账户系统</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../admin/">后台接口</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../sign/">签名生成</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">兼职</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#_1">查询操作</a></li>
+                
+                    <li><a class="toctree-l4" href="#f1">F1 查询单个分类信息</a></li>
+                
+                    <li><a class="toctree-l4" href="#f2">F2 查询兼职分类列表</a></li>
+                
+                    <li><a class="toctree-l4" href="#f3">F3 搜索兼职</a></li>
+                
+                    <li><a class="toctree-l4" href="#f4-id">F4 多个id批量查询兼职信息</a></li>
+                
+                    <li><a class="toctree-l4" href="#f5">F5 根据分类查询兼职信息</a></li>
+                
+                    <li><a class="toctree-l4" href="#f6">F6 查询指定用户发布的兼职信息</a></li>
+                
+                    <li><a class="toctree-l4" href="#f7">F7 过虑查询</a></li>
+                
+                    <li><a class="toctree-l4" href="#f8">F8 查询全部兼职信息</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../sh/">二手</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Taolijie轻兼职接口文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>兼职</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">查询操作</h1>
+<h2 id="f1">F1 查询单个分类信息</h2>
+<p>根据id查询分类信息。</p>
+<pre><code>GET /api/job/cate/{id}
+</code></pre>
+
+<blockquote>
+<p>id: 分类的id</p>
+</blockquote>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;家教&quot;, // 分类名
+    &quot;level&quot;: 1, // 暂时无用
+    &quot;themeColor&quot;: &quot;#edbc5a&quot;, // 分类背景色
+    &quot;memo&quot;: &quot;家教&quot; // 备注
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="f2">F2 查询兼职分类列表</h2>
+<pre><code>GET /api/job/cate/list
+</code></pre>
+
+<p>该接口不需要参数，返回所有兼职分类。</p>
+<p>返回报文：</p>
+<pre><code class="json">
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;家教&quot;,
+        &quot;level&quot;: 1,
+        &quot;themeColor&quot;: &quot;#edbc5a&quot;,
+        &quot;memo&quot;: &quot;家教&quot;
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;派单员&quot;,
+        &quot;level&quot;: 2,
+        &quot;themeColor&quot;: &quot;#b3a5c8&quot;,
+        &quot;memo&quot;: &quot;派单员&quot;
+      },
+      {
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;代理&quot;,
+        &quot;level&quot;: 3,
+        &quot;themeColor&quot;: &quot;#658a9b&quot;,
+        &quot;memo&quot;: &quot;代理&quot;
+      }
+
+    &quot;resultCount&quot;: 3
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="f3">F3 搜索兼职</h2>
+<p>关键字搜索，根据帖子的标题。</p>
+<pre><code>GET /api/job/search
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pageNumber</td>
+<td>N</td>
+<td>查询第几页，0(默认)表示第一页。</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>N</td>
+<td>一页的结果数，默认为8</td>
+</tr>
+<tr>
+<td>title</td>
+<td>N</td>
+<td>关键字, 不填表示查询所有</td>
+</tr>
+</tbody>
+</table>
+<p>对于请求</p>
+<pre><code>GET /api/job/search?title=代理&amp;pageSize=2
+</code></pre>
+
+<p>一共有7条结果，当前返回了前2条：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 241,
+        &quot;title&quot;: &quot;京安驾校代理数名&quot;,
+        &quot;expiredTime&quot;: 1445184000000,
+        &quot;expired&quot;: false,
+        &quot;postTime&quot;: 1444642214000,
+        &quot;workPlace&quot;: &quot;理工大学西校内&quot;,
+        &quot;wage&quot;: 0.0,
+        &quot;timeToPay&quot;: &quot;完工结算&quot;,
+        &quot;deleted&quot;: false,
+        &quot;jobDescription&quot;: &quot;。主要利用课余时间在本专业或本宿舍楼宣传招生！有意者编辑短信电话+姓名+年级系别&quot;,
+        &quot;contact&quot;: &quot;短信报名即可&quot;,
+        &quot;contactPhone&quot;: &quot;17865938895&quot;,
+        &quot;jobDetail&quot;: &quot;，只要你想锻炼自己，都可以加入京安驾校代理团队，在这里不仅可以得到提升，而且也可获得不可估量的收入，每个系只限1名，只要你肯努力必定能获得丰厚的待遇&quot;,
+        &quot;likes&quot;: 0,
+        &quot;dislikes&quot;: 0,
+        &quot;jobPostCategoryId&quot;: 3,
+        &quot;memberId&quot;: 90,
+        &quot;complaint&quot;: 0,
+        &quot;workTime&quot;: &quot;课余时间&quot;,
+        &quot;salaryUnit&quot;: &quot;时&quot;,
+        &quot;pageView&quot;: 0,
+        &quot;applicantAmount&quot;: 0,
+        &quot;province&quot;: &quot;山东省&quot;,
+        &quot;city&quot;: &quot;淄博市&quot;,
+        &quot;region&quot;: &quot;张店区&quot;,
+        &quot;member&quot;: { // 兼职发布者信息
+          &quot;id&quot;: 90,
+          &quot;userLevel&quot;: &quot;LV0&quot;,
+          &quot;username&quot;: &quot;tljzyl&quot;,
+          &quot;verified&quot;: &quot;01&quot;,
+          &quot;createdTime&quot;: 1443369600000,
+          &quot;valid&quot;: true,
+          &quot;roleList&quot;: [
+
+          ]
+        },
+        &quot;category&quot;: { // 该兼职所属于的分类信息
+          &quot;id&quot;: 3,
+          &quot;name&quot;: &quot;代理&quot;,
+          &quot;level&quot;: 3,
+          &quot;themeColor&quot;: &quot;#658a9b&quot;,
+          &quot;memo&quot;: &quot;代理&quot;
+        }
+      },
+      {
+        &quot;id&quot;: 152,
+        &quot;title&quot;: &quot;国安驾校校园代理&quot;,
+        &quot;expiredTime&quot;: 1446220800000,
+        &quot;expired&quot;: false,
+        &quot;postTime&quot;: 1443183803000,
+        &quot;workPlace&quot;: &quot;随意安排&quot;,
+        &quot;wage&quot;: 100.0,
+        &quot;timeToPay&quot;: &quot;日结&quot;,
+        &quot;deleted&quot;: false,
+        &quot;jobDescription&quot;: &quot;优厚，有意编辑短信... ...&quot;,
+        &quot;contact&quot;: &quot;王先生&quot;,
+        &quot;contactPhone&quot;: &quot;17865924072&quot;,
+        &quot;contactQq&quot;: &quot;2635694948&quot;,
+        &quot;jobDetail&quot;: &quot;一、招聘:  ... ...&quot;,
+        &quot;likes&quot;: 1,
+        &quot;dislikes&quot;: 0,
+        &quot;jobPostCategoryId&quot;: 3,
+        &quot;memberId&quot;: 1,
+        &quot;complaint&quot;: 0,
+        &quot;workTime&quot;: &quot;随意安排&quot;,
+        &quot;salaryUnit&quot;: &quot;天&quot;,
+        &quot;pageView&quot;: 0,
+        &quot;applicantAmount&quot;: 0,
+        &quot;province&quot;: &quot;山东省&quot;,
+        &quot;city&quot;: &quot;淄博市&quot;,
+        &quot;region&quot;: &quot;张店区&quot;,
+        &quot;member&quot;: {
+          &quot;id&quot;: 1,
+          &quot;studentId&quot;: &quot;156648895&quot;,
+          &quot;blockList&quot;: &quot;1&quot;,
+          &quot;userLevel&quot;: &quot;LV0&quot;,
+          &quot;username&quot;: &quot;taolijie-admin&quot;,
+          &quot;email&quot;: &quot;196645665@qq.com&quot;,
+          &quot;name&quot;: &quot;黄棉&quot;,
+          &quot;gender&quot;: &quot;女&quot;,
+          &quot;verified&quot;: &quot;01&quot;,
+          &quot;profilePhotoPath&quot;: &quot;http://jingyan.baidu.com/&quot;,
+          &quot;companyName&quot;: &quot;京东商城&quot;,
+          &quot;createdTime&quot;: 1432051200000,
+          &quot;valid&quot;: true,
+          &quot;complaint&quot;: 0,
+          &quot;profilePhotoId&quot;: 380,
+          &quot;lastPostTime&quot;: 1432915200000,
+          &quot;schoolOrganization&quot;: &quot;NONE&quot;,
+          &quot;credits&quot;: 0,
+          &quot;roleList&quot;: [
+
+          ]
+        },
+        &quot;category&quot;: {
+          &quot;id&quot;: 3,
+          &quot;name&quot;: &quot;代理&quot;,
+          &quot;level&quot;: 3,
+          &quot;themeColor&quot;: &quot;#658a9b&quot;,
+          &quot;memo&quot;: &quot;代理&quot;
+        }
+      }
+    ],
+    &quot;resultCount&quot;: 7
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="f4-id">F4 多个id批量查询兼职信息</h2>
+<pre><code>POST /api/job/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ids</td>
+<td>Y</td>
+<td>以";"分隔的id号。如，1;2;</td>
+</tr>
+</tbody>
+</table>
+<p>返回报文同接口<code>F3</code></p>
+<h2 id="f5">F5 根据分类查询兼职信息</h2>
+<p>查询指定分类下所有兼职信息。</p>
+<pre><code>GET /api/job/category/{cateId}
+</code></pre>
+
+<blockquote>
+<p><code>cateId</code>: 分类的id</p>
+</blockquote>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pageNumber</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="f6">F6 查询指定用户发布的兼职信息</h2>
+<pre><code>GET /api/job/user/{memId}
+</code></pre>
+
+<blockquote>
+<p><code>memId</code>: 用户的id</p>
+</blockquote>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pageNumber</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="f7">F7 过虑查询</h2>
+<p>根据多个条件过虑兼职信息。</p>
+<pre><code>GET /api/job/filter
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>memberId</td>
+<td>N</td>
+<td>填写表示必须为该用户发表的帖子</td>
+</tr>
+<tr>
+<td>province</td>
+<td>N</td>
+<td>填写表示根据省份过虑</td>
+</tr>
+<tr>
+<td>city</td>
+<td>N</td>
+<td>根据城市过虑</td>
+</tr>
+<tr>
+<td>region</td>
+<td>N</td>
+<td>根据区域过虑. 如, region=张店区</td>
+</tr>
+<tr>
+<td>cateId</td>
+<td>N</td>
+<td>根据分类过虑</td>
+</tr>
+<tr>
+<td>filterExpiredPost</td>
+<td>N</td>
+<td>是否包括已经过期的帖子，true(默认) / false</td>
+</tr>
+<tr>
+<td>title</td>
+<td>N</td>
+<td>根据标题精确匹配</td>
+</tr>
+</tbody>
+</table>
+<p>返回报文同<code>F3</code>。</p>
+<h2 id="f8">F8 查询全部兼职信息</h2>
+<p>查询所有兼职信息，最新发布的在前。</p>
+<pre><code>GET /api/job/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pageNumber</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../sh/" class="btn btn-neutral float-right" title="二手"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../sign/" class="btn btn-neutral" title="签名生成"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../sign/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../sh/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

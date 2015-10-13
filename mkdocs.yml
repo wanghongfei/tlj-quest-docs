@@ -6,6 +6,8 @@ pages:
 - 账户系统: acc.md
 - 后台接口: admin.md
 - 签名生成: sign.md
+- 兼职: job.md
+- 二手: sh.md
 
 theme: readthedocs
 site_author: 王鸿飞

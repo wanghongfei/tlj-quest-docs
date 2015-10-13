@@ -117,3 +117,19 @@ POST /findPwd
 | newPwd     | Y    | 新密码                | 
 | code       | Y    | 手机验证码              | 
 | identifier | Y    | 调用接口`A2`时返回的15位标识符 | 
+
+
+
+## A5 绑定微信openid
+
+``` 
+POST /register/bind/wechat
+```
+
+参数：
+
+| 参数名         | 必填   | 说明     | 
+| ----------- | ---- | ------ | 
+| wechatToken | Y    | openid | 
+| memId       | Y    | 用户id   | 
+

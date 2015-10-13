@@ -75,6 +75,8 @@
                 
                     <li><a class="toctree-l4" href="#a4">A4 通过手机找回密码</a></li>
                 
+                    <li><a class="toctree-l4" href="#a5-openid">A5 绑定微信openid</a></li>
+                
             
             </ul>
         
@@ -105,6 +107,20 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../sign/">签名生成</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../job/">兼职</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../sh/">二手</a>
         
     </li>
 <li>
@@ -330,6 +346,32 @@
 <td>identifier</td>
 <td>Y</td>
 <td>调用接口<code>A2</code>时返回的15位标识符</td>
+</tr>
+</tbody>
+</table>
+<h2 id="a5-openid">A5 绑定微信openid</h2>
+<pre><code>POST /register/bind/wechat
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wechatToken</td>
+<td>Y</td>
+<td>openid</td>
+</tr>
+<tr>
+<td>memId</td>
+<td>Y</td>
+<td>用户id</td>
 </tr>
 </tbody>
 </table>
