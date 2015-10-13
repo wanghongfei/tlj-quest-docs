@@ -104,6 +104,42 @@
         
             <ul>
             
+                <li class="toctree-l3"><a href="#_1">查询操作</a></li>
+                
+                    <li><a class="toctree-l4" href="#g1">G1 查询单个二手分类信息</a></li>
+                
+                    <li><a class="toctree-l4" href="#g2">G2 查询二手分列表</a></li>
+                
+                    <li><a class="toctree-l4" href="#g3">G3 二手关键字搜索</a></li>
+                
+                    <li><a class="toctree-l4" href="#g4">G4 查询用户发布的二手</a></li>
+                
+                    <li><a class="toctree-l4" href="#g5">G5 根据分类查询二手</a></li>
+                
+                    <li><a class="toctree-l4" href="#g6">G6 条件过虑查询</a></li>
+                
+                    <li><a class="toctree-l4" href="#g7">G7 查询单条二手</a></li>
+                
+                    <li><a class="toctree-l4" href="#g8">G8 查询全部二手</a></li>
+                
+                    <li><a class="toctree-l4" href="#g9">G9 查询用户收藏列表</a></li>
+                
+                    <li><a class="toctree-l4" href="#g10">G10 查询二手是否已赞</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#_2">更新操作</a></li>
+                
+                    <li><a class="toctree-l4" href="#g11">G11 发布二手</a></li>
+                
+                    <li><a class="toctree-l4" href="#g12">G12 修改二手信息</a></li>
+                
+                    <li><a class="toctree-l4" href="#g13">G13 删除二手</a></li>
+                
+                    <li><a class="toctree-l4" href="#g14">G14 收藏/取消二手</a></li>
+                
+                    <li><a class="toctree-l4" href="#g15">G15 点赞</a></li>
+                
+            
             </ul>
         
     </li>
@@ -141,7 +177,567 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="_1">查询操作</h1>
+<h2 id="g1">G1 查询单个二手分类信息</h2>
+<pre><code>POST /api/sh/cate/{id}
+</code></pre>
+
+<blockquote>
+<p><code>id</code>: 分类的id</p>
+</blockquote>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;自行车&quot;,
+    &quot;level&quot;: 2,
+    &quot;themeColor&quot;: &quot;#C71585&quot;,
+    &quot;memo&quot;: &quot;我是name1&quot;
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="g2">G2 查询二手分列表</h2>
+<pre><code>GET /api/sh/cate/list
+</code></pre>
+
+<p>该接口没有参数。</p>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;自行车&quot;,
+        &quot;level&quot;: 2,
+        &quot;themeColor&quot;: &quot;#C71585&quot;,
+        &quot;memo&quot;: &quot;我是name1&quot;
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;电动车&quot;,
+        &quot;level&quot;: 3,
+        &quot;themeColor&quot;: &quot;#C71585&quot;,
+        &quot;memo&quot;: &quot;我是name2&quot;
+      },
+      {
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;摩托车&quot;,
+        &quot;level&quot;: 11,
+        &quot;themeColor&quot;: &quot;11&quot;,
+        &quot;memo&quot;: &quot;摩托车&quot;
+      }
+    &quot;resultCount&quot;: 3
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="g3">G3 二手关键字搜索</h2>
+<pre><code>GET /api/sh/search
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>N</td>
+<td>标题中包含该关键字</td>
+</tr>
+<tr>
+<td>pageNumber</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 95,
+        &quot;picturePath&quot;: &quot;2015/9/28/sh-376;2015/9/28/sh-375;2015/9/28/sh-373;2015/9/28/sh-370;2015/9/28/sh-371;2015/9/28/sh-374;2015/9/28/sh-372;2015/9/28/sh-369&quot;,
+        &quot;description&quot;: &quot;270-----450元，全新自行车，绝对质量，售后有保障，校内实体店。&quot;,
+        &quot;title&quot;: &quot;全新自行车低价出售270----450元&quot;,
+        &quot;deleted&quot;: false,
+        &quot;postTime&quot;: 1443183556000,
+        &quot;depreciationRate&quot;: &quot;全新&quot;,
+        &quot;sellPrice&quot;: 270,
+        &quot;likes&quot;: 0,
+        &quot;dislikes&quot;: 0,
+        &quot;memberId&quot;: 1,
+        &quot;secondHandPostCategoryId&quot;: 1,
+        &quot;complaint&quot;: 0,
+        &quot;pageView&quot;: 0,
+        &quot;expired&quot;: false,
+        &quot;tradePlace&quot;: &quot;面议&quot;,
+        &quot;contactName&quot;: &quot;于先生&quot;,
+        &quot;contactQq&quot;: &quot;&quot;,
+        &quot;contactPhone&quot;: &quot;17865923820&quot;,
+        &quot;member&quot;: { // 发布者信息
+          &quot;id&quot;: 1,
+          &quot;studentId&quot;: &quot;156648895&quot;,
+          &quot;blockList&quot;: &quot;1&quot;,
+          &quot;userLevel&quot;: &quot;LV0&quot;,
+          &quot;appliedJobIds&quot;: &quot;1&quot;,
+          &quot;likedJobIds&quot;: &quot;191;189;&quot;,
+          &quot;likedShIds&quot;: &quot;49;48;45;&quot;,
+          &quot;username&quot;: &quot;taolijie-admin&quot;,
+          &quot;email&quot;: &quot;196645665@qq.com&quot;,
+          &quot;name&quot;: &quot;黄棉&quot;,
+          &quot;gender&quot;: &quot;女&quot;,
+          &quot;verified&quot;: &quot;VERIFIDE&quot;,
+          &quot;profilePhotoPath&quot;: &quot;http://jingyan.baidu.com/&quot;,
+          &quot;phone&quot;: &quot;178456258789&quot;,
+          &quot;qq&quot;: &quot;19&quot;,
+          &quot;age&quot;: 19,
+          &quot;companyName&quot;: &quot;京东商城&quot;,
+          &quot;createdTime&quot;: 1432051200000,
+          &quot;valid&quot;: true,
+          &quot;complaint&quot;: 0,
+          &quot;profilePhotoId&quot;: 380,
+          &quot;lastPostTime&quot;: 1432915200000,
+          &quot;schoolOrganization&quot;: &quot;NONE&quot;,
+          &quot;credits&quot;: 0,
+          &quot;roleList&quot;: []
+        },
+        &quot;category&quot;: { // 分类信息
+          &quot;id&quot;: 1,
+          &quot;name&quot;: &quot;自行车&quot;,
+          &quot;level&quot;: 2,
+          &quot;themeColor&quot;: &quot;#C71585&quot;,
+          &quot;memo&quot;: &quot;我是name1&quot;
+        },
+        &quot;rangeQuery&quot;: 0
+      },
+      {
+        &quot;id&quot;: 84,
+        &quot;picturePath&quot;: &quot;2015/9/28/sh-279;2015/9/28/sh-278&quot;,
+        &quot;description&quot;: &quot;转让全新死飞自行车，若干辆，校内试骑。&quot;,
+        &quot;title&quot;: &quot;转让全新死飞自行车若干辆&quot;,
+        &quot;deleted&quot;: false,
+        &quot;postTime&quot;: 1442215020000,
+        &quot;depreciationRate&quot;: &quot;全新&quot;,
+        &quot;sellPrice&quot;: 330,
+        &quot;likes&quot;: 1,
+        &quot;dislikes&quot;: 0,
+        &quot;memberId&quot;: 1,
+        &quot;secondHandPostCategoryId&quot;: 1,
+        &quot;complaint&quot;: 0,
+        &quot;pageView&quot;: 0,
+        &quot;expired&quot;: false,
+        &quot;tradePlace&quot;: &quot;理工大学&quot;,
+        &quot;contactName&quot;: &quot;高先生&quot;,
+        &quot;contactQq&quot;: &quot;981833831&quot;,
+        &quot;contactPhone&quot;: &quot;15169234965&quot;,
+        &quot;member&quot;: {
+          &quot;id&quot;: 1,
+          &quot;studentId&quot;: &quot;156648895&quot;,
+          &quot;blockList&quot;: &quot;1&quot;,
+          &quot;userLevel&quot;: &quot;LV0&quot;,
+          &quot;appliedJobIds&quot;: &quot;1&quot;,
+          &quot;likedJobIds&quot;: &quot;191;189;&quot;,
+          &quot;likedShIds&quot;: &quot;49;48;45;&quot;,
+          &quot;username&quot;: &quot;taolijie-admin&quot;,
+          &quot;email&quot;: &quot;196645665@qq.com&quot;,
+          &quot;name&quot;: &quot;黄棉&quot;,
+          &quot;gender&quot;: &quot;女&quot;,
+          &quot;verified&quot;: &quot;VERIFIDE&quot;,
+          &quot;profilePhotoPath&quot;: &quot;http://jingyan.baidu.com/&quot;,
+          &quot;phone&quot;: &quot;178456258789&quot;,
+          &quot;qq&quot;: &quot;19&quot;,
+          &quot;age&quot;: 19,
+          &quot;companyName&quot;: &quot;京东商城&quot;,
+          &quot;createdTime&quot;: 1432051200000,
+          &quot;valid&quot;: true,
+          &quot;complaint&quot;: 0,
+          &quot;profilePhotoId&quot;: 380,
+          &quot;lastPostTime&quot;: 1432915200000,
+          &quot;schoolOrganization&quot;: &quot;NONE&quot;,
+          &quot;credits&quot;: 0,
+          &quot;roleList&quot;: []
+        },
+        &quot;category&quot;: {
+          &quot;id&quot;: 1,
+          &quot;name&quot;: &quot;自行车&quot;,
+          &quot;level&quot;: 2,
+          &quot;themeColor&quot;: &quot;#C71585&quot;,
+          &quot;memo&quot;: &quot;我是name1&quot;
+        },
+        &quot;rangeQuery&quot;: 0
+      }
+    ],
+    &quot;resultCount&quot;: 12
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="g4">G4 查询用户发布的二手</h2>
+<pre><code>GET /api/sh/user/{memId}
+</code></pre>
+
+<blockquote>
+<p>memId: 用户id</p>
+</blockquote>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pageNumber</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="g5">G5 根据分类查询二手</h2>
+<p>查询指定分类下的二手信息，最新发布的在前。</p>
+<pre><code>GET /api/sh/category/{cateId}
+</code></pre>
+
+<blockquote>
+<p>cateId: 分类id</p>
+</blockquote>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pageNumber</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="g6">G6 条件过虑查询</h2>
+<pre><code>GET /api/sh/filter
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>N</td>
+<td>根据标题过虑</td>
+</tr>
+<tr>
+<td>depreciationRate</td>
+<td>N</td>
+<td>根据新旧程度过虑。如：九成新、全新</td>
+</tr>
+<tr>
+<td>minPrice</td>
+<td>N</td>
+<td>价格下限（包括）</td>
+</tr>
+<tr>
+<td>maxPrice</td>
+<td>N</td>
+<td>价格上限（包括）</td>
+</tr>
+<tr>
+<td>rangeQuery</td>
+<td>(Y)</td>
+<td>当<code>minPrice</code>或<code>maxPrice</code>不为空时，该参数必填1</td>
+</tr>
+<tr>
+<td>pageNumber</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>返回报文同<code>G3</code></p>
+<h2 id="g7">G7 查询单条二手</h2>
+<pre><code>GET /api/sh/{id}
+</code></pre>
+
+<blockquote>
+<p>id: 二手id号</p>
+</blockquote>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;id&quot;: 102,
+    &quot;picturePath&quot;: &quot;2015/10/3/sh-1167&quot;,
+    &quot;description&quot;: &quot;7成新  质量有保证！有问题随时解决！！！&quot;,
+    &quot;title&quot;: &quot;二手电动车&quot;,
+    &quot;deleted&quot;: false,
+    &quot;postTime&quot;: 1443872413000,
+    &quot;depreciationRate&quot;: &quot;七成新&quot;,
+    &quot;sellPrice&quot;: 550,
+    &quot;likes&quot;: 0,
+    &quot;dislikes&quot;: 0,
+    &quot;memberId&quot;: 100,
+    &quot;secondHandPostCategoryId&quot;: 2,
+    &quot;complaint&quot;: 0,
+    &quot;pageView&quot;: 0,
+    &quot;expired&quot;: false,
+    &quot;tradePlace&quot;: &quot;东校&quot;,
+    &quot;contactName&quot;: &quot;朱玉潇&quot;,
+    &quot;contactQq&quot;: &quot;876573362&quot;,
+    &quot;contactPhone&quot;: &quot;17865921129&quot;,
+    &quot;member&quot;: {
+      &quot;id&quot;: 100,
+      &quot;userLevel&quot;: &quot;LV0&quot;,
+      &quot;username&quot;: &quot;17865921129&quot;,
+      &quot;verified&quot;: &quot;NONE&quot;,
+      &quot;createdTime&quot;: 1443801600000,
+      &quot;valid&quot;: true,
+      &quot;roleList&quot;: []
+    },
+    &quot;category&quot;: {
+      &quot;id&quot;: 2,
+      &quot;name&quot;: &quot;电动车&quot;,
+      &quot;level&quot;: 3,
+      &quot;themeColor&quot;: &quot;#C71585&quot;,
+      &quot;memo&quot;: &quot;我是name2&quot;
+    },
+    &quot;rangeQuery&quot;: 0
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="g8">G8 查询全部二手</h2>
+<pre><code>GET /api/sh/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pageNumber</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>返回报文同<code>G3</code></p>
+<h2 id="g9">G9 查询用户收藏列表</h2>
+<p>需要登陆。</p>
+<pre><code>GET /api/u/sh/favlist
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pageNumber</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="g10">G10 查询二手是否已赞</h2>
+<p>需要登陆。</p>
+<pre><code>GET /api/u/sh/fav/{shId}
+</code></pre>
+
+<blockquote>
+<p>shId: 二手id号</p>
+</blockquote>
+<h1 id="_2">更新操作</h1>
+<h2 id="g11">G11 发布二手</h2>
+<p>需要登陆。</p>
+<pre><code>POST /user/sh/post
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>picIds</td>
+<td>Y</td>
+<td>二手相关的图片URL路径，以";"分隔。如， /2015/2/12/sh-102;/2013/2/12/sh-102</td>
+</tr>
+<tr>
+<td>title</td>
+<td>Y</td>
+<td>二手标题</td>
+</tr>
+<tr>
+<td>secondHandPostCategoryId</td>
+<td>Y</td>
+<td>二手分类的id</td>
+</tr>
+<tr>
+<td>depreciationRate</td>
+<td>Y</td>
+<td>新旧程度。如: 八成新、全新</td>
+</tr>
+<tr>
+<td>sellPrice</td>
+<td>Y</td>
+<td>价格, 精确到小数点后2位，如：300.00</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Y</td>
+<td>商品描述</td>
+</tr>
+<tr>
+<td>tradePlace</td>
+<td>Y</td>
+<td>交易地点</td>
+</tr>
+<tr>
+<td>contactName</td>
+<td>Y</td>
+<td>联系人姓名</td>
+</tr>
+<tr>
+<td>contactQq</td>
+<td>Y</td>
+<td>联系人QQ</td>
+</tr>
+<tr>
+<td>contactPhone</td>
+<td>Y</td>
+<td>联系人手机号</td>
+</tr>
+</tbody>
+</table>
+<h2 id="g12">G12 修改二手信息</h2>
+<p>发布者可以修改自己发布的二手信息。</p>
+<pre><code>POST /user/sh/change/{shId}
+</code></pre>
+
+<blockquote>
+<p>shId: 二手id</p>
+</blockquote>
+<p>与<code>G11</code>参数相同，所有参数为选填。</p>
+<h2 id="g13">G13 删除二手</h2>
+<pre><code>POST /user/sh/del/{id}
+</code></pre>
+
+<blockquote>
+<p>id: 二手id</p>
+</blockquote>
+<h2 id="g14">G14 收藏/取消二手</h2>
+<p>需要登陆。</p>
+<p>如果已经收藏过了，则操作结果为取消收藏；如果未收藏，操作结果为添加收藏。</p>
+<pre><code>POST /user/sh/fav/{id}
+</code></pre>
+
+<blockquote>
+<p>id: 要操作的二手id</p>
+</blockquote>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ids</td>
+<td>Y</td>
+<td>以";"分隔的二手id, 如</td>
+</tr>
+</tbody>
+</table>
+<h2 id="g15">G15 点赞</h2>
+<p>需要登陆。</p>
+<pre><code>POST /user/sh/{id}/like
+</code></pre>
+
+<blockquote>
+<p>id: 要点赞的二手id</p>
+</blockquote>
               
             </div>
           </div>

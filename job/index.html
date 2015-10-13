@@ -115,6 +115,22 @@
                 
                     <li><a class="toctree-l4" href="#f8">F8 查询全部兼职信息</a></li>
                 
+                    <li><a class="toctree-l4" href="#f9">F9 查询用户收藏的兼职信息</a></li>
+                
+                    <li><a class="toctree-l4" href="#f10">F10 查询兼职是否已赞</a></li>
+                
+                    <li><a class="toctree-l4" href="#_2">更新操作</a></li>
+                
+                    <li><a class="toctree-l4" href="#f11">F11 发布兼职</a></li>
+                
+                    <li><a class="toctree-l4" href="#f12">F12 修改兼职信息</a></li>
+                
+                    <li><a class="toctree-l4" href="#f13">F13 收藏/取消收藏兼职</a></li>
+                
+                    <li><a class="toctree-l4" href="#f14">F14 用户删除兼职</a></li>
+                
+                    <li><a class="toctree-l4" href="#f15">F15 点赞</a></li>
+                
             
             </ul>
         
@@ -536,6 +552,216 @@
 </tr>
 </tbody>
 </table>
+<h2 id="f9">F9 查询用户收藏的兼职信息</h2>
+<p>调用该接口需要登陆。</p>
+<pre><code>GET /api/u/job/favlist
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pageNumber</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>返回报文同<code>F4</code>。</p>
+<h2 id="f10">F10 查询兼职是否已赞</h2>
+<p>需要登陆.</p>
+<pre><code>GET /api/u/job/fav/{jobId}
+</code></pre>
+
+<blockquote>
+<p><code>jobId</code>: 兼职的id</p>
+</blockquote>
+<p>查询id = 1的任务有没有被当前用户赞过：</p>
+<pre><code>GET /api/u/job/fav/1
+</code></pre>
+
+<p>返回报文：</p>
+<pre><code>{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: false, // 没有赞过
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="_2">更新操作</h2>
+<h2 id="f11">F11 发布兼职</h2>
+<p>需要登陆，<strong>同一个用户两次调用时间间隔不得少于1min</strong>。</p>
+<pre><code>POST /user/job/post
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>Y</td>
+<td>兼职标题</td>
+</tr>
+<tr>
+<td>cateId</td>
+<td>Y</td>
+<td>分类id</td>
+</tr>
+<tr>
+<td>wage</td>
+<td>Y</td>
+<td>工资待遇，整数</td>
+</tr>
+<tr>
+<td>timeToPay</td>
+<td>Y</td>
+<td>结算方式。取值为: 周结、日结、月结、面议</td>
+</tr>
+<tr>
+<td>expiredTime</td>
+<td>Y</td>
+<td>截止时间. yyyy-mm-dd</td>
+</tr>
+<tr>
+<td>workTime</td>
+<td>Y</td>
+<td>工作时间</td>
+</tr>
+<tr>
+<td>province</td>
+<td>Y</td>
+<td>工作所在省</td>
+</tr>
+<tr>
+<td>city</td>
+<td>Y</td>
+<td>工作所在市</td>
+</tr>
+<tr>
+<td>region</td>
+<td>Y</td>
+<td>工作所在市</td>
+</tr>
+<tr>
+<td>workPlace</td>
+<td>Y</td>
+<td>工作详细地点</td>
+</tr>
+<tr>
+<td>jobDescription</td>
+<td>Y</td>
+<td>工作内容说明</td>
+</tr>
+<tr>
+<td>jobDetail</td>
+<td>Y</td>
+<td>工作要求说明</td>
+</tr>
+<tr>
+<td>contact</td>
+<td>Y</td>
+<td>联系人姓名</td>
+</tr>
+<tr>
+<td>contactPhone</td>
+<td>Y</td>
+<td>联系人手机号</td>
+</tr>
+<tr>
+<td>contactQq</td>
+<td>Y</td>
+<td>联系人QQ号</td>
+</tr>
+</tbody>
+</table>
+<h2 id="f12">F12 修改兼职信息</h2>
+<p>信息发布者修改已经发布的信息。</p>
+<pre><code>POST /user/job/change/{jobId}
+</code></pre>
+
+<blockquote>
+<p><code>jobId</code>: 要修改的兼职id</p>
+</blockquote>
+<p>参数：</p>
+<p>同<code>F11</code>，所有参数均为选填。</p>
+<h2 id="f13">F13 收藏/取消收藏兼职</h2>
+<p>需要登陆。</p>
+<p>如果用户未收藏该兼职，接口的功能为添加收藏；如果已收藏，功能为取消收藏。</p>
+<pre><code>POST /user/job/fav/{jobId}
+</code></pre>
+
+<blockquote>
+<p><code>jobId</code>: 要操作的兼职id</p>
+</blockquote>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ids</td>
+<td>N</td>
+<td>以";"分隔的兼职id. 如: 1;2;3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="f14">F14 用户删除兼职</h2>
+<p>用户可以在自己的个人中心删除发布的兼职。</p>
+<pre><code>POST /user/job/del/{id}
+</code></pre>
+
+<blockquote>
+<p><code>id</code>: 要删除的兼职id</p>
+</blockquote>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ids</td>
+<td>N</td>
+<td>批量删除。以";"分隔的兼职id，如1;2;3。 <strong>如果填写该参数，则URL中的<code>id</code>必须传递0</strong>。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="f15">F15 点赞</h2>
+<pre><code>POST /user/job/{id}/like
+</code></pre>
+
+<blockquote>
+<p>id: 要点赞的兼职id</p>
+</blockquote>
               
             </div>
           </div>

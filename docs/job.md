@@ -66,7 +66,7 @@ GET /api/job/cate/list
         "themeColor": "#658a9b",
         "memo": "代理"
       }
-      
+
     "resultCount": 3
   },
   "ok": true
@@ -141,7 +141,7 @@ GET /api/job/search?title=代理&pageSize=2
           "createdTime": 1443369600000,
           "valid": true,
           "roleList": [
-            
+
           ]
         },
         "category": { // 该兼职所属于的分类信息
@@ -199,7 +199,7 @@ GET /api/job/search?title=代理&pageSize=2
           "schoolOrganization": "NONE",
           "credits": 0,
           "roleList": [
-            
+
           ]
         },
         "category": {
@@ -252,8 +252,6 @@ GET /api/job/category/{cateId}
 | pageNumber | N    |      |
 | pageSize   |      |      |
 
-
-
 ## F6 查询指定用户发布的兼职信息
 
 ``` 
@@ -268,8 +266,6 @@ GET /api/job/user/{memId}
 | ---------- | ---- | ---- |
 | pageNumber | N    |      |
 | pageSize   |      |      |
-
-
 
 ## F7 过虑查询
 
@@ -310,3 +306,140 @@ GET /api/job/list
 | pageNumber | N    |      |
 | pageSize   |      |      |
 
+## F9 查询用户收藏的兼职信息
+
+调用该接口需要登陆。
+
+``` 
+GET /api/u/job/favlist
+```
+
+参数：
+
+| 参数名        | 必填   | 说明   |
+| ---------- | ---- | ---- |
+| pageNumber | N    |      |
+| pageSize   |      |      |
+
+返回报文同`F4`。
+
+
+
+## F10 查询兼职是否已赞
+
+需要登陆.
+
+``` 
+GET /api/u/job/fav/{jobId}
+```
+
+> `jobId`: 兼职的id
+
+查询id = 1的任务有没有被当前用户赞过：
+
+``` 
+GET /api/u/job/fav/1
+```
+
+返回报文：
+
+``` 
+{
+  "message": "success",
+  "code": 0,
+  "data": false, // 没有赞过
+  "ok": true
+}
+```
+
+
+
+## 更新操作
+
+## F11 发布兼职
+
+需要登陆，**同一个用户两次调用时间间隔不得少于1min**。
+
+``` 
+POST /user/job/post
+```
+
+参数：
+
+| 参数名            | 必填   | 说明                    |
+| -------------- | ---- | --------------------- |
+| title          | Y    | 兼职标题                  |
+| cateId         | Y    | 分类id                  |
+| wage           | Y    | 工资待遇，整数               |
+| timeToPay      | Y    | 结算方式。取值为: 周结、日结、月结、面议 |
+| expiredTime    | Y    | 截止时间. yyyy-mm-dd      |
+| workTime       | Y    | 工作时间                  |
+| province       | Y    | 工作所在省                 |
+| city           | Y    | 工作所在市                 |
+| region         | Y    | 工作所在市                 |
+| workPlace      | Y    | 工作详细地点                |
+| jobDescription | Y    | 工作内容说明                |
+| jobDetail      | Y    | 工作要求说明                |
+| contact        | Y    | 联系人姓名                 |
+| contactPhone   | Y    | 联系人手机号                |
+| contactQq      | Y    | 联系人QQ号                |
+
+## F12 修改兼职信息
+
+信息发布者修改已经发布的信息。
+
+``` 
+POST /user/job/change/{jobId}
+```
+
+> `jobId`: 要修改的兼职id
+
+参数：
+
+同`F11`，所有参数均为选填。
+
+
+
+## F13 收藏/取消收藏兼职
+
+需要登陆。
+
+如果用户未收藏该兼职，接口的功能为添加收藏；如果已收藏，功能为取消收藏。
+
+``` 
+POST /user/job/fav/{jobId}
+```
+
+> `jobId`: 要操作的兼职id
+
+参数：
+
+| 参数名  | 必填   | 说明                    |
+| ---- | ---- | --------------------- |
+| ids  | N    | 以";"分隔的兼职id. 如: 1;2;3 |
+
+## F14 用户删除兼职
+
+用户可以在自己的个人中心删除发布的兼职。
+
+``` 
+POST /user/job/del/{id}
+```
+
+> `id`: 要删除的兼职id
+
+参数：
+
+| 参数名  | 必填   | 说明                                       |
+| ---- | ---- | ---------------------------------------- |
+| ids  | N    | 批量删除。以";"分隔的兼职id，如1;2;3。 **如果填写该参数，则URL中的`id`必须传递0**。 |
+
+
+
+## F15 点赞
+
+``` 
+POST /user/job/{id}/like
+```
+
+> id: 要点赞的兼职id
