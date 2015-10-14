@@ -614,7 +614,7 @@
 </table>
 <h2 id="g10">G10 查询二手是否已赞</h2>
 <p>需要登陆。</p>
-<pre><code>GET /api/u/sh/fav/{shId}
+<pre><code>GET /api/u/sh/like/{shId}
 </code></pre>
 
 <blockquote>
@@ -623,7 +623,7 @@
 <h1 id="_2">更新操作</h1>
 <h2 id="g11">G11 发布二手</h2>
 <p>需要登陆。</p>
-<pre><code>POST /user/sh/post
+<pre><code>POST /api/u/sh
 </code></pre>
 
 <p>参数：</p>
@@ -690,7 +690,7 @@
 </table>
 <h2 id="g12">G12 修改二手信息</h2>
 <p>发布者可以修改自己发布的二手信息。</p>
-<pre><code>POST /user/sh/change/{shId}
+<pre><code>PUT /api/u/sh/{shId}
 </code></pre>
 
 <blockquote>
@@ -698,7 +698,7 @@
 </blockquote>
 <p>与<code>G11</code>参数相同，所有参数为选填。</p>
 <h2 id="g13">G13 删除二手</h2>
-<pre><code>POST /user/sh/del/{id}
+<pre><code>DELETE /api/u/sh/{id}
 </code></pre>
 
 <blockquote>
@@ -707,7 +707,7 @@
 <h2 id="g14">G14 收藏/取消二手</h2>
 <p>需要登陆。</p>
 <p>如果已经收藏过了，则操作结果为取消收藏；如果未收藏，操作结果为添加收藏。</p>
-<pre><code>POST /user/sh/fav/{id}
+<pre><code>POST /api/u/sh/fav/{id}
 </code></pre>
 
 <blockquote>
@@ -732,7 +732,7 @@
 </table>
 <h2 id="g15">G15 点赞</h2>
 <p>需要登陆。</p>
-<pre><code>POST /user/sh/{id}/like
+<pre><code>POST /api/u/sh/like/{id}
 </code></pre>
 
 <blockquote>

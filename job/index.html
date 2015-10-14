@@ -582,7 +582,7 @@
 <p>返回报文同<code>F4</code>。</p>
 <h2 id="f10">F10 查询兼职是否已赞</h2>
 <p>需要登陆.</p>
-<pre><code>GET /api/u/job/fav/{jobId}
+<pre><code>GET /api/u/job/like/{jobId}
 </code></pre>
 
 <blockquote>
@@ -604,7 +604,7 @@
 <h2 id="_2">更新操作</h2>
 <h2 id="f11">F11 发布兼职</h2>
 <p>需要登陆，<strong>同一个用户两次调用时间间隔不得少于1min</strong>。</p>
-<pre><code>POST /user/job/post
+<pre><code>POST /api/u/job
 </code></pre>
 
 <p>参数：</p>
@@ -696,7 +696,7 @@
 </table>
 <h2 id="f12">F12 修改兼职信息</h2>
 <p>信息发布者修改已经发布的信息。</p>
-<pre><code>POST /user/job/change/{jobId}
+<pre><code>PUT /api/u/job/{jobId}
 </code></pre>
 
 <blockquote>
@@ -707,7 +707,7 @@
 <h2 id="f13">F13 收藏/取消收藏兼职</h2>
 <p>需要登陆。</p>
 <p>如果用户未收藏该兼职，接口的功能为添加收藏；如果已收藏，功能为取消收藏。</p>
-<pre><code>POST /user/job/fav/{jobId}
+<pre><code>POST /api/u/job/fav/{jobId}
 </code></pre>
 
 <blockquote>
@@ -732,7 +732,7 @@
 </table>
 <h2 id="f14">F14 用户删除兼职</h2>
 <p>用户可以在自己的个人中心删除发布的兼职。</p>
-<pre><code>POST /user/job/del/{id}
+<pre><code>DELETE /api/u/job/{id}
 </code></pre>
 
 <blockquote>
@@ -756,7 +756,7 @@
 </tbody>
 </table>
 <h2 id="f15">F15 点赞</h2>
-<pre><code>POST /user/job/{id}/like
+<pre><code>POST /api/u/job/like/{id}
 </code></pre>
 
 <blockquote>

@@ -330,7 +330,7 @@ GET /api/u/job/favlist
 需要登陆.
 
 ``` 
-GET /api/u/job/fav/{jobId}
+GET /api/u/job/like/{jobId}
 ```
 
 > `jobId`: 兼职的id
@@ -361,7 +361,7 @@ GET /api/u/job/fav/1
 需要登陆，**同一个用户两次调用时间间隔不得少于1min**。
 
 ``` 
-POST /user/job/post
+POST /api/u/job
 ```
 
 参数：
@@ -389,7 +389,7 @@ POST /user/job/post
 信息发布者修改已经发布的信息。
 
 ``` 
-POST /user/job/change/{jobId}
+PUT /api/u/job/{jobId}
 ```
 
 > `jobId`: 要修改的兼职id
@@ -407,7 +407,7 @@ POST /user/job/change/{jobId}
 如果用户未收藏该兼职，接口的功能为添加收藏；如果已收藏，功能为取消收藏。
 
 ``` 
-POST /user/job/fav/{jobId}
+POST /api/u/job/fav/{jobId}
 ```
 
 > `jobId`: 要操作的兼职id
@@ -423,7 +423,7 @@ POST /user/job/fav/{jobId}
 用户可以在自己的个人中心删除发布的兼职。
 
 ``` 
-POST /user/job/del/{id}
+DELETE /api/u/job/{id}
 ```
 
 > `id`: 要删除的兼职id
@@ -434,12 +434,10 @@ POST /user/job/del/{id}
 | ---- | ---- | ---------------------------------------- |
 | ids  | N    | 批量删除。以";"分隔的兼职id，如1;2;3。 **如果填写该参数，则URL中的`id`必须传递0**。 |
 
-
-
 ## F15 点赞
 
 ``` 
-POST /user/job/{id}/like
+POST /api/u/job/like/{id}
 ```
 
 > id: 要点赞的兼职id

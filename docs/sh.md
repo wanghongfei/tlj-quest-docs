@@ -232,8 +232,6 @@ GET /api/sh/user/{memId}
 | pageNumber | N    |      |
 | pageSize   |      |      |
 
-
-
 ## G5 根据分类查询二手
 
 查询指定分类下的二手信息，最新发布的在前。
@@ -250,8 +248,6 @@ GET /api/sh/category/{cateId}
 | ---------- | ---- | ---- |
 | pageNumber | N    |      |
 | pageSize   |      |      |
-
-
 
 ## G6 条件过虑查询
 
@@ -365,14 +361,12 @@ GET /api/u/sh/favlist
 | pageNumber | N    |      |
 | pageSize   |      |      |
 
-
-
 ## G10 查询二手是否已赞
 
 需要登陆。
 
 ``` 
-GET /api/u/sh/fav/{shId}
+GET /api/u/sh/like/{shId}
 ```
 
 > shId: 二手id号
@@ -388,7 +382,7 @@ GET /api/u/sh/fav/{shId}
 需要登陆。
 
 ``` 
-POST /user/sh/post
+POST /api/u/sh
 ```
 
 参数：
@@ -406,14 +400,12 @@ POST /user/sh/post
 | contactQq                | Y    | 联系人QQ                                    |
 | contactPhone             | Y    | 联系人手机号                                   |
 
-
-
 ## G12 修改二手信息
 
 发布者可以修改自己发布的二手信息。
 
 ``` 
-POST /user/sh/change/{shId}
+PUT /api/u/sh/{shId}
 ```
 
 > shId: 二手id
@@ -425,7 +417,7 @@ POST /user/sh/change/{shId}
 ## G13 删除二手
 
 ``` 
-POST /user/sh/del/{id}
+DELETE /api/u/sh/{id}
 ```
 
 > id: 二手id
@@ -439,7 +431,7 @@ POST /user/sh/del/{id}
 如果已经收藏过了，则操作结果为取消收藏；如果未收藏，操作结果为添加收藏。
 
 ``` 
-POST /user/sh/fav/{id}
+POST /api/u/sh/fav/{id}
 ```
 
 > id: 要操作的二手id
@@ -450,15 +442,12 @@ POST /user/sh/fav/{id}
 | ---- | ---- | -------------- |
 | ids  | Y    | 以";"分隔的二手id, 如 |
 
-
-
 ## G15 点赞
 
 需要登陆。
 
 ``` 
-POST /user/sh/{id}/like
+POST /api/u/sh/like/{id}
 ```
 
 > id: 要点赞的二手id
-
