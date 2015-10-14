@@ -347,7 +347,7 @@
 <h1 id="_2">任务</h1>
 <p>任务的发布、修改、审核和领取相关接口</p>
 <h2 id="b4">B4 商家发布任务</h2>
-<pre><code>POST /api/quest
+<pre><code>POST /api/user/quest
 </code></pre>
 
 <blockquote>
@@ -369,7 +369,7 @@
 <td>任务标题</td>
 </tr>
 <tr>
-<td>quest_cate_id</td>
+<td>questCateId</td>
 <td>Y</td>
 <td>任务分类的id</td>
 </tr>
@@ -424,34 +424,29 @@
 <td>任务备注</td>
 </tr>
 <tr>
-<td>province_id</td>
+<td>provinceId</td>
 <td>Y</td>
 <td>任务对象：省</td>
 </tr>
 <tr>
-<td>city_id</td>
+<td>cityId</td>
 <td>Y</td>
 <td>任务对象：市</td>
 </tr>
 <tr>
-<td>region_id</td>
+<td>regionId</td>
 <td>Y</td>
 <td>任务对象：区</td>
 </tr>
 <tr>
 <td>collegeIds</td>
-<td>N</td>
+<td>Y</td>
 <td>任务对象：大学. 以<code>;</code>分隔的id字符串，如<code>1;2;3</code></td>
 </tr>
 <tr>
 <td>schoolIds</td>
-<td>N</td>
+<td>Y</td>
 <td>任务对象：学院. 以<code>;</code>分隔的id字符串，如<code>2;5;19</code></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
