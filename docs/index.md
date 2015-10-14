@@ -6,11 +6,11 @@
 
 
 
-> 最后更新时间: 2015-10-13
+> 最后更新时间: 2015-10-14
 
 
 
-# 权限认证
+# 身份认证
 
 ## Token
 
@@ -28,13 +28,29 @@ Token一旦生成不会自动过期。只有当用户主动注销登陆时，当
 
 ### 使用方式
 
-如果接口接受`GET`请求，则需将token添加到URL Query String中：
+Token放到：A.请求头、B.Query String(GET)、 C.请求体(POST)中均可。
+
+- 方式A
+
+添加如下请求头：
+
+``` 
+...
+App-Token: WEFEIASIWEdfrilkzxcv
+...
+```
+
+- 方式B
+
+接口接受`GET`请求，将token添加到URL Query String中：
 
 ``` 
 GET /api/job/list?appToken=WEFEIASIWEdfrilkzxcv
 ```
 
-如果接口接受`POST`请求，则需将token添加到请求Body中：
+- 方式C
+
+接口接受`POST`请求，将token添加到请求Body中：
 
 ``` 
 paramA=XXXX&paramB=XXXX&appToken=WEFEIASIWEdfrilkzxcv

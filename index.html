@@ -58,7 +58,7 @@
                 <li class="toctree-l3"><a href="#_1">开发者联系方式</a></li>
                 
             
-                <li class="toctree-l3"><a href="#_2">权限认证</a></li>
+                <li class="toctree-l3"><a href="#_2">身份认证</a></li>
                 
                     <li><a class="toctree-l4" href="#token">Token</a></li>
                 
@@ -159,20 +159,36 @@
 <p>王鸿飞(后端): brucewhf^gmail.com</p>
 <p>王富诚(前端): wangfucheng56^gmail.com</p>
 <blockquote>
-<p>最后更新时间: 2015-10-13</p>
+<p>最后更新时间: 2015-10-14</p>
 </blockquote>
-<h1 id="_2">权限认证</h1>
+<h1 id="_2">身份认证</h1>
 <h2 id="token">Token</h2>
 <h3 id="_3">生成</h3>
 <p>由于所有接口都以<code>HTTP RESTful</code>的形式提供，因此在非Web环境下我们采用Token进行客户端身份识别。用户在app登陆后，服务器会返回一个<strong>由字母组成、20位长的随机字符串</strong>，后续请求带上该参数即可。</p>
 <h3 id="_4">有效期</h3>
 <p>Token一旦生成不会自动过期。只有当用户主动注销登陆时，当前Token才会失效。<strong>每个用户仅有一个token</strong>，如果用户未注销前再次登陆，则上次的token自动失效，服务器最新返回的token有效。</p>
 <h3 id="_5">使用方式</h3>
-<p>如果接口接受<code>GET</code>请求，则需将token添加到URL Query String中：</p>
+<p>Token放到：A.请求头、B.Query String(GET)、 C.请求体(POST)中均可。</p>
+<ul>
+<li>方式A</li>
+</ul>
+<p>添加如下请求头：</p>
+<pre><code>...
+App-Token: WEFEIASIWEdfrilkzxcv
+...
+</code></pre>
+
+<ul>
+<li>方式B</li>
+</ul>
+<p>接口接受<code>GET</code>请求，将token添加到URL Query String中：</p>
 <pre><code>GET /api/job/list?appToken=WEFEIASIWEdfrilkzxcv
 </code></pre>
 
-<p>如果接口接受<code>POST</code>请求，则需将token添加到请求Body中：</p>
+<ul>
+<li>方式C</li>
+</ul>
+<p>接口接受<code>POST</code>请求，将token添加到请求Body中：</p>
 <pre><code>paramA=XXXX&amp;paramB=XXXX&amp;appToken=WEFEIASIWEdfrilkzxcv
 </code></pre>
 
@@ -448,5 +464,5 @@
 
 <!--
 MkDocs version : 0.14.0
-Build Date UTC : 2015-10-14 09:10:39.718610
+Build Date UTC : 2015-10-14 09:29:00.386080
 -->
