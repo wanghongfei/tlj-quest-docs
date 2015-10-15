@@ -193,7 +193,7 @@ POST /api/user/certi/emp
 只有学生用户在登陆状态时才可以调用该接口。
 
 ``` 
-POST /api/user/certi/emp
+POST /api/user/certi/stu
 ```
 
 参数：

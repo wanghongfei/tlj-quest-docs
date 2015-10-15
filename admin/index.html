@@ -229,7 +229,7 @@
 </code></pre>
 
 <h2 id="d2">D2 更新分类信息</h2>
-<pre><code>PUT /api/quest/cate/{cateId}
+<pre><code>PUT /api/manage/quest/cate/{cateId}
 </code></pre>
 
 <blockquote>
@@ -271,7 +271,7 @@
 <p>注：以上参数中需至少填写一项</p>
 </blockquote>
 <h2 id="d3">D3 删除分类</h2>
-<pre><code class="html">DELETE /api/quest/cate/{cateId}
+<pre><code class="html">DELETE /api/manage/quest/cate/{cateId}
 </code></pre>
 
 <blockquote>
@@ -284,7 +284,7 @@
 <blockquote>
 <p>商家也可以调用该接口，但只能审核自己发布的任务。</p>
 </blockquote>
-<pre><code>PUT /api/user/quest/submit/{reqId}
+<pre><code>PUT /api/manage/quest/submit/{reqId}
 </code></pre>
 
 <blockquote>
@@ -331,15 +331,23 @@
 </tr>
 <tr>
 <td>02</td>
-<td>审核不通过</td>
+<td>商家审核不通过</td>
+</tr>
+<tr>
+<td>03</td>
+<td>TLJ审核不通过</td>
 </tr>
 <tr>
 <td>04</td>
-<td>审核通过，由商家审核</td>
+<td>自动通过</td>
 </tr>
 <tr>
 <td>05</td>
-<td>审核通过，由桃李街审核</td>
+<td>商家通过</td>
+</tr>
+<tr>
+<td>06</td>
+<td>TLJ通过</td>
 </tr>
 </tbody>
 </table>
@@ -507,16 +515,16 @@
 </thead>
 <tbody>
 <tr>
-<td>00</td>
+<td>01</td>
 <td>等待审核</td>
 </tr>
 <tr>
-<td>01</td>
+<td>02</td>
 <td>审核通过</td>
 </tr>
 <tr>
-<td>02</td>
-<td>审核未通过</td>
+<td>03</td>
+<td>审核失败</td>
 </tr>
 </tbody>
 </table>
@@ -566,7 +574,7 @@
 <p>drawId: 提现申请的id</p>
 </blockquote>
 <h2 id="d11">D11 查询充值申请列表</h2>
-<pre><code>GET /api/manage/charge/list
+<pre><code>GET /api/manage/acc/charge/list
 </code></pre>
 
 <p>参数：</p>
@@ -597,7 +605,7 @@
 </tbody>
 </table>
 <h2 id="d12">D12 查询单条充值申请</h2>
-<pre><code>GET /api/manage/charge/{orderId}
+<pre><code>GET /api/manage/acc/charge/{orderId}
 </code></pre>
 
 <blockquote>
