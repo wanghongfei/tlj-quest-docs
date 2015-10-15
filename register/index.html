@@ -159,7 +159,7 @@
               
                 <h1 id="_1">注册</h1>
 <ol>
-<li>调用<code>请求短信验证码</code>接口向用户手机发送短信，并得到服务器返回的15位标识符。</li>
+<li>调用<code>请求短信验证码</code>接口向用户手机发送短信</li>
 <li>调用<code>App注册</code>接口，传入Step 1中得到的标识符和短信验证码，完成注册。</li>
 </ol>
 <h2 id="a1-app">A1: App注册</h2>
@@ -188,9 +188,9 @@
 <td>用户收到的短信验证码</td>
 </tr>
 <tr>
-<td>identifier</td>
-<td>Y</td>
-<td>用户请求发送短信验证码时服务器返回的字符串</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>username</td>
@@ -245,12 +245,11 @@
 <pre><code class="json">{
   &quot;message&quot;: &quot;success&quot;,
   &quot;code&quot;: 0,
-  &quot;data&quot;: &quot;LgWwtTjhAHooqmW&quot;, // 15位标识符
+  &quot;data&quot;: null,
   &quot;ok&quot;: true
 }
 </code></pre>
 
-<p>标识符号需作为<code>App注册</code>接口的<code>identifer</code>参数传递。</p>
 <blockquote>
 <p>验证码有效时间为5分钟。</p>
 </blockquote>
@@ -341,11 +340,6 @@
 <td>code</td>
 <td>Y</td>
 <td>手机验证码</td>
-</tr>
-<tr>
-<td>identifier</td>
-<td>Y</td>
-<td>调用接口<code>A2</code>时返回的15位标识符</td>
 </tr>
 </tbody>
 </table>
