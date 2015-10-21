@@ -778,6 +778,7 @@
 
 <h2 id="b11">B11 条件查询</h2>
 <p>任何人都可以调用该接口.</p>
+<p>非管理员调用该接口，只返回<code>empStatus == 3</code>(已审核通过)的任务，如果是管理员调用，则可以指定<code>empStatus</code>类型。</p>
 <pre><code>GET /api/quest/list
 </code></pre>
 
@@ -826,6 +827,11 @@
 <td>N</td>
 <td>学校id</td>
 </tr>
+<tr>
+<td>*empStatus</td>
+<td>N</td>
+<td><strong>只有管理员可以使用该参数</strong>。填写表示根据empStatus值筛选结果</td>
+</tr>
 </tbody>
 </table>
 <blockquote>
@@ -833,6 +839,33 @@
 <p>只填写<code>max</code>不填<code>min</code>表示查询赏金<code>&lt;= max</code>的任务。</p>
 <p>同时填写表示查询赏金在<code>min</code>与<code>max</code>之间的任务。</p>
 </blockquote>
+<p><code>empStatus</code>取值 ：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>未发布(草稿状态)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>审核中</td>
+</tr>
+<tr>
+<td>2</td>
+<td>审核不通过</td>
+</tr>
+<tr>
+<td>3</td>
+<td>审核通过</td>
+</tr>
+</tbody>
+</table>
 <p>返回报文：</p>
 <pre><code class="json">{
   &quot;message&quot;: &quot;success&quot;,
