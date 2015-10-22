@@ -82,6 +82,8 @@
                 
                     <li><a class="toctree-l4" href="#b4">B4 商家发布任务</a></li>
                 
+                    <li><a class="toctree-l4" href="#b41">B41 商家发布答题、问卷任务</a></li>
+                
                     <li><a class="toctree-l4" href="#b5">B5 任务领取</a></li>
                 
                     <li><a class="toctree-l4" href="#b6">B6 提交任务完成申请</a></li>
@@ -454,6 +456,74 @@
 <blockquote>
 <p>扣除的金额 = [ (1 + 费率) * 单个任务赏金 ] * 任务数量</p>
 </blockquote>
+<h2 id="b41">B41 商家发布答题、问卷任务</h2>
+<pre><code>POST /api/user/question
+</code></pre>
+
+<p>参数：</p>
+<p>该接口只接受<code>JSON</code>字符串参数，在<code>javascript</code>中需要将<code>JSON</code>对象转换为<code>JSON</code>字符串，然后添加<code>Content-Type: application/json; charset=utf-8</code>请求头。</p>
+<p>格式如下：</p>
+<pre><code class="json">{
+    &quot;questions&quot;: [
+        {
+            &quot;opts&quot;: [{
+                &quot;optName&quot;: &quot;a&quot;,
+                &quot;optContent&quot;: &quot;optContent&quot;,
+                &quot;orderIndex&quot;: 1,
+                &quot;correct&quot;: true
+            },
+            {
+                &quot;optName&quot;: &quot;b&quot;,
+                &quot;optContent&quot;: &quot;optContent&quot;,
+                &quot;orderIndex&quot;: 1,
+                &quot;correct&quot;: true
+            }],
+            &quot;content&quot;: &quot;content&quot;,
+            &quot;orderIndex&quot;: 1,
+            &quot;type&quot;: 0
+        },
+        {
+            &quot;opts&quot;: [{
+                &quot;optName&quot;: &quot;a&quot;,
+                &quot;optContent&quot;: &quot;optContent&quot;,
+                &quot;orderIndex&quot;: 1,
+                &quot;correct&quot;: true
+            },
+            {
+                &quot;optName&quot;: &quot;b&quot;,
+                &quot;optContent&quot;: &quot;optContent&quot;,
+                &quot;orderIndex&quot;: 1,
+                &quot;correct&quot;: true
+            }],
+            &quot;content&quot;: &quot;content&quot;,
+            &quot;orderIndex&quot;: 1,
+            &quot;type&quot;: 0
+        }
+
+    ],
+
+    &quot;quest&quot;: {
+        &quot;title&quot;: &quot;testTTTTT&quot;,
+        &quot;questCateId&quot;: 1,
+        &quot;startTime&quot;: &quot;2015-11-11 10:10:10&quot;,
+        &quot;endTime&quot;: &quot;2016-11-11 10:10:10&quot;,
+        &quot;totalAmt&quot;: 1,
+        &quot;award&quot;: 0.1,
+        &quot;contactName&quot;: &quot;whf&quot;,
+        &quot;contactPhone&quot;: &quot;111111&quot;,
+        &quot;description&quot;: &quot;description&quot;,
+        &quot;questDetail&quot;: &quot;detail&quot;,
+        &quot;provinceId&quot;: 1,
+        &quot;cityId&quot;:1,
+        &quot;regionId&quot;:1
+
+    },
+
+    &quot;collegeIds&quot;: &quot;1;2;3&quot;,
+    &quot;schoolIds&quot;: &quot;1;2;3&quot;
+}
+</code></pre>
+
 <h2 id="b5">B5 任务领取</h2>
 <p>只有登陆状态下的学生用户才可以领取任务。</p>
 <pre><code>POST /api/user/quest/assign/{questId}

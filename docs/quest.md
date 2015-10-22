@@ -148,6 +148,84 @@ POST /api/user/quest
 
 
 
+## B41 商家发布答题、问卷任务
+
+``` 
+POST /api/user/question
+```
+
+参数：
+
+该接口只接受`JSON`字符串参数，在`javascript`中需要将`JSON`对象转换为`JSON`字符串，然后添加`Content-Type: application/json; charset=utf-8`请求头。
+
+格式如下：
+
+``` json
+{
+    "questions": [
+        {
+            "opts": [{
+                "optName": "a",
+                "optContent": "optContent",
+                "orderIndex": 1,
+                "correct": true
+            },
+            {
+                "optName": "b",
+                "optContent": "optContent",
+                "orderIndex": 1,
+                "correct": true
+            }],
+            "content": "content",
+            "orderIndex": 1,
+            "type": 0
+        },
+        {
+            "opts": [{
+                "optName": "a",
+                "optContent": "optContent",
+                "orderIndex": 1,
+                "correct": true
+            },
+            {
+                "optName": "b",
+                "optContent": "optContent",
+                "orderIndex": 1,
+                "correct": true
+            }],
+            "content": "content",
+            "orderIndex": 1,
+            "type": 0
+        }
+ 
+    ],
+    
+    "quest": {
+        "title": "testTTTTT",
+        "questCateId": 1,
+        "startTime": "2015-11-11 10:10:10",
+        "endTime": "2016-11-11 10:10:10",
+        "totalAmt": 1,
+        "award": 0.1,
+        "contactName": "whf",
+        "contactPhone": "111111",
+        "description": "description",
+        "questDetail": "detail",
+        "provinceId": 1,
+        "cityId":1,
+        "regionId":1
+        
+    },
+    
+    "collegeIds": "1;2;3",
+    "schoolIds": "1;2;3"
+}
+```
+
+
+
+
+
 ## B5 任务领取
 
 只有登陆状态下的学生用户才可以领取任务。
@@ -425,8 +503,6 @@ GET /api/quest/list
 | 1    | 审核中       |
 | 2    | 审核不通过     |
 | 3    | 审核通过      |
-
-
 
 返回报文：
 
