@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>推荐 - Taolijie轻兼职接口文档</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "推荐";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Taolijie轻兼职接口文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">概述</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../register/">登陆注册</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../quest/">任务系统</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../acc/">账户系统</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../admin/">后台接口</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../sign/">签名生成</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../job/">兼职</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../sh/">二手</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">推荐</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#h1">H1 查询推荐列表</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#h2">H2 申请置顶推荐</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#h3">H3 审核加标签推荐</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#h4">H4 查询我的置顶申请</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Taolijie轻兼职接口文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>推荐</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="h1">H1 查询推荐列表</h2>
+<p>不需要登陆。</p>
+<pre><code>GET /api/re/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>Y</td>
+<td><code>0</code>: 兼职帖子 <code>1</code>: 二手帖子  <code>3</code>: 任务</td>
+</tr>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>对于请求:</p>
+<pre><code>GET /api/re/list?type=0
+</code></pre>
+
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;我被修改了&quot;,
+        &quot;expiredTime&quot;: &quot;2015-11-10 16:00:00&quot;,
+        &quot;expired&quot;: false,
+        &quot;postTime&quot;: &quot;2015-10-15 05:09:25&quot;,
+        &quot;workPlace&quot;: &quot;山东理工大学&quot;,
+        &quot;wage&quot;: 99,
+        &quot;timeToPay&quot;: &quot;周结&quot;,
+        &quot;deleted&quot;: false,
+        &quot;jobDescription&quot;: &quot;工作内容说明&quot;,
+        &quot;contact&quot;: &quot;联系人&quot;,
+        &quot;contactPhone&quot;: &quot;13287096323&quot;,
+        &quot;contactQq&quot;: &quot;1252264267&quot;,
+        &quot;jobDetail&quot;: &quot;工作要求说明&quot;,
+        &quot;likes&quot;: 1,
+        &quot;dislikes&quot;: 0,
+        &quot;jobPostCategoryId&quot;: 1,
+        &quot;memberId&quot;: 3,  // 发布者用户id
+        &quot;complaint&quot;: 0, // 投诉数量(暂不用)
+        &quot;workTime&quot;: &quot;工作时间在周六周日&quot;,
+        &quot;pageView&quot;: 0, // 访问量(暂不用)
+        &quot;applicantAmount&quot;: 0, // 暂不用
+        &quot;province&quot;: &quot;山东省&quot;,
+        &quot;city&quot;: &quot;淄博市&quot;,
+        &quot;region&quot;: &quot;张店区&quot;,
+        &quot;member&quot;: { // 发布者信息
+          &quot;id&quot;: 3,
+          &quot;username&quot;: &quot;13287096323&quot;,
+          &quot;regType&quot;: 1,
+          &quot;roleList&quot;: []
+        },
+        &quot;category&quot;: { // 帖子所在的分类信息
+          &quot;id&quot;: 1,
+          &quot;name&quot;: &quot;家教&quot;,
+          &quot;level&quot;: 1,
+          &quot;themeColor&quot;: &quot;#111111&quot;,
+          &quot;memo&quot;: &quot;家教&quot;
+        }
+      }
+    ],
+    &quot;resultCount&quot;: 1
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="h2">H2 申请置顶推荐</h2>
+<p>需要登陆。</p>
+<pre><code>POST /api/user/re/top
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>Y</td>
+<td>帖子的类型. <code>0</code>:兼职, <code>1</code>:二手, <code>3</code>: 任务</td>
+</tr>
+<tr>
+<td>postId</td>
+<td>Y</td>
+<td>帖子的id</td>
+</tr>
+<tr>
+<td>hours</td>
+<td>Y</td>
+<td>推荐的小时数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="h3">H3 审核加标签推荐</h2>
+<p>需要登陆。</p>
+<pre><code>POST /api/user/re/tag
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>Y</td>
+<td>帖子的类型. 当前仅支持<code>3</code>:任务</td>
+</tr>
+<tr>
+<td>postId</td>
+<td>Y</td>
+<td>帖子的id</td>
+</tr>
+<tr>
+<td>hours</td>
+<td>Y</td>
+<td>推荐的小时数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="h4">H4 查询我的置顶申请</h2>
+<p>需要登陆。</p>
+<pre><code>GET /api/user/re/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>N</td>
+<td>是否根据帖子类型过虑。取值同<code>H2</code></td>
+</tr>
+</tbody>
+</table>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 9,
+        &quot;postId&quot;: 1,                            // 被推荐的帖子id
+        &quot;title&quot;: &quot;我被修改了&quot;,                   // 被推荐的帖子标题
+        &quot;type&quot;: 0,                              // 推荐类型. 取值同`H2`的`type`参数
+        &quot;memberId&quot;: 2,                          // 申请者用户id
+        &quot;createdTime&quot;: &quot;2015-10-21 11:43:00&quot;,
+        &quot;auditTime&quot;: null,
+        &quot;expiredTime&quot;: &quot;2016-10-21 13:43:00&quot;,   // 推荐过期时间
+        &quot;orderIndex&quot;: 100,                      // 暂无用
+        &quot;valid&quot;: false                          // 暂无用
+      }
+    ],
+    &quot;resultCount&quot;: 1
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../sh/" class="btn btn-neutral" title="二手"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../sh/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+
+</body>
+</html>

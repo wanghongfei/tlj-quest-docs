@@ -8,6 +8,7 @@ pages:
 - 签名生成: sign.md
 - 兼职: job.md
 - 二手: sh.md
+- 推荐: reco.md
 
 theme: readthedocs
 site_author: 王鸿飞
