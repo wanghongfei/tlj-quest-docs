@@ -151,7 +151,7 @@ POST /api/user/quest
 ## B41 商家发布答题、问卷任务
 
 ``` 
-POST /api/user/question
+POST /api/user/quest/question
 ```
 
 参数：
@@ -162,12 +162,31 @@ POST /api/user/question
 
 ``` json
 {
+  	// questions是json数组
+  	// 数组中每个对象代表一个问题
     "questions": [
-        {
+        { // question-1 starts
+          	"opts": [{ 						// opts: 该问题对应的选择项
+                "optName": "a", 			// 选项名
+                "optContent": "optContent", // 选项内容
+                "orderIndex": 0, 			// 选项排序值，越小越靠前
+                "correct": true 			// 该选项是否是正确答案. 如果是问卷类问题，忽略该属性
+            },
+            {
+                "optName": "b",
+                "optContent": "optContent",
+                "orderIndex": 1,
+                "correct": true
+            }],
+            "content": "content", 	// 问题的内容
+            "orderIndex": 0, 		// 问题的排序值，越小越靠前
+          	"type": 0 				// 问题的类型。 0: 答题 1:问卷
+        },// question-1 ends
+        { // question-2 starts
             "opts": [{
                 "optName": "a",
                 "optContent": "optContent",
-                "orderIndex": 1,
+                "orderIndex": 0,
                 "correct": true
             },
             {
@@ -179,27 +198,11 @@ POST /api/user/question
             "content": "content",
             "orderIndex": 1,
             "type": 0
-        },
-        {
-            "opts": [{
-                "optName": "a",
-                "optContent": "optContent",
-                "orderIndex": 1,
-                "correct": true
-            },
-            {
-                "optName": "b",
-                "optContent": "optContent",
-                "orderIndex": 1,
-                "correct": true
-            }],
-            "content": "content",
-            "orderIndex": 1,
-            "type": 0
-        }
- 
+        } // question-2 ends
+
     ],
-    
+
+  	// 任务信息
     "quest": {
         "title": "testTTTTT",
         "questCateId": 1,
@@ -214,9 +217,10 @@ POST /api/user/question
         "provinceId": 1,
         "cityId":1,
         "regionId":1
-        
+
     },
-    
+	
+  	// 任务对象
     "collegeIds": "1;2;3",
     "schoolIds": "1;2;3"
 }
@@ -258,6 +262,38 @@ POST /api/user/quest/submit/{questId}
 | imageIds    | Y    | 图片说明。以;分隔的图片id。 如：1;2;3 |
 | name        | N    | 申请人姓名                   |
 | memo        | N    | 备注                      |
+
+
+
+## B61 提交问卷答案
+
+调用场景：用户选择完一个问题的选项点击提交时调用。
+
+需要用户登陆且领取对应任务。
+
+``` 
+GET /api/user/quest/question/check
+```
+
+参数：
+
+| 参数名        | 必填   | 说明                          |
+| ---------- | ---- | --------------------------- |
+| questionId | Y    | 被答问题的id                     |
+| optIds     | Y    | 用户选择的选项id, 以`;`分隔。如，`1;2;3` |
+
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": false, // false表示答案错误, true表示回答正确
+  "ok": true
+}
+```
+
+
 
 # 任务查询
 
@@ -316,6 +352,191 @@ GET /api/user/quest/publish/list
   "ok": true
 }
 ```
+
+## B71 查询指定任务的答题记录
+
+需要登陆，用于判断一个问卷中有哪些题目已答，哪些未答。
+
+``` 
+GET /api/user/quest/question/record
+```
+
+参数：
+
+| 参数名     | 必填   | 说明               |
+| ------- | ---- | ---------------- |
+| questId | Y    | 任务id, 必须是答题或问卷任务 |
+
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "createdTime": "2015-10-22 13:58:16", // 答题时间
+        "questionId": 9, // 问题id
+        "memberId": 2, // 答题者用户id
+        "questId": 14 // 题目对应的任务id
+      },
+      {
+        "id": 2,
+        "createdTime": "2015-10-23 08:22:25",
+        "questionId": 10,
+        "memberId": 2,
+        "questId": 14
+      }
+    ],
+    "resultCount": 2
+  },
+  "ok": true
+}
+```
+
+
+
+## B72 查询问卷中所有题目
+
+需要登陆且已经领取该任务。
+
+``` 
+GET /api/user/quest/question
+```
+
+参数：
+
+| 参数名     | 必填   | 说明   |
+| ------- | ---- | ---- |
+| questId | Y    | 任务   |
+
+对于请求
+
+``` 
+GET /api/user/quest/question?questId=14
+```
+
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [ // list数组中每一个对象表示一道题目
+      {
+        "id": 9, // 题目的id号
+        "createdTime": "2015-10-22 10:26:03", // 题目创建时间
+        "content": "content", // 题目内容
+        "questId": 14, // 当前任务id
+        "orderIndex": 1, //排序值 ，越小越靠前
+        "type": 1, // 题目类型。 0: 答题 1:问卷
+        "userAmt": 5, // 答过此题的人数
+        "correctAmt": 0, // 答对此题的人数
+        "opts": [ // 题目对应的选项
+          {
+            "id": 9, // 选项id
+            "optName": "a", // 选项名
+            "optContent": "optContent", // 选项内容 
+            "questionId": 9, // 选项对应的问题id
+            "answerAmt": 2, // 选择过此选项的用户人数
+            "orderIndex": 0 // 排序值 ，越小越靠前
+          },
+          {
+            "id": 10,
+            "optName": "b",
+            "optContent": "optContent",
+            "questionId": 9,
+            "answerAmt": 0,
+            "orderIndex": 1
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "createdTime": "2015-10-22 10:26:03",
+        "content": "content",
+        "questId": 14,
+        "orderIndex": 1,
+        "type": 0,
+        "userAmt": 8,
+        "correctAmt": 2,
+        "opts": [
+          {
+            "id": 11,
+            "optName": "a",
+            "optContent": "optContent",
+            "questionId": 10,
+            "answerAmt": 7,
+            "orderIndex": 1
+          },
+          {
+            "id": 12,
+            "optName": "b",
+            "optContent": "optContent",
+            "questionId": 10,
+            "answerAmt": 4,
+            "orderIndex": 1
+          }
+        ]
+      }
+    ],
+    "resultCount": 2
+  },
+  "ok": true
+}
+```
+
+## B73 查询答题统计数据
+
+需要登陆，只有题目的发布者才能调用。
+
+``` 
+GET /api/user/quest/question/result
+```
+
+| 参数名     | 必填   | 说明   |
+| ------- | ---- | ---- |
+| questId | Y    | 任务   |
+
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "questionId": 9, // 问题id
+        "totUser": 5, // 参与答该题的总人数
+        "correctUser": 0, // 答对的人数
+        "percentage": 0, // 正确率
+        "opts": { // 问题选项统计数据
+          "9": "2", // 选择id = 9选项的人数
+          "10": "0" // 选择id = 10选项的人数
+        }
+      },
+      {
+        "questionId": 10,
+        "totUser": 8,
+        "correctUser": 2,
+        "percentage": 0.25, // 正确率
+        "opts": {
+          "11": "7",
+          "12": "4"
+        }
+      }
+    ],
+    "resultCount": 2
+  },
+  "ok": true
+}
+```
+
+
 
 
 

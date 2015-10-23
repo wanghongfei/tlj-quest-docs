@@ -88,10 +88,18 @@
                 
                     <li><a class="toctree-l4" href="#b6">B6 提交任务完成申请</a></li>
                 
+                    <li><a class="toctree-l4" href="#b61">B61 提交问卷答案</a></li>
+                
             
                 <li class="toctree-l3"><a href="#_3">任务查询</a></li>
                 
                     <li><a class="toctree-l4" href="#b7">B7 查询任务发布记录</a></li>
+                
+                    <li><a class="toctree-l4" href="#b71">B71 查询指定任务的答题记录</a></li>
+                
+                    <li><a class="toctree-l4" href="#b72">B72 查询问卷中所有题目</a></li>
+                
+                    <li><a class="toctree-l4" href="#b73">B73 查询答题统计数据</a></li>
                 
                     <li><a class="toctree-l4" href="#b8">B8 查询任务领取记录</a></li>
                 
@@ -457,19 +465,38 @@
 <p>扣除的金额 = [ (1 + 费率) * 单个任务赏金 ] * 任务数量</p>
 </blockquote>
 <h2 id="b41">B41 商家发布答题、问卷任务</h2>
-<pre><code>POST /api/user/question
+<pre><code>POST /api/user/quest/question
 </code></pre>
 
 <p>参数：</p>
 <p>该接口只接受<code>JSON</code>字符串参数，在<code>javascript</code>中需要将<code>JSON</code>对象转换为<code>JSON</code>字符串，然后添加<code>Content-Type: application/json; charset=utf-8</code>请求头。</p>
 <p>格式如下：</p>
 <pre><code class="json">{
+    // questions是json数组
+    // 数组中每个对象代表一个问题
     &quot;questions&quot;: [
-        {
+        { // question-1 starts
+            &quot;opts&quot;: [{                      // opts: 该问题对应的选择项
+                &quot;optName&quot;: &quot;a&quot;,             // 选项名
+                &quot;optContent&quot;: &quot;optContent&quot;, // 选项内容
+                &quot;orderIndex&quot;: 0,            // 选项排序值，越小越靠前
+                &quot;correct&quot;: true             // 该选项是否是正确答案. 如果是问卷类问题，忽略该属性
+            },
+            {
+                &quot;optName&quot;: &quot;b&quot;,
+                &quot;optContent&quot;: &quot;optContent&quot;,
+                &quot;orderIndex&quot;: 1,
+                &quot;correct&quot;: true
+            }],
+            &quot;content&quot;: &quot;content&quot;,   // 问题的内容
+            &quot;orderIndex&quot;: 0,        // 问题的排序值，越小越靠前
+            &quot;type&quot;: 0               // 问题的类型。 0: 答题 1:问卷
+        },// question-1 ends
+        { // question-2 starts
             &quot;opts&quot;: [{
                 &quot;optName&quot;: &quot;a&quot;,
                 &quot;optContent&quot;: &quot;optContent&quot;,
-                &quot;orderIndex&quot;: 1,
+                &quot;orderIndex&quot;: 0,
                 &quot;correct&quot;: true
             },
             {
@@ -481,27 +508,11 @@
             &quot;content&quot;: &quot;content&quot;,
             &quot;orderIndex&quot;: 1,
             &quot;type&quot;: 0
-        },
-        {
-            &quot;opts&quot;: [{
-                &quot;optName&quot;: &quot;a&quot;,
-                &quot;optContent&quot;: &quot;optContent&quot;,
-                &quot;orderIndex&quot;: 1,
-                &quot;correct&quot;: true
-            },
-            {
-                &quot;optName&quot;: &quot;b&quot;,
-                &quot;optContent&quot;: &quot;optContent&quot;,
-                &quot;orderIndex&quot;: 1,
-                &quot;correct&quot;: true
-            }],
-            &quot;content&quot;: &quot;content&quot;,
-            &quot;orderIndex&quot;: 1,
-            &quot;type&quot;: 0
-        }
+        } // question-2 ends
 
     ],
 
+    // 任务信息
     &quot;quest&quot;: {
         &quot;title&quot;: &quot;testTTTTT&quot;,
         &quot;questCateId&quot;: 1,
@@ -519,6 +530,7 @@
 
     },
 
+    // 任务对象
     &quot;collegeIds&quot;: &quot;1;2;3&quot;,
     &quot;schoolIds&quot;: &quot;1;2;3&quot;
 }
@@ -575,6 +587,43 @@
 </tr>
 </tbody>
 </table>
+<h2 id="b61">B61 提交问卷答案</h2>
+<p>调用场景：用户选择完一个问题的选项点击提交时调用。</p>
+<p>需要用户登陆且领取对应任务。</p>
+<pre><code>GET /api/user/quest/question/check
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>questionId</td>
+<td>Y</td>
+<td>被答问题的id</td>
+</tr>
+<tr>
+<td>optIds</td>
+<td>Y</td>
+<td>用户选择的选项id, 以<code>;</code>分隔。如，<code>1;2;3</code></td>
+</tr>
+</tbody>
+</table>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: false, // false表示答案错误, true表示回答正确
+  &quot;ok&quot;: true
+}
+</code></pre>
+
 <h1 id="_3">任务查询</h1>
 <h2 id="b7">B7 查询任务发布记录</h2>
 <p>需要商家用户登陆。</p>
@@ -637,6 +686,204 @@
       }
     ],
     &quot;resultCount&quot;: 1
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="b71">B71 查询指定任务的答题记录</h2>
+<p>需要登陆，用于判断一个问卷中有哪些题目已答，哪些未答。</p>
+<pre><code>GET /api/user/quest/question/record
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>questId</td>
+<td>Y</td>
+<td>任务id, 必须是答题或问卷任务</td>
+</tr>
+</tbody>
+</table>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;createdTime&quot;: &quot;2015-10-22 13:58:16&quot;, // 答题时间
+        &quot;questionId&quot;: 9, // 问题id
+        &quot;memberId&quot;: 2, // 答题者用户id
+        &quot;questId&quot;: 14 // 题目对应的任务id
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;createdTime&quot;: &quot;2015-10-23 08:22:25&quot;,
+        &quot;questionId&quot;: 10,
+        &quot;memberId&quot;: 2,
+        &quot;questId&quot;: 14
+      }
+    ],
+    &quot;resultCount&quot;: 2
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="b72">B72 查询问卷中所有题目</h2>
+<p>需要登陆且已经领取该任务。</p>
+<pre><code>GET /api/user/quest/question
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>questId</td>
+<td>Y</td>
+<td>任务</td>
+</tr>
+</tbody>
+</table>
+<p>对于请求</p>
+<pre><code>GET /api/user/quest/question?questId=14
+</code></pre>
+
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [ // list数组中每一个对象表示一道题目
+      {
+        &quot;id&quot;: 9, // 题目的id号
+        &quot;createdTime&quot;: &quot;2015-10-22 10:26:03&quot;, // 题目创建时间
+        &quot;content&quot;: &quot;content&quot;, // 题目内容
+        &quot;questId&quot;: 14, // 当前任务id
+        &quot;orderIndex&quot;: 1, //排序值 ，越小越靠前
+        &quot;type&quot;: 1, // 题目类型。 0: 答题 1:问卷
+        &quot;userAmt&quot;: 5, // 答过此题的人数
+        &quot;correctAmt&quot;: 0, // 答对此题的人数
+        &quot;opts&quot;: [ // 题目对应的选项
+          {
+            &quot;id&quot;: 9, // 选项id
+            &quot;optName&quot;: &quot;a&quot;, // 选项名
+            &quot;optContent&quot;: &quot;optContent&quot;, // 选项内容 
+            &quot;questionId&quot;: 9, // 选项对应的问题id
+            &quot;answerAmt&quot;: 2, // 选择过此选项的用户人数
+            &quot;orderIndex&quot;: 0 // 排序值 ，越小越靠前
+          },
+          {
+            &quot;id&quot;: 10,
+            &quot;optName&quot;: &quot;b&quot;,
+            &quot;optContent&quot;: &quot;optContent&quot;,
+            &quot;questionId&quot;: 9,
+            &quot;answerAmt&quot;: 0,
+            &quot;orderIndex&quot;: 1
+          }
+        ]
+      },
+      {
+        &quot;id&quot;: 10,
+        &quot;createdTime&quot;: &quot;2015-10-22 10:26:03&quot;,
+        &quot;content&quot;: &quot;content&quot;,
+        &quot;questId&quot;: 14,
+        &quot;orderIndex&quot;: 1,
+        &quot;type&quot;: 0,
+        &quot;userAmt&quot;: 8,
+        &quot;correctAmt&quot;: 2,
+        &quot;opts&quot;: [
+          {
+            &quot;id&quot;: 11,
+            &quot;optName&quot;: &quot;a&quot;,
+            &quot;optContent&quot;: &quot;optContent&quot;,
+            &quot;questionId&quot;: 10,
+            &quot;answerAmt&quot;: 7,
+            &quot;orderIndex&quot;: 1
+          },
+          {
+            &quot;id&quot;: 12,
+            &quot;optName&quot;: &quot;b&quot;,
+            &quot;optContent&quot;: &quot;optContent&quot;,
+            &quot;questionId&quot;: 10,
+            &quot;answerAmt&quot;: 4,
+            &quot;orderIndex&quot;: 1
+          }
+        ]
+      }
+    ],
+    &quot;resultCount&quot;: 2
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="b73">B73 查询答题统计数据</h2>
+<p>需要登陆，只有题目的发布者才能调用。</p>
+<pre><code>GET /api/user/quest/question/result
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>questId</td>
+<td>Y</td>
+<td>任务</td>
+</tr>
+</tbody>
+</table>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;questionId&quot;: 9, // 问题id
+        &quot;totUser&quot;: 5, // 参与答该题的总人数
+        &quot;correctUser&quot;: 0, // 答对的人数
+        &quot;percentage&quot;: 0, // 正确率
+        &quot;opts&quot;: { // 问题选项统计数据
+          &quot;9&quot;: &quot;2&quot;, // 选择id = 9选项的人数
+          &quot;10&quot;: &quot;0&quot; // 选择id = 10选项的人数
+        }
+      },
+      {
+        &quot;questionId&quot;: 10,
+        &quot;totUser&quot;: 8,
+        &quot;correctUser&quot;: 2,
+        &quot;percentage&quot;: 0.25, // 正确率
+        &quot;opts&quot;: {
+          &quot;11&quot;: &quot;7&quot;,
+          &quot;12&quot;: &quot;4&quot;
+        }
+      }
+    ],
+    &quot;resultCount&quot;: 2
   },
   &quot;ok&quot;: true
 }
