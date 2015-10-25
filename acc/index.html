@@ -89,6 +89,8 @@
                 
                     <li><a class="toctree-l4" href="#c4">C4 开通现金账户(钱包)</a></li>
                 
+                    <li><a class="toctree-l4" href="#c41">C41 修改交易密码</a></li>
+                
                     <li><a class="toctree-l4" href="#c5">C5 修改支付宝账号</a></li>
                 
                     <li><a class="toctree-l4" href="#c6">C6 修改银行卡账号</a></li>
@@ -111,6 +113,8 @@
                     <li><a class="toctree-l4" href="#c13">C13 查询当前用户的现金账户</a></li>
                 
                     <li><a class="toctree-l4" href="#c14">C14 查询账户资金变化记录</a></li>
+                
+                    <li><a class="toctree-l4" href="#c15">C15 查询密保问题</a></li>
                 
             
             </ul>
@@ -246,7 +250,7 @@
 </table>
 <h1 id="_2">更新操作</h1>
 <h2 id="c4">C4 开通现金账户(钱包)</h2>
-<p>该接口需要登陆。</p>
+<p>该接口需要登陆，且只允许APP调用。</p>
 <p>用户在第一次进入钱包时调用该接口。</p>
 <pre><code>POST /api/user/acc
 </code></pre>
@@ -267,14 +271,14 @@
 <td>交易密码</td>
 </tr>
 <tr>
-<td>phone</td>
-<td>N</td>
-<td>用户手机号</td>
+<td>seContent</td>
+<td>Y</td>
+<td>密保问题(45字以内)</td>
 </tr>
 <tr>
-<td>code</td>
+<td>seAnswer</td>
 <td>Y</td>
-<td>用户收到的短信验证码</td>
+<td>密保答案(45字以内)</td>
 </tr>
 <tr>
 <td>email</td>
@@ -288,10 +292,33 @@
 </tr>
 </tbody>
 </table>
-<p><code>code</code>参数是用户手机收到的短信验证码，可以调用<code>发送短信验证码</code>接口来发送短信。</p>
-<blockquote>
-<p>如果用户是通过手机号码注册的，则不需要填写<code>phone</code>参数。如果为非手机号注册，则<code>phone</code>参数必填。</p>
-</blockquote>
+<h2 id="c41">C41 修改交易密码</h2>
+<p>需要登陆，且已经开通了钱包、设置过密保。</p>
+<pre><code>PUT /api/user/acc/dealPwd
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>answer</td>
+<td>Y</td>
+<td>密保答案</td>
+</tr>
+<tr>
+<td>dealPwd</td>
+<td>Y</td>
+<td>新交易密码</td>
+</tr>
+</tbody>
+</table>
 <h2 id="c5">C5 修改支付宝账号</h2>
 <pre><code>PUT /api/user/acc/alipay
 </code></pre>
@@ -639,6 +666,27 @@
       }
     ],
     &quot;resultCount&quot;: 8
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="c15">C15 查询密保问题</h2>
+<p>需要登陆，且已经设置过密保。</p>
+<pre><code>GET /api/user/acc/question
+</code></pre>
+
+<p>不需要参数。</p>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;id&quot;: 1,
+    &quot;createdTime&quot;: &quot;2015-10-25 03:25:24&quot;,
+    &quot;memberId&quot;: 3,
+    &quot;accId&quot;: 3,
+    &quot;content&quot;: &quot;content&quot; // 密保问题
   },
   &quot;ok&quot;: true
 }
