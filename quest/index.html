@@ -84,6 +84,8 @@
                 
                     <li><a class="toctree-l4" href="#b41">B41 商家发布答题、问卷任务</a></li>
                 
+                    <li><a class="toctree-l4" href="#b42">B42 刷新任务</a></li>
+                
                     <li><a class="toctree-l4" href="#b5">B5 任务领取</a></li>
                 
                     <li><a class="toctree-l4" href="#b6">B6 提交任务完成申请</a></li>
@@ -543,6 +545,15 @@
 }
 </code></pre>
 
+<h2 id="b42">B42 刷新任务</h2>
+<p>刷新任务可以使任务排名更靠前。</p>
+<p>需要登陆。</p>
+<pre><code>PUT /api/user/quest/flush/{id}
+</code></pre>
+
+<blockquote>
+<p><code>id</code>为要刷新的任务id</p>
+</blockquote>
 <h2 id="b5">B5 任务领取</h2>
 <p>只有登陆状态下的学生用户才可以领取任务。</p>
 <pre><code>POST /api/user/quest/assign/{questId}

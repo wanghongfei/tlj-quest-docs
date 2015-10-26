@@ -228,6 +228,18 @@ POST /api/user/quest/question
 
 
 
+## B42 刷新任务
+
+刷新任务可以使任务排名更靠前。
+
+需要登陆。
+
+``` 
+PUT /api/user/quest/flush/{id}
+```
+
+> `id`为要刷新的任务id
+
 
 
 ## B5 任务领取
@@ -262,8 +274,6 @@ POST /api/user/quest/submit/{questId}
 | imageIds    | Y    | 图片说明。以;分隔的图片id。 如：1;2;3 |
 | name        | N    | 申请人姓名                   |
 | memo        | N    | 备注                      |
-
-
 
 ## B61 提交问卷答案
 
