@@ -467,12 +467,38 @@
 <td>Y</td>
 <td>任务对象：学院. 以<code>;</code>分隔的id字符串，如<code>2;5;19</code></td>
 </tr>
+<tr>
+<td>couponTitle</td>
+<td>N</td>
+<td>卡券名</td>
+</tr>
+<tr>
+<td>couponDesp</td>
+<td>N</td>
+<td>卡券使用规则</td>
+</tr>
+<tr>
+<td>expiredTime</td>
+<td>N</td>
+<td>卡券过期时间, yyyy-mm-dd</td>
+</tr>
+<tr>
+<td>logo</td>
+<td>N</td>
+<td>卡券店铺logo在又拍的路径</td>
+</tr>
+<tr>
+<td>couponAmt</td>
+<td>N</td>
+<td>卡券数量</td>
+</tr>
 </tbody>
 </table>
 <p>接口调用后，服务器会自动计算总任务赏金，并从发布者的现金账户中扣除可用余额。</p>
 <blockquote>
 <p>扣除的金额 = [ (1 + 费率) * 单个任务赏金 ] * 任务数量</p>
 </blockquote>
+<p>从<code>couponTitle</code>到<code>couponAmt</code>为卡券信息，<strong>如果需要发布卡券则这些参数全部必填(logo可以不填)</strong>，如果不需要卡券则不需要填写。</p>
 <h2 id="b41">B41 商家发布答题、问卷任务</h2>
 <pre><code>POST /api/user/quest/question
 </code></pre>

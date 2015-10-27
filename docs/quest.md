@@ -141,12 +141,17 @@ POST /api/user/quest
 | regionId     | Y    | 任务对象：区                          |
 | collegeIds   | Y    | 任务对象：大学. 以`;`分隔的id字符串，如`1;2;3`  |
 | schoolIds    | Y    | 任务对象：学院. 以`;`分隔的id字符串，如`2;5;19` |
+| couponTitle  | N    | 卡券名                             |
+| couponDesp   | N    | 卡券使用规则                          |
+| expiredTime  | N    | 卡券过期时间, yyyy-mm-dd              |
+| logo         | N    | 卡券店铺logo在又拍的路径                  |
+| couponAmt    | N    | 卡券数量                            |
 
 接口调用后，服务器会自动计算总任务赏金，并从发布者的现金账户中扣除可用余额。
 
 > 扣除的金额 = [ (1 + 费率) * 单个任务赏金 ] * 任务数量
 
-
+从`couponTitle`到`couponAmt`为卡券信息，**如果需要发布卡券则这些参数全部必填(logo可以不填)**，如果不需要卡券则不需要填写。
 
 ## B41 商家发布答题、问卷任务
 
