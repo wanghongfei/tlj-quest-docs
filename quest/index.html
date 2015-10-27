@@ -107,6 +107,10 @@
                 
                     <li><a class="toctree-l4" href="#b9">B9 查询任务提交记录</a></li>
                 
+                    <li><a class="toctree-l4" href="#b91">B9.1 查询已领取的卡券</a></li>
+                
+                    <li><a class="toctree-l4" href="#b92">B9.2 商家验证卡券</a></li>
+                
                     <li><a class="toctree-l4" href="#b10">B10 查询指定任务的提交记录</a></li>
                 
                     <li><a class="toctree-l4" href="#b11">B11 条件查询</a></li>
@@ -1040,6 +1044,129 @@
 }
 </code></pre>
 
+<h2 id="b91">B9.1 查询已领取的卡券</h2>
+<p>只有学生才能调用。</p>
+<pre><code>GET /api/user/quest/coupon/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>N</td>
+<td>是否根据卡券状态过虑</td>
+</tr>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>status</code>取值如下：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>未被领取(学生调用该接口不会出现此状态)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>已被领取</td>
+</tr>
+<tr>
+<td>2</td>
+<td>已使用</td>
+</tr>
+</tbody>
+</table>
+<p>反回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;code&quot;: &quot;PdcWjcnYiPELfvnTWvkKJmCScNAYbU&quot;, // 卡券编号
+        &quot;createdTime&quot;: &quot;2015-10-27 03:07:40&quot;, // 商家创建卡券的日期
+        &quot;acquireTime&quot;: &quot;2015-10-27 07:57:26&quot;, // 领取日期
+        &quot;empId&quot;: 1, // 发卡商家用户id
+        &quot;memId&quot;: 2, // 领取者用户id
+        &quot;questTitle&quot;: &quot;title&quot;, // 卡标题
+        &quot;questId&quot;: 27, // 卡对应的任务
+        &quot;compName&quot;: null, // 商家店铺名
+        &quot;title&quot;: &quot;coupon&quot;, // 卡券标题
+        &quot;description&quot;: &quot;desp&quot;, // 卡券使用说明
+        &quot;expiredTime&quot;: &quot;2019-12-31 16:00:00&quot;, // 过期时间
+        &quot;logoPath&quot;: &quot;logo.jpg&quot;, // logo图片的URL地址(可以为空)
+        &quot;status&quot;: 1 // 卡券状态值 
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;code&quot;: &quot;mghBLXpEATOrQrlglIOwwfobypEajZ&quot;,
+        &quot;createdTime&quot;: &quot;2015-10-27 03:07:40&quot;,
+        &quot;acquireTime&quot;: &quot;2015-10-27 07:57:26&quot;,
+        &quot;empId&quot;: 1,
+        &quot;memId&quot;: 2,
+        &quot;questTitle&quot;: &quot;title&quot;,
+        &quot;questId&quot;: 27,
+        &quot;compName&quot;: null,
+        &quot;title&quot;: &quot;coupon&quot;,
+        &quot;description&quot;: &quot;desp&quot;,
+        &quot;expiredTime&quot;: &quot;2019-12-31 16:00:00&quot;,
+        &quot;logoPath&quot;: &quot;logo&quot;,
+        &quot;status&quot;: 2
+      }
+    ],
+    &quot;resultCount&quot;: 2
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="b92">B9.2 商家验证卡券</h2>
+<p>只有商家用户可调用。</p>
+<p>商家通过手机扫描客户出示的二维码，识别出<code>code</code>值，然后调用该接口。</p>
+<pre><code>GET /api/user/quest/coupon/check
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>Y</td>
+<td>卡券编号</td>
+</tr>
+</tbody>
+</table>
 <h2 id="b10">B10 查询指定任务的提交记录</h2>
 <p>只有商家和ADMIN可以调用。</p>
 <pre><code>GET /api/user/quest/submit/{questId}/list

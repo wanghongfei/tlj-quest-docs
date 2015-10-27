@@ -642,6 +642,97 @@ GET /api/user/quest/submit/list
 
 
 
+## B9.1 查询已领取的卡券
+
+只有学生才能调用。
+
+``` 
+GET /api/user/quest/coupon/list
+```
+
+参数：
+
+| 参数名    | 必填   | 说明         |
+| ------ | ---- | ---------- |
+| status | N    | 是否根据卡券状态过虑 |
+| pn     | N    |            |
+| ps     | N    |            |
+
+`status`取值如下：
+
+| 取值   | 说明                   |
+| ---- | -------------------- |
+| 0    | 未被领取(学生调用该接口不会出现此状态) |
+| 1    | 已被领取                 |
+| 2    | 已使用                  |
+
+反回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "id": 1,
+        "code": "PdcWjcnYiPELfvnTWvkKJmCScNAYbU", // 卡券编号
+        "createdTime": "2015-10-27 03:07:40", // 商家创建卡券的日期
+        "acquireTime": "2015-10-27 07:57:26", // 领取日期
+        "empId": 1, // 发卡商家用户id
+        "memId": 2, // 领取者用户id
+        "questTitle": "title", // 卡标题
+        "questId": 27, // 卡对应的任务
+        "compName": null, // 商家店铺名
+        "title": "coupon", // 卡券标题
+        "description": "desp", // 卡券使用说明
+        "expiredTime": "2019-12-31 16:00:00", // 过期时间
+        "logoPath": "logo.jpg", // logo图片的URL地址(可以为空)
+        "status": 1 // 卡券状态值 
+      },
+      {
+        "id": 2,
+        "code": "mghBLXpEATOrQrlglIOwwfobypEajZ",
+        "createdTime": "2015-10-27 03:07:40",
+        "acquireTime": "2015-10-27 07:57:26",
+        "empId": 1,
+        "memId": 2,
+        "questTitle": "title",
+        "questId": 27,
+        "compName": null,
+        "title": "coupon",
+        "description": "desp",
+        "expiredTime": "2019-12-31 16:00:00",
+        "logoPath": "logo",
+        "status": 2
+      }
+    ],
+    "resultCount": 2
+  },
+  "ok": true
+}
+```
+
+
+
+## B9.2 商家验证卡券
+
+只有商家用户可调用。
+
+商家通过手机扫描客户出示的二维码，识别出`code`值，然后调用该接口。
+
+``` 
+GET /api/user/quest/coupon/check
+```
+
+参数：
+
+| 参数名  | 必填   | 说明   |
+| ---- | ---- | ---- |
+| code | Y    | 卡券编号 |
+
+
+
 
 
 ## B10 查询指定任务的提交记录
