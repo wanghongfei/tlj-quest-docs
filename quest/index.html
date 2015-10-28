@@ -457,9 +457,9 @@
 <td>任务对象：市</td>
 </tr>
 <tr>
-<td>regionId</td>
-<td>Y</td>
-<td>任务对象：区</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>collegeIds</td>
@@ -470,6 +470,16 @@
 <td>schoolIds</td>
 <td>Y</td>
 <td>任务对象：学院. 以<code>;</code>分隔的id字符串，如<code>2;5;19</code></td>
+</tr>
+<tr>
+<td>cityIds</td>
+<td>Y</td>
+<td>任务对象：城市. 同上</td>
+</tr>
+<tr>
+<td>proIds</td>
+<td>Y</td>
+<td>任务对象：省. 同上</td>
 </tr>
 <tr>
 <td>couponTitle</td>
@@ -1430,6 +1440,80 @@
 </tr>
 </tbody>
 </table>
+<p>返回报文示例：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;id&quot;: 1,
+    &quot;title&quot;: &quot;quest-1&quot;,
+    &quot;createdTime&quot;: &quot;2015-10-15 02:09:43&quot;,
+    &quot;flushTime&quot;: 1445829952000,
+    &quot;questCateId&quot;: 1,
+    &quot;startTime&quot;: &quot;2014-12-31 16:00:00&quot;,
+    &quot;endTime&quot;: &quot;2019-12-31 16:00:00&quot;,
+    &quot;limitTime&quot;: 2,
+    &quot;totalAmt&quot;: 10,
+    &quot;leftAmt&quot;: 9,
+    &quot;award&quot;: 1,
+    &quot;memberId&quot;: 1,
+    &quot;finalAward&quot;: 1,
+    &quot;contactName&quot;: &quot;whf&quot;,
+    &quot;contactPhone&quot;: &quot;111111&quot;,
+    &quot;description&quot;: &quot;description&quot;,
+    &quot;questDetail&quot;: &quot;detail&quot;,
+    &quot;offline&quot;: false,
+    &quot;tagExpireTime&quot;: &quot;2015-10-21 18:04:35&quot;,
+    &quot;questionAmt&quot;: 0,
+    &quot;coupon&quot;: false,
+    &quot;couponLeft&quot;: 0,
+    &quot;empStatus&quot;: 3,
+    &quot;provinceId&quot;: 1,
+    &quot;cityId&quot;: 1,
+    &quot;regionId&quot;: 1,
+    &quot;schools&quot;: [ // 任务对象: 学院信息
+      {
+        &quot;id&quot;: 1,
+        &quot;questId&quot;: 1,
+        &quot;schoolId&quot;: 2,
+        &quot;schoolName&quot;: &quot;计算机学院&quot;
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;questId&quot;: 1,
+        &quot;schoolId&quot;: 3,
+        &quot;schoolName&quot;: &quot;电气学院&quot;
+      }
+    ],
+    &quot;colleges&quot;: [ // 任务对象：大学
+      {
+        &quot;id&quot;: 1,
+        &quot;questId&quot;: 1,
+        &quot;collegeId&quot;: 1,
+        &quot;collegeName&quot;: &quot;山东理工大学&quot;
+      }
+    ],
+    &quot;cities&quot;: [ // 任务对象：城市
+     {
+        &quot;id&quot;: 1,
+        &quot;questId&quot;: 1,
+        &quot;cityId&quot;: 1,
+        &quot;cityName&quot;: &quot;淄博&quot;
+      }
+    ], 
+    &quot;pros&quot;: [ // 任务对象：省
+    {
+        &quot;id&quot;: 1,
+        &quot;questId&quot;: 1,
+        &quot;provinceId&quot;: 1,
+        &quot;provinceName&quot;: &quot;山东&quot;
+      }
+    ] 
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
 <h1 id="taolijie">Taolijie代审核</h1>
 <h2 id="b13">B13 计算桃李街代审核费用</h2>
 <p>商家可以申请桃李街代审核任务完成申请。</p>

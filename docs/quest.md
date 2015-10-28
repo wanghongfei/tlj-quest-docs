@@ -138,9 +138,11 @@ POST /api/user/quest
 | memo         | N    | 任务备注                            |
 | provinceId   | Y    | 任务对象：省                          |
 | cityId       | Y    | 任务对象：市                          |
-| regionId     | Y    | 任务对象：区                          |
+|              |      |                                 |
 | collegeIds   | Y    | 任务对象：大学. 以`;`分隔的id字符串，如`1;2;3`  |
 | schoolIds    | Y    | 任务对象：学院. 以`;`分隔的id字符串，如`2;5;19` |
+| cityIds      | Y    | 任务对象：城市. 同上                     |
+| proIds       | Y    | 任务对象：省. 同上                      |
 | couponTitle  | N    | 卡券名                             |
 | couponDesp   | N    | 卡券使用规则                          |
 | expiredTime  | N    | 卡券过期时间, yyyy-mm-dd              |
@@ -731,10 +733,6 @@ GET /api/user/quest/coupon/check
 | ---- | ---- | ---- |
 | code | Y    | 卡券编号 |
 
-
-
-
-
 ## B10 查询指定任务的提交记录
 
 只有商家和ADMIN可以调用。
@@ -896,6 +894,86 @@ GET /api/quest/{questId}
 | 1    | 已领取  |
 | 2    | 已结束  |
 | 3    | 已完成  |
+
+返回报文示例：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "id": 1,
+    "title": "quest-1",
+    "createdTime": "2015-10-15 02:09:43",
+    "flushTime": 1445829952000,
+    "questCateId": 1,
+    "startTime": "2014-12-31 16:00:00",
+    "endTime": "2019-12-31 16:00:00",
+    "limitTime": 2,
+    "totalAmt": 10,
+    "leftAmt": 9,
+    "award": 1,
+    "memberId": 1,
+    "finalAward": 1,
+    "contactName": "whf",
+    "contactPhone": "111111",
+    "description": "description",
+    "questDetail": "detail",
+    "offline": false,
+    "tagExpireTime": "2015-10-21 18:04:35",
+    "questionAmt": 0,
+    "coupon": false,
+    "couponLeft": 0,
+    "empStatus": 3,
+    "provinceId": 1,
+    "cityId": 1,
+    "regionId": 1,
+    "schools": [ // 任务对象: 学院信息
+      {
+        "id": 1,
+        "questId": 1,
+        "schoolId": 2,
+        "schoolName": "计算机学院"
+      },
+      {
+        "id": 2,
+        "questId": 1,
+        "schoolId": 3,
+        "schoolName": "电气学院"
+      }
+    ],
+    "colleges": [ // 任务对象：大学
+      {
+        "id": 1,
+        "questId": 1,
+        "collegeId": 1,
+        "collegeName": "山东理工大学"
+      }
+    ],
+    "cities": [ // 任务对象：城市
+  	 {
+        "id": 1,
+        "questId": 1,
+        "cityId": 1,
+        "cityName": "淄博"
+      }
+	], 
+    "pros": [ // 任务对象：省
+  	{
+        "id": 1,
+        "questId": 1,
+        "provinceId": 1,
+        "provinceName": "山东"
+      }
+	] 
+  },
+  "ok": true
+}
+```
+
+
+
+
 
 # Taolijie代审核
 
