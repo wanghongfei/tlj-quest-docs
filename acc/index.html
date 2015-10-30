@@ -97,7 +97,9 @@
                 
                     <li><a class="toctree-l4" href="#c7">C7 发起提现申请</a></li>
                 
-                    <li><a class="toctree-l4" href="#c8">C8 发起充值申请</a></li>
+                    <li><a class="toctree-l4" href="#c8">C8 支付宝下单</a></li>
+                
+                    <li><a class="toctree-l4" href="#c81">C8.1 钱包充值</a></li>
                 
                     <li><a class="toctree-l4" href="#c9">C9 解绑手机号</a></li>
                 
@@ -409,9 +411,9 @@
 </tbody>
 </table>
 <p><code>alipayAcc</code>和<code>bankAcc</code>至少填写一项。</p>
-<h2 id="c8">C8 发起充值申请</h2>
-<p>商家、学生都可以发起充值申请，待管理员审核完成后账户金额自动增加。</p>
-<pre><code>POST /api/user/acc/charge
+<h2 id="c8">C8 支付宝下单</h2>
+<p>需要登陆状态。</p>
+<pre><code>POST /api/pay/order
 </code></pre>
 
 <p>参数:</p>
@@ -425,14 +427,95 @@
 </thead>
 <tbody>
 <tr>
-<td>amt</td>
+<td>subject</td>
 <td>Y</td>
-<td>充值金额</td>
+<td>同alipay的<code>subject</code></td>
 </tr>
 <tr>
-<td>tradeNum</td>
+<td>totalFee</td>
 <td>Y</td>
-<td>支付宝交易号</td>
+<td>订单总金额，同alipay的<code>total_fee</code></td>
+</tr>
+<tr>
+<td>body</td>
+<td>Y</td>
+<td>同alipay的<code>body</code></td>
+</tr>
+<tr>
+<td>orderType</td>
+<td>Y</td>
+<td>订单类型</td>
+</tr>
+<tr>
+<td>payChan</td>
+<td>Y</td>
+<td>支付渠道; <code>0</code>:支付宝 <code>1</code>: 微信</td>
+</tr>
+</tbody>
+</table>
+<p><code>orderType</code>取值：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>钱包充值订单</td>
+</tr>
+<tr>
+<td>01</td>
+<td>任务置顶推荐订单</td>
+</tr>
+<tr>
+<td>02</td>
+<td>任务加标签订单</td>
+</tr>
+<tr>
+<td>03</td>
+<td>任务发布订单</td>
+</tr>
+</tbody>
+</table>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;orderId&quot;: 57, // 订单号
+    &quot;sign&quot;: // 签名 &quot;uy9MEVOu3EUrsElX4DXtEgh8qg6CUTbDowcnFX1Ys/N2SxALw018hRyC7iAg10+kdpIR2IRJVeoaXg4Y/l7/2ARsEx3XwrgQ2b6PeDuh91zJLTzyBtuQF8LBtP1GWypHXeve9RtqA8Q4KE9Tyydxw9QnkALKZKF+DekmhJh9Ou4=&quot;,
+    &quot;servName&quot;: &quot;mobile.securitypay.pay&quot;, // 对应alipay的service参数
+    &quot;partner&quot;: &quot;2088021861615600&quot;, // 对应alipay的partner参数
+    &quot;charset&quot;: &quot;utf-8&quot;, // 对应alipay的_input_charset参数
+    &quot;signType&quot;: &quot;RSA&quot; // 对应alipay的sign_type参数
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="c81">C8.1 钱包充值</h2>
+<p>需要登陆。</p>
+<p>调用该接口必须先调用<code>C8下单</code>。</p>
+<pre><code>POST /api/user/acc/charge
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>orderId</td>
+<td>Y</td>
+<td>充值订单号</td>
 </tr>
 </tbody>
 </table>

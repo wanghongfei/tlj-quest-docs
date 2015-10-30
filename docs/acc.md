@@ -67,8 +67,6 @@ POST /api/user/acc
 | email     | N    | 用户邮箱        |
 | name      | N    | 用户姓名        |
 
-
-
 ## C41 修改交易密码
 
 需要登陆，且已经开通了钱包、设置过密保。
@@ -83,8 +81,6 @@ PUT /api/user/acc/dealPwd
 | ------- | ---- | ----- |
 | answer  | Y    | 密保答案  |
 | dealPwd | Y    | 新交易密码 |
-
-
 
 ## C5 修改支付宝账号
 
@@ -133,20 +129,70 @@ POST /api/user/acc/withdraw
 
 
 
-## C8 发起充值申请
+## C8 支付宝下单
 
-商家、学生都可以发起充值申请，待管理员审核完成后账户金额自动增加。
+需要登陆状态。
+
+``` 
+POST /api/pay/order
+```
+
+参数:
+
+| 参数名       | 必填   | 说明                        |
+| --------- | ---- | ------------------------- |
+| subject   | Y    | 同alipay的`subject`         |
+| totalFee  | Y    | 订单总金额，同alipay的`total_fee` |
+| body      | Y    | 同alipay的`body`            |
+| orderType | Y    | 订单类型                      |
+| payChan   | Y    | 支付渠道; `0`:支付宝 `1`: 微信     |
+
+`orderType`取值：
+
+| 取值   | 含意       |
+| ---- | -------- |
+| 00   | 钱包充值订单   |
+| 01   | 任务置顶推荐订单 |
+| 02   | 任务加标签订单  |
+| 03   | 任务发布订单   |
+
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "orderId": 57, // 订单号
+    "sign": // 签名 "uy9MEVOu3EUrsElX4DXtEgh8qg6CUTbDowcnFX1Ys/N2SxALw018hRyC7iAg10+kdpIR2IRJVeoaXg4Y/l7/2ARsEx3XwrgQ2b6PeDuh91zJLTzyBtuQF8LBtP1GWypHXeve9RtqA8Q4KE9Tyydxw9QnkALKZKF+DekmhJh9Ou4=",
+    "servName": "mobile.securitypay.pay", // 对应alipay的service参数
+    "partner": "2088021861615600", // 对应alipay的partner参数
+    "charset": "utf-8", // 对应alipay的_input_charset参数
+    "signType": "RSA" // 对应alipay的sign_type参数
+  },
+  "ok": true
+}
+```
+
+
+
+## C8.1 钱包充值
+
+需要登陆。
+
+调用该接口必须先调用`C8下单`。
 
 ``` 
 POST /api/user/acc/charge
 ```
 
-参数:
+参数：
 
-| 参数名      | 必填   | 说明     |
-| -------- | ---- | ------ |
-| amt      | Y    | 充值金额   |
-| tradeNum | Y    | 支付宝交易号 |
+| 参数名     | 必填   | 说明    |
+| ------- | ---- | ----- |
+| orderId | Y    | 充值订单号 |
+
+
 
 ## C9 解绑手机号
 
@@ -359,4 +405,3 @@ GET /api/user/acc/question
   "ok": true
 }
 ```
-
