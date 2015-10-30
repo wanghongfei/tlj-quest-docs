@@ -153,7 +153,7 @@ POST /api/user/quest
 
 从`couponTitle`到`couponAmt`为卡券信息，**如果需要发布卡券则这些参数全部必填(logo可以不填)**，如果不需要卡券则不需要填写。
 
-## B41 商家发布答题、问卷任务
+## B4.1 商家发布答题、问卷任务
 
 ``` 
 POST /api/user/quest/question
@@ -224,10 +224,45 @@ POST /api/user/quest/question
         "regionId":1
 
     },
-	
+  	"orderId": 10,  // 订单号, 可选参数. 如果不填写会从钱包中扣钱，填写会检查对应的订单信息(不从钱包扣钱)	
+
   	// 任务对象
     "collegeIds": "1;2;3",
     "schoolIds": "1;2;3"
+}
+```
+
+
+
+## B4.2 计算任务发布费用
+
+需要登陆。
+
+``` 
+GET /api/user/quest/fee
+```
+
+参数：
+
+| 参数名   | 必填   | 说明     |
+| ----- | ---- | ------ |
+| award | Y    | 单个任务赏金 |
+| amt   | Y    | 任务总数量  |
+
+对于请求
+
+``` 
+GET /api/user/quest/fee?award=10&amt=10
+```
+
+返回报文为：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": 110, // 110元
+  "ok": true
 }
 ```
 

@@ -82,9 +82,11 @@
                 
                     <li><a class="toctree-l4" href="#b4">B4 商家发布任务</a></li>
                 
-                    <li><a class="toctree-l4" href="#b41">B41 商家发布答题、问卷任务</a></li>
+                    <li><a class="toctree-l4" href="#b41">B4.1 商家发布答题、问卷任务</a></li>
                 
-                    <li><a class="toctree-l4" href="#b42">B42 刷新任务</a></li>
+                    <li><a class="toctree-l4" href="#b42">B4.2 计算任务发布费用</a></li>
+                
+                    <li><a class="toctree-l4" href="#b42_1">B42 刷新任务</a></li>
                 
                     <li><a class="toctree-l4" href="#b5">B5 任务领取</a></li>
                 
@@ -503,7 +505,7 @@
 <p>扣除的金额 = [ (1 + 费率) * 单个任务赏金 ] * 任务数量</p>
 </blockquote>
 <p>从<code>couponTitle</code>到<code>couponAmt</code>为卡券信息，<strong>如果需要发布卡券则这些参数全部必填(logo可以不填)</strong>，如果不需要卡券则不需要填写。</p>
-<h2 id="b41">B41 商家发布答题、问卷任务</h2>
+<h2 id="b41">B4.1 商家发布答题、问卷任务</h2>
 <pre><code>POST /api/user/quest/question
 </code></pre>
 
@@ -568,6 +570,7 @@
         &quot;regionId&quot;:1
 
     },
+    &quot;orderId&quot;: 10,  // 订单号, 可选参数. 如果不填写会从钱包中扣钱，填写会检查对应的订单信息(不从钱包扣钱) 
 
     // 任务对象
     &quot;collegeIds&quot;: &quot;1;2;3&quot;,
@@ -575,7 +578,47 @@
 }
 </code></pre>
 
-<h2 id="b42">B42 刷新任务</h2>
+<h2 id="b42">B4.2 计算任务发布费用</h2>
+<p>需要登陆。</p>
+<pre><code>GET /api/user/quest/fee
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>award</td>
+<td>Y</td>
+<td>单个任务赏金</td>
+</tr>
+<tr>
+<td>amt</td>
+<td>Y</td>
+<td>任务总数量</td>
+</tr>
+</tbody>
+</table>
+<p>对于请求</p>
+<pre><code>GET /api/user/quest/fee?award=10&amp;amt=10
+</code></pre>
+
+<p>返回报文为：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: 110, // 110元
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="b42_1">B42 刷新任务</h2>
 <p>刷新任务可以使任务排名更靠前。</p>
 <p>需要登陆。</p>
 <pre><code>PUT /api/user/quest/flush/{id}
