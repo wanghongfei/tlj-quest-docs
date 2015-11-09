@@ -146,6 +146,7 @@ POST /api/user/quest
 | expiredTime  | N    | 卡券过期时间, yyyy-mm-dd                     |
 | logo         | N    | 卡券店铺logo在又拍的路径                         |
 | couponAmt    | N    | 卡券数量                                   |
+| save         | N    | `0`: 直接发布. `1`: 保存但不发布(一样扣钱). 默认为`0`   |
 
 接口调用后，服务器会自动计算总任务赏金，并从发布者的现金账户中扣除可用余额。
 
@@ -228,7 +229,11 @@ POST /api/user/quest/question
 
   	// 任务对象
     "collegeIds": "1;2;3",
-    "schoolIds": "1;2;3"
+    "schoolIds": "1;2;3",
+  	"cityIds": "1;2",
+  	"proIds": "1;2",
+  
+  	"save": 0 或 1 // 可选参数. 0: 直接发布. 1: 保存但不发布(一样扣钱). 默认为0
 }
 ```
 

@@ -192,9 +192,7 @@ POST /api/user/acc/charge
 | ------- | ---- | ----- |
 | orderId | Y    | 充值订单号 |
 
-
-
-## C9 解绑手机号
+## C9 (无效)解绑手机号
 
 ``` 
 DELETE /api/user/acc/phone
@@ -206,7 +204,7 @@ DELETE /api/user/acc/phone
 | ---- | ---- | ------------- |
 | code | Y    | 发送到用户老手机上的验证码 |
 
-## C10 绑定新手机号
+## C10 更换手机号
 
 ``` 
 PUT /api/user/acc/phone
@@ -214,10 +212,11 @@ PUT /api/user/acc/phone
 
 参数：
 
-| 参数名   | 必填   | 说明            |
-| ----- | ---- | ------------- |
-| code  | Y    | 发送到用户新手机上的验证码 |
-| phone | Y    | 新手机号          |
+| 参数名    | 必填   | 说明                |
+| ------ | ---- | ----------------- |
+| code   | Y    | 发送到用户新手机上的验证码     |
+| phone  | Y    | 新手机号              |
+| answer | N    | 密保答案. 不填写表示不用密保验证 |
 
 > 注意：只有当用户先解绑手机后才能成功调用该接口。
 
@@ -305,6 +304,27 @@ GET /api/user/acc
     "memberRole": "STUDENT", // 所有者用户类型
     "phoneNumber": "1828312368" // 所有者手机号
   },
+  "ok": true
+}
+```
+
+
+
+## C13.1 查询当前账户余额
+
+调用该接口查询余额以节省流量。
+
+``` 
+GET /api/user/acc/balance
+```
+
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": 7.4, // 可用余额
   "ok": true
 }
 ```
