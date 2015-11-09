@@ -232,7 +232,7 @@ POST /api/user/quest/question
     "schoolIds": "1;2;3",
   	"cityIds": "1;2",
   	"proIds": "1;2",
-  
+
   	"save": 0 或 1 // 可选参数. 0: 直接发布. 1: 保存但不发布(一样扣钱). 默认为0
 }
 ```
@@ -273,7 +273,7 @@ GET /api/user/quest/fee?award=10&amt=10
 
 
 
-## B42 刷新任务
+## B4.3 刷新任务
 
 刷新任务可以使任务排名更靠前。
 
