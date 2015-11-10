@@ -9,6 +9,7 @@ pages:
 - 兼职: job.md
 - 二手: sh.md
 - 推荐: reco.md
+- 字典: dict.md
 
 theme: readthedocs
 site_author: 王鸿飞
