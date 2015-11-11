@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>签名生成 - Taolijie轻兼职接口文档</title>
+  <title>字典 - Taolijie轻兼职接口文档</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -20,7 +20,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "签名生成";
+    var mkdocs_page_name = "字典";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -85,21 +85,8 @@
 <li>
           
             <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">签名生成</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#_1">图片上传流程</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#e1">E1 生成又拍上传凭证</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#e2-url">E2 更新二手帖子图片URL</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../sign/">签名生成</a>
         
     </li>
 <li>
@@ -126,8 +113,21 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../dict/">字典</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">字典</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#i1">I1查询学校列表</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#i2">I2 查询城市列表</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#i3">I3 查询省列表</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -154,7 +154,7 @@
     
       
     
-    <li>签名生成</li>
+    <li>字典</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -164,123 +164,89 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">图片上传流程</h1>
-<p>S1: 用户进入图片上传页面并选择要上传的图片。</p>
-<p>S2: 浏览器调用<code>生成又拍上传凭证</code>接口，获取上传参数。</p>
-<p>S3: 浏览器调用又拍<code>HTML Form</code>上传接口，传入刚刚获取到的参数。</p>
-<p>S4: 上传成功后，浏览器调用<code>更新二手帖子图片URL</code>接口。</p>
-<h1 id="e1">E1 生成又拍上传凭证</h1>
-<p>调用此接口需要登陆。</p>
-<p>同一用户最小调用间隔时间为<code>2s</code>。</p>
-<pre><code>GET /api/user/sign
+                <h2 id="i1">I1查询学校列表</h2>
+<p>不需要登陆。</p>
+<pre><code>GET /api/dict/college
 </code></pre>
 
-<p>部分参数：</p>
-<table>
-<thead>
-<tr>
-<th>参数名</th>
-<th>必填</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>picType</td>
-<td>Y</td>
-<td>图片的类型</td>
-</tr>
-<tr>
-<td>expiration</td>
-<td>Y</td>
-<td>同又拍对应参数</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>其它参数与又拍HTML FORM上传接口中的参数一致。</p>
-</blockquote>
-<p><code>picType</code>的取值为：</p>
-<table>
-<thead>
-<tr>
-<th>取值</th>
-<th>含意</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>与兼职相关的图片</td>
-</tr>
-<tr>
-<td>1</td>
-<td>与二手相关的图片</td>
-</tr>
-<tr>
-<td>2</td>
-<td>用户头像</td>
-</tr>
-<tr>
-<td>3</td>
-<td>商家认证时上传的照片</td>
-</tr>
-</tbody>
-</table>
-<p>如，对于请求</p>
-<pre><code>GET /api/sign?picType=1&amp;expiration=827716
-</code></pre>
-
-<p>返回报文为：</p>
+<p>返回示例：</p>
 <pre><code class="json">{
   &quot;message&quot;: &quot;success&quot;,
   &quot;code&quot;: 0,
   &quot;data&quot;: {
-    &quot;sign&quot;: &quot;322a618e7933fb741c647752a581572e&quot;,
-    &quot;policy&quot;: &quot;eyJzYXZlLWtleSI6ImU5YjJkZTI1ZTFjNjQ0YzllZWRlZjhiZWNhNGViY2FlIiwiYnVja2V0IjoidGFvbGlqaWUtcGljIiwiZXhwaXJhdGlvbiI6ODI3NzE2fQ==&quot;,
-    &quot;saveKey&quot;: &quot;e9b2de25e1c644c9eedef8beca4ebcae&quot;
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;fullName&quot;: &quot;山东大学&quot;,
+        &quot;cityId&quot;: 1
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;fullName&quot;: &quot;山东师范大学&quot;,
+        &quot;cityId&quot;: 1
+      },
+      {
+        &quot;id&quot;: 3,
+        &quot;fullName&quot;: &quot;山东财经大学&quot;,
+        &quot;cityId&quot;: 1
+      },
+      {
+        &quot;id&quot;: 4,
+        &quot;fullName&quot;: &quot;山东科技大学&quot;,
+        &quot;cityId&quot;: 1
+      }
+   ],
+    &quot;resultCount&quot;: 4
+  },
+  &quot;ok&quot;: true
+</code></pre>
+
+<h2 id="i2">I2 查询城市列表</h2>
+<pre><code>GET /api/dict/city
+</code></pre>
+
+<p>返回示例：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;济南市&quot;,
+        &quot;provinceId&quot;: 1
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;青岛市&quot;,
+        &quot;provinceId&quot;: 1
+      }
+    ],
+    &quot;resultCount&quot;: 2
+  },
+  &quot;ok&quot;: true
+</code></pre>
+
+<h2 id="i3">I3 查询省列表</h2>
+<pre><code>GET /api/dict/province
+</code></pre>
+
+<p>返回示例：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;山东省&quot;
+      }
+    ],
+    &quot;resultCount&quot;: 1
   },
   &quot;ok&quot;: true
 }
 </code></pre>
-
-<h1 id="e2-url">E2 更新二手帖子图片URL</h1>
-<p>用户在浏览器中上传图片到又拍成功后需调用此接口，将图片地址传入。</p>
-<pre><code>PUT /api/u/{shId}/pic
-</code></pre>
-
-<p>参数：</p>
-<table>
-<thead>
-<tr>
-<th>参数名</th>
-<th>必填</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>shId</td>
-<td>Y</td>
-<td>二手id, 在URL中包含该参数</td>
-</tr>
-<tr>
-<td>picAddr</td>
-<td>Y</td>
-<td>图片地址</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>其中，<code>picAddr</code>是一个以<code>;</code>分隔的字符串，每个字符串表示图片在<code>bucket</code>中的路径。如：</p>
-<pre><code>/sh/1.jpg;/sh/121.jpg;/sh/888.jpg
-</code></pre>
-
-<p>表示该帖子有3张图片。</p>
               
             </div>
           </div>
@@ -288,10 +254,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../job/" class="btn btn-neutral float-right" title="兼职"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../admin/" class="btn btn-neutral" title="后台接口"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../reco/" class="btn btn-neutral" title="推荐"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -317,10 +281,8 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../admin/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../reco/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../job/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

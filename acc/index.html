@@ -89,7 +89,7 @@
                 
                     <li><a class="toctree-l4" href="#c4">C4 开通现金账户(钱包)</a></li>
                 
-                    <li><a class="toctree-l4" href="#c41">C41 修改交易密码</a></li>
+                    <li><a class="toctree-l4" href="#c41">C4.1 修改交易密码</a></li>
                 
                     <li><a class="toctree-l4" href="#c5">C5 修改支付宝账号</a></li>
                 
@@ -101,9 +101,9 @@
                 
                     <li><a class="toctree-l4" href="#c81">C8.1 钱包充值</a></li>
                 
-                    <li><a class="toctree-l4" href="#c9">C9 解绑手机号</a></li>
+                    <li><a class="toctree-l4" href="#c9">C9 (无效)解绑手机号</a></li>
                 
-                    <li><a class="toctree-l4" href="#c10">C10 绑定新手机号</a></li>
+                    <li><a class="toctree-l4" href="#c10">C10 更换手机号</a></li>
                 
                     <li><a class="toctree-l4" href="#c11">C11 商家身份认证申请</a></li>
                 
@@ -113,6 +113,8 @@
                 <li class="toctree-l3"><a href="#_3">查询操作</a></li>
                 
                     <li><a class="toctree-l4" href="#c13">C13 查询当前用户的现金账户</a></li>
+                
+                    <li><a class="toctree-l4" href="#c131">C13.1 查询当前账户余额</a></li>
                 
                     <li><a class="toctree-l4" href="#c14">C14 查询账户资金变化记录</a></li>
                 
@@ -155,6 +157,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../reco/">推荐</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../dict/">字典</a>
         
     </li>
 <li>
@@ -294,7 +303,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="c41">C41 修改交易密码</h2>
+<h2 id="c41">C4.1 修改交易密码</h2>
 <p>需要登陆，且已经开通了钱包、设置过密保。</p>
 <pre><code>PUT /api/user/acc/dealPwd
 </code></pre>
@@ -519,7 +528,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="c9">C9 解绑手机号</h2>
+<h2 id="c9">C9 (无效)解绑手机号</h2>
 <pre><code>DELETE /api/user/acc/phone
 </code></pre>
 
@@ -540,7 +549,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="c10">C10 绑定新手机号</h2>
+<h2 id="c10">C10 更换手机号</h2>
 <pre><code>PUT /api/user/acc/phone
 </code></pre>
 
@@ -563,6 +572,11 @@
 <td>phone</td>
 <td>Y</td>
 <td>新手机号</td>
+</tr>
+<tr>
+<td>answer</td>
+<td>N</td>
+<td>密保答案. 不填写表示不用密保验证</td>
 </tr>
 </tbody>
 </table>
@@ -670,6 +684,20 @@
     &quot;memberRole&quot;: &quot;STUDENT&quot;, // 所有者用户类型
     &quot;phoneNumber&quot;: &quot;1828312368&quot; // 所有者手机号
   },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="c131">C13.1 查询当前账户余额</h2>
+<p>调用该接口查询余额以节省流量。</p>
+<pre><code>GET /api/user/acc/balance
+</code></pre>
+
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: 7.4, // 可用余额
   &quot;ok&quot;: true
 }
 </code></pre>

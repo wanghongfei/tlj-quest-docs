@@ -96,6 +96,8 @@
                 
                     <li><a class="toctree-l4" href="#d4">D4 任务完成审核</a></li>
                 
+                    <li><a class="toctree-l4" href="#d41">D4.1 任务发布审核</a></li>
+                
                     <li><a class="toctree-l4" href="#d5">D5 提现申请审核</a></li>
                 
                     <li><a class="toctree-l4" href="#d6">D6 充值申请审核</a></li>
@@ -153,6 +155,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../dict/">字典</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -188,6 +197,7 @@
                 <blockquote>
 <p>以下所有接口需要以管理员身份登陆才能成功调用。</p>
 </blockquote>
+<p>注意: 移动端不需要使用后台接口。</p>
 <h1 id="_1">分类操作</h1>
 <h2 id="d1">D1 创建轻兼职分类</h2>
 <pre><code>POST /api/manage/quest/cate
@@ -361,6 +371,47 @@
 <blockquote>
 <p>如果审核不通过，应当传入memo参数说明审核失败的原因。</p>
 </blockquote>
+<h2 id="d41">D4.1 任务发布审核</h2>
+<pre><code>PUT /api/manage/quest/{questId}
+</code></pre>
+
+<p><code>questId</code>: 要审核的任务id</p>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>Y</td>
+<td>审核结果</td>
+</tr>
+</tbody>
+</table>
+<p><code>status</code>取值如下：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>审核失败</td>
+</tr>
+<tr>
+<td>3</td>
+<td>审核通过</td>
+</tr>
+</tbody>
+</table>
 <h2 id="d5">D5 提现申请审核</h2>
 <p>用户提交提现申请后，管理员审核是否通过。</p>
 <pre><code>PUT /api/manage/acc/withdraw

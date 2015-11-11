@@ -86,24 +86,24 @@
                 
                     <li><a class="toctree-l4" href="#b42">B4.2 计算任务发布费用</a></li>
                 
-                    <li><a class="toctree-l4" href="#b42_1">B42 刷新任务</a></li>
+                    <li><a class="toctree-l4" href="#b43">B4.3 刷新任务</a></li>
                 
                     <li><a class="toctree-l4" href="#b5">B5 任务领取</a></li>
                 
                     <li><a class="toctree-l4" href="#b6">B6 提交任务完成申请</a></li>
                 
-                    <li><a class="toctree-l4" href="#b61">B61 提交问卷答案</a></li>
+                    <li><a class="toctree-l4" href="#b61">B6.1 提交问卷答案</a></li>
                 
             
                 <li class="toctree-l3"><a href="#_3">任务查询</a></li>
                 
                     <li><a class="toctree-l4" href="#b7">B7 查询任务发布记录</a></li>
                 
-                    <li><a class="toctree-l4" href="#b71">B71 查询指定任务的答题记录</a></li>
+                    <li><a class="toctree-l4" href="#b71">B7.1 查询指定任务的答题记录</a></li>
                 
-                    <li><a class="toctree-l4" href="#b72">B72 查询问卷中所有题目</a></li>
+                    <li><a class="toctree-l4" href="#b72">B7.2 查询问卷中所有题目</a></li>
                 
-                    <li><a class="toctree-l4" href="#b73">B73 查询答题统计数据</a></li>
+                    <li><a class="toctree-l4" href="#b73">B7.3 查询答题统计数据</a></li>
                 
                     <li><a class="toctree-l4" href="#b8">B8 查询任务领取记录</a></li>
                 
@@ -183,6 +183,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../reco/">推荐</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../dict/">字典</a>
         
     </li>
 <li>
@@ -498,6 +505,11 @@
 <td>N</td>
 <td>卡券数量</td>
 </tr>
+<tr>
+<td>save</td>
+<td>N</td>
+<td><code>0</code>: 直接发布. <code>1</code>: 保存但不发布(一样扣钱). 默认为<code>0</code></td>
+</tr>
 </tbody>
 </table>
 <p>接口调用后，服务器会自动计算总任务赏金，并从发布者的现金账户中扣除可用余额。</p>
@@ -574,7 +586,11 @@
 
     // 任务对象
     &quot;collegeIds&quot;: &quot;1;2;3&quot;,
-    &quot;schoolIds&quot;: &quot;1;2;3&quot;
+    &quot;schoolIds&quot;: &quot;1;2;3&quot;,
+    &quot;cityIds&quot;: &quot;1;2&quot;,
+    &quot;proIds&quot;: &quot;1;2&quot;,
+
+    &quot;save&quot;: 0 或 1 // 可选参数. 0: 直接发布. 1: 保存但不发布(一样扣钱). 默认为0
 }
 </code></pre>
 
@@ -618,7 +634,7 @@
 }
 </code></pre>
 
-<h2 id="b42_1">B42 刷新任务</h2>
+<h2 id="b43">B4.3 刷新任务</h2>
 <p>刷新任务可以使任务排名更靠前。</p>
 <p>需要登陆。</p>
 <pre><code>PUT /api/user/quest/flush/{id}
@@ -678,7 +694,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="b61">B61 提交问卷答案</h2>
+<h2 id="b61">B6.1 提交问卷答案</h2>
 <p>调用场景：用户选择完一个问题的选项点击提交时调用。</p>
 <p>需要用户登陆且领取对应任务。</p>
 <pre><code>GET /api/user/quest/question/check
@@ -782,7 +798,7 @@
 }
 </code></pre>
 
-<h2 id="b71">B71 查询指定任务的答题记录</h2>
+<h2 id="b71">B7.1 查询指定任务的答题记录</h2>
 <p>需要登陆，用于判断一个问卷中有哪些题目已答，哪些未答。</p>
 <pre><code>GET /api/user/quest/question/record
 </code></pre>
@@ -831,7 +847,7 @@
 }
 </code></pre>
 
-<h2 id="b72">B72 查询问卷中所有题目</h2>
+<h2 id="b72">B7.2 查询问卷中所有题目</h2>
 <p>需要登陆且已经领取该任务。</p>
 <pre><code>GET /api/user/quest/question
 </code></pre>
@@ -926,7 +942,7 @@
 }
 </code></pre>
 
-<h2 id="b73">B73 查询答题统计数据</h2>
+<h2 id="b73">B7.3 查询答题统计数据</h2>
 <p>需要登陆，只有题目的发布者才能调用。</p>
 <pre><code>GET /api/user/quest/question/result
 </code></pre>

@@ -20,19 +20,21 @@ GET /api/user/sign
 
 部分参数：
 
-| 参数名     | 必填   | 说明    | 
-| ------- | ---- | ----- | 
-| picType | Y    | 图片的类型 | 
+| 参数名        | 必填   | 说明      |
+| ---------- | ---- | ------- |
+| picType    | Y    | 图片的类型   |
+| expiration | Y    | 同又拍对应参数 |
 
 > 其它参数与又拍HTML FORM上传接口中的参数一致。
 
 `picType`的取值为：
 
-| 取值   | 含意       | 
-| ---- | -------- | 
-| 0    | 与兼职相关的图片 | 
-| 1    | 与二手相关的图片 | 
-| 2    | 用户头像     | 
+| 取值   | 含意         |
+| ---- | ---------- |
+| 0    | 与兼职相关的图片   |
+| 1    | 与二手相关的图片   |
+| 2    | 用户头像       |
+| 3    | 商家认证时上传的照片 |
 
 如，对于请求
 
@@ -47,9 +49,9 @@ GET /api/sign?picType=1&expiration=827716
   "message": "success",
   "code": 0,
   "data": {
-    "sign": "2b405758a6bbd83de95a3cc2beb2ac8d",
-    "policy": "eyJzYXZlLWtleSI6Ii8yMDE1LzgvMjcvam9iLTE4LWdpcmwuanBnIiwiYnVja2V0IjoidGFvbGlqaWUtcGljIiwiZXhwaXJhdGlvbiI6MTU0MzIyOTc1OH0=",
-    "saveKey": "/2015/8/27/sh-18"
+    "sign": "322a618e7933fb741c647752a581572e",
+    "policy": "eyJzYXZlLWtleSI6ImU5YjJkZTI1ZTFjNjQ0YzllZWRlZjhiZWNhNGViY2FlIiwiYnVja2V0IjoidGFvbGlqaWUtcGljIiwiZXhwaXJhdGlvbiI6ODI3NzE2fQ==",
+    "saveKey": "e9b2de25e1c644c9eedef8beca4ebcae"
   },
   "ok": true
 }
@@ -67,11 +69,11 @@ PUT /api/u/{shId}/pic
 
 参数：
 
-| 参数名     | 必填   | 说明               | 
-| ------- | ---- | ---------------- | 
-| shId    | Y    | 二手id, 在URL中包含该参数 | 
-| picAddr | Y    | 图片地址             | 
-|         |      |                  | 
+| 参数名     | 必填   | 说明               |
+| ------- | ---- | ---------------- |
+| shId    | Y    | 二手id, 在URL中包含该参数 |
+| picAddr | Y    | 图片地址             |
+|         |      |                  |
 
 其中，`picAddr`是一个以`;`分隔的字符串，每个字符串表示图片在`bucket`中的路径。如：
 
