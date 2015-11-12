@@ -39,7 +39,7 @@ GET /api/user/sign
 如，对于请求
 
 ``` 
-GET /api/sign?picType=1&expiration=827716
+GET /api/user/sign?picType=1&expiration=827716
 ```
 
 返回报文为：
