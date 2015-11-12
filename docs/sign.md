@@ -49,9 +49,9 @@ GET /api/sign?picType=1&expiration=827716
   "message": "success",
   "code": 0,
   "data": {
-    "sign": "322a618e7933fb741c647752a581572e",
-    "policy": "eyJzYXZlLWtleSI6ImU5YjJkZTI1ZTFjNjQ0YzllZWRlZjhiZWNhNGViY2FlIiwiYnVja2V0IjoidGFvbGlqaWUtcGljIiwiZXhwaXJhdGlvbiI6ODI3NzE2fQ==",
-    "saveKey": "e9b2de25e1c644c9eedef8beca4ebcae"
+    "sign": "aa4c5128a2c579ee92133ffb4344f065",
+    "policy": "eyJzYXZlLWtleSI6Ii8yMDE1LzExLzEyL2YzNDdiM2JjNzkwZDkxMWI0YmFiZDVhMDVmNDY4NDA4IiwiYnVja2V0IjoidGFvbGlqaWUtcGljIiwiZXhwaXJhdGlvbiI6ODI3NzE2fQ==",
+    "saveKey": "/2015/11/12/f347b3bc790d911b4babd5a05f468408"
   },
   "ok": true
 }
