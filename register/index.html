@@ -358,7 +358,8 @@
 </tbody>
 </table>
 <h2 id="a5-openid">A5 绑定微信openid</h2>
-<pre><code>POST /register/bind/wechat
+<p>为当前用户绑定openId，需要登陆。</p>
+<pre><code>POST /api/user/acc/bind/wechat
 </code></pre>
 
 <p>参数：</p>
@@ -372,14 +373,9 @@
 </thead>
 <tbody>
 <tr>
-<td>wechatToken</td>
+<td>openId</td>
 <td>Y</td>
 <td>openid</td>
-</tr>
-<tr>
-<td>memId</td>
-<td>Y</td>
-<td>用户id</td>
 </tr>
 </tbody>
 </table>

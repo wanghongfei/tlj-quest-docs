@@ -117,13 +117,14 @@ POST /findPwd
 
 ## A5 绑定微信openid
 
+为当前用户绑定openId，需要登陆。
+
 ``` 
-POST /register/bind/wechat
+POST /api/user/acc/bind/wechat
 ```
 
 参数：
 
-| 参数名         | 必填   | 说明     |
-| ----------- | ---- | ------ |
-| wechatToken | Y    | openid |
-| memId       | Y    | 用户id   |
+| 参数名    | 必填   | 说明     |
+| ------ | ---- | ------ |
+| openId | Y    | openid |
