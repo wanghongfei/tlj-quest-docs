@@ -99,3 +99,48 @@ GET /api/dict/province
 }
 ```
 
+
+
+## I4 查询行业分类列表
+
+``` 
+GET /api/dict/industry
+```
+
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "金融业": [
+      {
+        "id": 32,
+        "name": "房地产",
+        "parentId": 1
+      },
+      {
+        "id": 33,
+        "name": "建筑",
+        "parentId": 1
+      }
+    ],
+    "服务业": [
+      {
+        "id": 6,
+        "name": "IT",
+        "parentId": 3
+      },
+      {
+        "id": 7,
+        "name": "通信",
+        "parentId": 3
+      }
+    ],
+    "其它": []
+  },
+  "ok": true
+}
+```
+

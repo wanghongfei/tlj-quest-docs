@@ -127,6 +127,9 @@
                 <li class="toctree-l3"><a href="#i3">I3 查询省列表</a></li>
                 
             
+                <li class="toctree-l3"><a href="#i4">I4 查询行业分类列表</a></li>
+                
+            
             </ul>
         
     </li>
@@ -243,6 +246,45 @@
       }
     ],
     &quot;resultCount&quot;: 1
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="i4">I4 查询行业分类列表</h2>
+<pre><code>GET /api/dict/industry
+</code></pre>
+
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;金融业&quot;: [
+      {
+        &quot;id&quot;: 32,
+        &quot;name&quot;: &quot;房地产&quot;,
+        &quot;parentId&quot;: 1
+      },
+      {
+        &quot;id&quot;: 33,
+        &quot;name&quot;: &quot;建筑&quot;,
+        &quot;parentId&quot;: 1
+      }
+    ],
+    &quot;服务业&quot;: [
+      {
+        &quot;id&quot;: 6,
+        &quot;name&quot;: &quot;IT&quot;,
+        &quot;parentId&quot;: 3
+      },
+      {
+        &quot;id&quot;: 7,
+        &quot;name&quot;: &quot;通信&quot;,
+        &quot;parentId&quot;: 3
+      }
+    ],
+    &quot;其它&quot;: []
   },
   &quot;ok&quot;: true
 }

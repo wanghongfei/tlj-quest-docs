@@ -482,17 +482,17 @@
 </tr>
 <tr>
 <td>couponTitle</td>
-<td>N</td>
+<td>(N)</td>
 <td>卡券名</td>
 </tr>
 <tr>
 <td>couponDesp</td>
-<td>N</td>
+<td>(N)</td>
 <td>卡券使用规则</td>
 </tr>
 <tr>
 <td>expiredTime</td>
-<td>N</td>
+<td>(N)</td>
 <td>卡券过期时间, yyyy-mm-dd</td>
 </tr>
 <tr>
@@ -502,7 +502,7 @@
 </tr>
 <tr>
 <td>couponAmt</td>
-<td>N</td>
+<td>(N)</td>
 <td>卡券数量</td>
 </tr>
 <tr>
@@ -517,13 +517,14 @@
 <p>扣除的金额 = [ (1 + 费率) * 单个任务赏金 ] * 任务数量</p>
 </blockquote>
 <p>从<code>couponTitle</code>到<code>couponAmt</code>为卡券信息，<strong>如果需要发布卡券则这些参数全部必填(logo可以不填)</strong>，如果不需要卡券则不需要填写。</p>
+<p><strong>带有<code>(N)</code>的参数要么全不填，要么全填。</strong></p>
 <h2 id="b41">B4.1 商家发布答题、问卷任务</h2>
 <pre><code>POST /api/user/quest/question
 </code></pre>
 
 <p>参数：</p>
 <p>该接口只接受<code>JSON</code>字符串参数，在<code>javascript</code>中需要将<code>JSON</code>对象转换为<code>JSON</code>字符串，然后添加<code>Content-Type: application/json; charset=utf-8</code>请求头。</p>
-<p>格式如下：</p>
+<p>格式如下(做为请求参数时去掉注释)：</p>
 <pre><code class="json">{
     // questions是json数组
     // 数组中每个对象代表一个问题
@@ -571,8 +572,8 @@
         &quot;questCateId&quot;: 1,
         &quot;startTime&quot;: &quot;2015-11-11 10:10:10&quot;,
         &quot;endTime&quot;: &quot;2016-11-11 10:10:10&quot;,
-        &quot;totalAmt&quot;: 1,
-        &quot;award&quot;: 0.1,
+        &quot;totalAmt&quot;: 5, // 任务总数量
+        &quot;award&quot;: 10, // 答对所有问题时给学生的赏金
         &quot;contactName&quot;: &quot;whf&quot;,
         &quot;contactPhone&quot;: &quot;111111&quot;,
         &quot;description&quot;: &quot;description&quot;,
@@ -594,6 +595,9 @@
 }
 </code></pre>
 
+<blockquote>
+<p>服务器会自动计算答对每个问题的赏金。如, <code>award = 10</code>且一共有4个问题时，学生每答对一题的赏金为<code>award / 4 = 2.50</code></p>
+</blockquote>
 <h2 id="b42">B4.2 计算任务发布费用</h2>
 <p>需要登陆。</p>
 <pre><code>GET /api/user/quest/fee

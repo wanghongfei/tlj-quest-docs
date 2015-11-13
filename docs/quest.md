@@ -141,11 +141,11 @@ POST /api/user/quest
 | schoolIds    | Y    | 任务对象：学院. 以`;`分隔的id字符串，如`2;5;19`        |
 | cityIds      | Y    | 任务对象：城市. 同上                            |
 | proIds       | Y    | 任务对象：省. 同上                             |
-| couponTitle  | N    | 卡券名                                    |
-| couponDesp   | N    | 卡券使用规则                                 |
-| expiredTime  | N    | 卡券过期时间, yyyy-mm-dd                     |
+| couponTitle  | (N)  | 卡券名                                    |
+| couponDesp   | (N)  | 卡券使用规则                                 |
+| expiredTime  | (N)  | 卡券过期时间, yyyy-mm-dd                     |
 | logo         | N    | 卡券店铺logo在又拍的路径                         |
-| couponAmt    | N    | 卡券数量                                   |
+| couponAmt    | (N)  | 卡券数量                                   |
 | save         | N    | `0`: 直接发布. `1`: 保存但不发布(一样扣钱). 默认为`0`   |
 
 接口调用后，服务器会自动计算总任务赏金，并从发布者的现金账户中扣除可用余额。
@@ -153,6 +153,8 @@ POST /api/user/quest
 > 扣除的金额 = [ (1 + 费率) * 单个任务赏金 ] * 任务数量
 
 从`couponTitle`到`couponAmt`为卡券信息，**如果需要发布卡券则这些参数全部必填(logo可以不填)**，如果不需要卡券则不需要填写。
+
+**带有`(N)`的参数要么全不填，要么全填。**
 
 ## B4.1 商家发布答题、问卷任务
 
@@ -164,7 +166,7 @@ POST /api/user/quest/question
 
 该接口只接受`JSON`字符串参数，在`javascript`中需要将`JSON`对象转换为`JSON`字符串，然后添加`Content-Type: application/json; charset=utf-8`请求头。
 
-格式如下：
+格式如下(做为请求参数时去掉注释)：
 
 ``` json
 {
@@ -214,8 +216,8 @@ POST /api/user/quest/question
         "questCateId": 1,
         "startTime": "2015-11-11 10:10:10",
         "endTime": "2016-11-11 10:10:10",
-        "totalAmt": 1,
-        "award": 0.1,
+        "totalAmt": 5, // 任务总数量
+        "award": 10, // 答对所有问题时给学生的赏金
         "contactName": "whf",
         "contactPhone": "111111",
         "description": "description",
@@ -237,7 +239,7 @@ POST /api/user/quest/question
 }
 ```
 
-
+> 服务器会自动计算答对每个问题的赏金。如, `award = 10`且一共有4个问题时，学生每答对一题的赏金为`award / 4 = 2.50`
 
 ## B4.2 计算任务发布费用
 
