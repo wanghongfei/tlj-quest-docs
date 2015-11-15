@@ -258,17 +258,19 @@ POST /api/user/certi/stu
 
 参数：
 
-| 参数名       | 必填   | 说明      |
-| --------- | ---- | ------- |
-| name      | Y    | 真实姓名    |
-| collegeId | Y    | 所在大学的id |
-| schoolId  | Y    | 学在学院的id |
-| picIds    | Y    | 上传的认证图片 |
+| 参数名       | 必填   | 说明            |
+| --------- | ---- | ------------- |
+| name      | Y    | 真实姓名(不超过10字符) |
+| cityId    | Y    | 所在城市的id       |
+| collegeId | Y    | 所在大学的id       |
+| schoolId  | Y    | 学在学院的id       |
+| picIds    | Y    | 上传的认证图片       |
+| cname     | N    | 班级            |
 
 `picIds`参数为以`;`分隔的图片在又拍云的路径, 如:
 
 ``` 
-/a.jpg;/b.jpg
+/2015/10.12/sef72390sfxcvbx89asdfzb89;/2015/10.12/sef72sadsfxcvbx89asdfzb89
 ```
 
 

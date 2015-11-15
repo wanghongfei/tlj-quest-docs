@@ -637,7 +637,12 @@
 <tr>
 <td>name</td>
 <td>Y</td>
-<td>真实姓名</td>
+<td>真实姓名(不超过10字符)</td>
+</tr>
+<tr>
+<td>cityId</td>
+<td>Y</td>
+<td>所在城市的id</td>
 </tr>
 <tr>
 <td>collegeId</td>
@@ -654,10 +659,15 @@
 <td>Y</td>
 <td>上传的认证图片</td>
 </tr>
+<tr>
+<td>cname</td>
+<td>N</td>
+<td>班级</td>
+</tr>
 </tbody>
 </table>
 <p><code>picIds</code>参数为以<code>;</code>分隔的图片在又拍云的路径, 如:</p>
-<pre><code>/a.jpg;/b.jpg
+<pre><code>/2015/10.12/sef72390sfxcvbx89asdfzb89;/2015/10.12/sef72sadsfxcvbx89asdfzb89
 </code></pre>
 
 <h1 id="_3">查询操作</h1>
