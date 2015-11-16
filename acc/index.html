@@ -107,6 +107,8 @@
                 
                     <li><a class="toctree-l4" href="#c11">C11 商家身份认证申请</a></li>
                 
+                    <li><a class="toctree-l4" href="#c111">C11.1 个人身份认证申请</a></li>
+                
                     <li><a class="toctree-l4" href="#c12">C12 学生身份认证申请</a></li>
                 
             
@@ -629,6 +631,38 @@
 <pre><code>/a.jpg;/b.jpg
 </code></pre>
 
+<h2 id="c111">C11.1 个人身份认证申请</h2>
+<p>需要登陆。</p>
+<pre><code>POST /api/user/certi/id
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>Y</td>
+<td>真实姓名</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Y</td>
+<td>身份证号</td>
+</tr>
+<tr>
+<td>picIds</td>
+<td>Y</td>
+<td>上传的证件图片, 以<code>;</code>分隔</td>
+</tr>
+</tbody>
+</table>
 <h2 id="c12">C12 学生身份认证申请</h2>
 <p>只有学生用户在登陆状态时才可以调用该接口。</p>
 <pre><code>POST /api/user/certi/stu
@@ -658,11 +692,6 @@
 <td>collegeId</td>
 <td>Y</td>
 <td>所在大学的id</td>
-</tr>
-<tr>
-<td>schoolId</td>
-<td>Y</td>
-<td>学在学院的id</td>
 </tr>
 <tr>
 <td>picIds</td>

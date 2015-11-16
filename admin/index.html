@@ -106,6 +106,8 @@
                 
                     <li><a class="toctree-l4" href="#d8">D8 学生身份审核</a></li>
                 
+                    <li><a class="toctree-l4" href="#d81">D8.1 个人身份认证审核</a></li>
+                
             
                 <li class="toctree-l3"><a href="#_3">查询操作</a></li>
                 
@@ -592,6 +594,38 @@
 </code></pre>
 
 <p>参数和取值同<code>商家身份审核</code>。</p>
+<h2 id="d81">D8.1 个人身份认证审核</h2>
+<pre><code>PUT /api/manage/certi/id
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>certiId</td>
+<td>Y</td>
+<td>申请单id号</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Y</td>
+<td>审核结果</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>N</td>
+<td>结果说明</td>
+</tr>
+</tbody>
+</table>
+<p><code>status</code>参数取值同接口<code>D7</code></p>
 <h1 id="_3">查询操作</h1>
 <h2 id="d9">D9 查询提现申请列表</h2>
 <pre><code>GET /api/manage/acc/withdraw/list

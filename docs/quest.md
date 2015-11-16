@@ -138,7 +138,6 @@ POST /api/user/quest
 | memo         | N    | 任务备注                                   |
 | orderId      | N    | 订单号。**如果填写此参数则不从钱包中扣钱, 而是验证对应的订单是否正确** |
 | collegeIds   | Y    | 任务对象：大学. 以`;`分隔的id字符串，如`1;2;3`         |
-| schoolIds    | Y    | 任务对象：学院. 以`;`分隔的id字符串，如`2;5;19`        |
 | cityIds      | Y    | 任务对象：城市. 同上                            |
 | proIds       | Y    | 任务对象：省. 同上                             |
 | couponTitle  | (N)  | 卡券名                                    |

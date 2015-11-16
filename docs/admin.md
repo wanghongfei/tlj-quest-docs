@@ -216,7 +216,21 @@ PUT /api/manage/certi/stu
 
 
 
+## D8.1 个人身份认证审核
 
+``` 
+PUT /api/manage/certi/id
+```
+
+参数：
+
+| 参数名     | 必填   | 说明     |
+| ------- | ---- | ------ |
+| certiId | Y    | 申请单id号 |
+| status  | Y    | 审核结果   |
+| memo    | N    | 结果说明   |
+
+`status`参数取值同接口`D7`
 
 # 查询操作
 

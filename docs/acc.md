@@ -248,7 +248,21 @@ POST /api/user/certi/emp
 
 
 
+## C11.1 个人身份认证申请
 
+需要登陆。
+
+``` 
+POST /api/user/certi/id
+```
+
+参数：
+
+| 参数名    | 必填   | 说明              |
+| ------ | ---- | --------------- |
+| name   | Y    | 真实姓名            |
+| id     | Y    | 身份证号            |
+| picIds | Y    | 上传的证件图片, 以`;`分隔 |
 
 ## C12 学生身份认证申请
 
@@ -265,7 +279,6 @@ POST /api/user/certi/stu
 | name      | Y    | 真实姓名(不超过10字符) |
 | cityId    | Y    | 所在城市的id       |
 | collegeId | Y    | 所在大学的id       |
-| schoolId  | Y    | 学在学院的id       |
 | picIds    | Y    | 上传的认证图片       |
 | cname     | N    | 班级            |
 
