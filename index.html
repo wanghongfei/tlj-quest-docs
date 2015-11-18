@@ -57,16 +57,18 @@
             
                 <li class="toctree-l3"><a href="#_1">开发者联系方式</a></li>
                 
+                    <li><a class="toctree-l4" href="#_2">接口测试地址</a></li>
+                
             
-                <li class="toctree-l3"><a href="#_2">身份认证</a></li>
+                <li class="toctree-l3"><a href="#_3">登陆认证</a></li>
                 
                     <li><a class="toctree-l4" href="#token">Token</a></li>
                 
             
-                <li class="toctree-l3"><a href="#_6">服务器返回报文格式</a></li>
+                <li class="toctree-l3"><a href="#_7">服务器返回报文格式</a></li>
                 
             
-                <li class="toctree-l3"><a href="#_7">错误代码表</a></li>
+                <li class="toctree-l3"><a href="#_8">错误代码表</a></li>
                 
             
             </ul>
@@ -173,15 +175,17 @@
 <p>王鸿飞(后端): brucewhf^gmail.com</p>
 <p>王富诚(前端): wangfucheng56^gmail.com</p>
 <blockquote>
-<p>最后更新时间: 2015-11-16</p>
+<p>最后更新时间: 2015-11-18</p>
 </blockquote>
-<h1 id="_2">身份认证</h1>
+<h2 id="_2">接口测试地址</h2>
+<p><code>http://182.92.153.221/</code></p>
+<h1 id="_3">登陆认证</h1>
 <h2 id="token">Token</h2>
-<h3 id="_3">生成</h3>
+<h3 id="_4">生成</h3>
 <p>由于所有接口都以<code>HTTP RESTful</code>的形式提供，因此在非Web环境下我们采用Token进行客户端身份识别。用户在app登陆后，服务器会返回一个<strong>由字母组成、20位长的随机字符串</strong>，后续请求带上该参数即可。</p>
-<h3 id="_4">有效期</h3>
+<h3 id="_5">有效期</h3>
 <p>Token一旦生成不会自动过期。只有当用户主动注销登陆时，当前Token才会失效。<strong>每个用户仅有一个token</strong>，如果用户未注销前再次登陆，则上次的token自动失效，服务器最新返回的token有效。</p>
-<h3 id="_5">使用方式</h3>
+<h3 id="_6">使用方式</h3>
 <p>Token放到：A.请求头、B.Query String(GET)、 C.请求体(POST)中均可。</p>
 <ul>
 <li>方式A</li>
@@ -207,7 +211,7 @@ App-Token: WEFEIASIWEdfrilkzxcv
 </code></pre>
 
 <p>​</p>
-<h1 id="_6">服务器返回报文格式</h1>
+<h1 id="_7">服务器返回报文格式</h1>
 <p>Demo:</p>
 <pre><code>{
   &quot;message&quot;: &quot;success&quot;,
@@ -286,7 +290,7 @@ App-Token: WEFEIASIWEdfrilkzxcv
 }
 </code></pre>
 
-<h1 id="_7">错误代码表</h1>
+<h1 id="_8">错误代码表</h1>
 <table>
 <thead>
 <tr>
@@ -479,6 +483,10 @@ App-Token: WEFEIASIWEdfrilkzxcv
 <td>43</td>
 <td>还未通过商家身份认证</td>
 </tr>
+<tr>
+<td>44</td>
+<td>相关账号还未设置</td>
+</tr>
 </tbody>
 </table>
 <p>注： 客户端应<strong>首先验证HTTP状态码是否为5XX</strong>, 如果不是则按上面的错误代码表解析返回报文，如果是则忽略返回报文。</p>
@@ -527,5 +535,5 @@ App-Token: WEFEIASIWEdfrilkzxcv
 
 <!--
 MkDocs version : 0.14.0
-Build Date UTC : 2015-11-16 16:08:17.842459
+Build Date UTC : 2015-11-18 15:42:34.320837
 -->

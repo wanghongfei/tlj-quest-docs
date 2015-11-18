@@ -104,9 +104,15 @@
                 
                     <li><a class="toctree-l4" href="#d7">D7 商家身份审核</a></li>
                 
+                    <li><a class="toctree-l4" href="#d71">D7.1 查询商家认证审核列表</a></li>
+                
                     <li><a class="toctree-l4" href="#d8">D8 学生身份审核</a></li>
                 
                     <li><a class="toctree-l4" href="#d81">D8.1 个人身份认证审核</a></li>
+                
+                    <li><a class="toctree-l4" href="#d811">D8.1.1 查询个人认证申请列表</a></li>
+                
+                    <li><a class="toctree-l4" href="#d82">D8.2 查询学生认证申请列表</a></li>
                 
             
                 <li class="toctree-l3"><a href="#_3">查询操作</a></li>
@@ -588,12 +594,17 @@
 </tr>
 </tbody>
 </table>
+<h2 id="d71">D7.1 查询商家认证审核列表</h2>
+<pre><code>GET /api/manage/certi/emp/list
+</code></pre>
+
+<p>参数和取值同接口<code>D7</code></p>
 <h2 id="d8">D8 学生身份审核</h2>
 <p>管理员审核学生上传的身份认证信息。</p>
 <pre><code>PUT /api/manage/certi/stu
 </code></pre>
 
-<p>参数和取值同<code>商家身份审核</code>。</p>
+<p>参数和取值同<code>D7:商家身份审核</code>。</p>
 <h2 id="d81">D8.1 个人身份认证审核</h2>
 <pre><code>PUT /api/manage/certi/id
 </code></pre>
@@ -626,6 +637,42 @@
 </tbody>
 </table>
 <p><code>status</code>参数取值同接口<code>D7</code></p>
+<h2 id="d811">D8.1.1 查询个人认证申请列表</h2>
+<pre><code>GET /api/manage/certi/id/list
+</code></pre>
+
+<p>参数同接口<code>D8.2</code></p>
+<h2 id="d82">D8.2 查询学生认证申请列表</h2>
+<pre><code>GET /api/manage/certi/stu/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>Y</td>
+<td>根据状态刷选. <code>01</code>:等待审核, <code>02</code>:审核通过, <code>03</code>:审核未通过</td>
+</tr>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h1 id="_3">查询操作</h1>
 <h2 id="d9">D9 查询提现申请列表</h2>
 <pre><code>GET /api/manage/acc/withdraw/list

@@ -118,12 +118,13 @@ POST /api/user/acc/withdraw
 
 参数：
 
-| 参数名       | 必填   | 说明    |
-| --------- | ---- | ----- |
-| amt       | Y    | 提现金额  |
-| alipayAcc | N    | 支付宝账户 |
-| bankAcc   | N    | 银行卡号  |
-| dealPwd   | Y    | 交易密码  |
+| 参数名       | 必填   | 说明                                    |
+| --------- | ---- | ------------------------------------- |
+| amt       | Y    | 提现金额                                  |
+| alipayAcc | N    | 支付宝账户                                 |
+| bankAcc   | N    | 银行卡号                                  |
+| dealPwd   | N    | 交易密码                                  |
+| payType   | Y    | `0`: 支付到支付宝, `1`:支付到微信钱包, `2`:支付到银行卡号 |
 
 `alipayAcc`和`bankAcc`至少填写一项。
 
@@ -239,6 +240,7 @@ POST /api/user/certi/emp
 | picIds    | Y    | 照片上传        |
 | cateId    | Y    | 行业分类的id号    |
 | compPhone | N    | 联系电话        |
+| contName  | Y    | 企业联系人姓名     |
 
 `picIds`参数为以`;`分隔的图片在又拍云的路径, 如:
 
