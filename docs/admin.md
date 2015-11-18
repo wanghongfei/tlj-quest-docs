@@ -154,7 +154,7 @@ PUT /api/manage/acc/withdraw
 
 
 
-## D6 充值申请审核
+## D6 [X]充值申请审核
 
 ``` 
 PUT /api/manage/acc/charge
@@ -278,11 +278,11 @@ GET /api/manage/acc/withdraw/list
 
 参数:
 
-| 参数名    | 必填   | 说明         |
-| ------ | ---- | ---------- |
-| status | N    | 是否根据状态过虑结果 |
-| pn     | N    |            |
-| ps     | N    |            |
+| 参数名    | 必填   | 说明                                       |
+| ------ | ---- | ---------------------------------------- |
+| status | N    | 是否根据状态过虑结果. `00`:等待审核, `02`:已完成, `03`: 失败 |
+| pn     | N    |                                          |
+| ps     | N    |                                          |
 
 ## D10 查询单条提现申请
 
@@ -294,7 +294,7 @@ GET /api/manage/acc/withdraw/{drawId}
 
 
 
-## D11 查询充值申请列表
+## D11 [X]查询充值申请列表
 
 ``` 
 GET /api/manage/acc/charge/list
@@ -308,7 +308,7 @@ GET /api/manage/acc/charge/list
 | pn     | N    |            |
 | ps     | N    |            |
 
-## D12 查询单条充值申请
+## D12 [X]查询单条充值申请
 
 ``` 
 GET /api/manage/acc/charge/{orderId}

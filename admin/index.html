@@ -100,7 +100,7 @@
                 
                     <li><a class="toctree-l4" href="#d5">D5 提现申请审核</a></li>
                 
-                    <li><a class="toctree-l4" href="#d6">D6 充值申请审核</a></li>
+                    <li><a class="toctree-l4" href="#d6-x">D6 [X]充值申请审核</a></li>
                 
                     <li><a class="toctree-l4" href="#d7">D7 商家身份审核</a></li>
                 
@@ -121,9 +121,9 @@
                 
                     <li><a class="toctree-l4" href="#d10">D10 查询单条提现申请</a></li>
                 
-                    <li><a class="toctree-l4" href="#d11">D11 查询充值申请列表</a></li>
+                    <li><a class="toctree-l4" href="#d11-x">D11 [X]查询充值申请列表</a></li>
                 
-                    <li><a class="toctree-l4" href="#d12">D12 查询单条充值申请</a></li>
+                    <li><a class="toctree-l4" href="#d12-x">D12 [X]查询单条充值申请</a></li>
                 
                     <li><a class="toctree-l4" href="#d13">D13 查询指定用户的现金账户信息</a></li>
                 
@@ -482,7 +482,7 @@
 <blockquote>
 <p>注：如果审核失败，应当传入<code>memo</code>参数以说明失败原因。</p>
 </blockquote>
-<h2 id="d6">D6 充值申请审核</h2>
+<h2 id="d6-x">D6 [X]充值申请审核</h2>
 <pre><code>PUT /api/manage/acc/charge
 </code></pre>
 
@@ -691,7 +691,7 @@
 <tr>
 <td>status</td>
 <td>N</td>
-<td>是否根据状态过虑结果</td>
+<td>是否根据状态过虑结果. <code>00</code>:等待审核, <code>02</code>:已完成, <code>03</code>: 失败</td>
 </tr>
 <tr>
 <td>pn</td>
@@ -712,7 +712,7 @@
 <blockquote>
 <p>drawId: 提现申请的id</p>
 </blockquote>
-<h2 id="d11">D11 查询充值申请列表</h2>
+<h2 id="d11-x">D11 [X]查询充值申请列表</h2>
 <pre><code>GET /api/manage/acc/charge/list
 </code></pre>
 
@@ -743,7 +743,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="d12">D12 查询单条充值申请</h2>
+<h2 id="d12-x">D12 [X]查询单条充值申请</h2>
 <pre><code>GET /api/manage/acc/charge/{orderId}
 </code></pre>
 
