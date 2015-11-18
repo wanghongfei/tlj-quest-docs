@@ -73,8 +73,6 @@ DELETE /api/manage/quest/cate/{cateId}
 
 学生提交任务完成申请后，管理员审核是否通过。
 
-> 商家也可以调用该接口，但只能审核自己发布的任务。
-
 ``` 
 PUT /api/manage/quest/submit/{reqId}
 ```

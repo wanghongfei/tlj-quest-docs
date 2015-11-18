@@ -88,6 +88,8 @@
                 
                     <li><a class="toctree-l4" href="#b43">B4.3 刷新任务</a></li>
                 
+                    <li><a class="toctree-l4" href="#b44">B4.4 商家审核任务</a></li>
+                
                     <li><a class="toctree-l4" href="#b5">B5 任务领取</a></li>
                 
                     <li><a class="toctree-l4" href="#b6">B6 提交任务完成申请</a></li>
@@ -641,6 +643,62 @@
 
 <blockquote>
 <p><code>id</code>为要刷新的任务id</p>
+</blockquote>
+<h2 id="b44">B4.4 商家审核任务</h2>
+<p>只有商家用户可调用。</p>
+<pre><code>PUT /api/user/quest/submit/{reqId}
+</code></pre>
+
+<blockquote>
+<p><code>reqId</code>: 任务提交申请的id号</p>
+</blockquote>
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>Y</td>
+<td>审核结果</td>
+</tr>
+<tr>
+<td>memo</td>
+<td>N</td>
+<td>备注</td>
+</tr>
+</tbody>
+</table>
+<p>其中，status参数取值如下：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>等待审核</td>
+</tr>
+<tr>
+<td>02</td>
+<td>商家审核不通过</td>
+</tr>
+<tr>
+<td>05</td>
+<td>商家通过</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>如果审核不通过，应当传入memo参数说明审核失败的原因。</p>
 </blockquote>
 <h2 id="b5">B5 任务领取</h2>
 <p>只有登陆状态下的学生用户才可以领取任务。</p>
