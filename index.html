@@ -70,6 +70,8 @@
             
                 <li class="toctree-l3"><a href="#_8">错误代码表</a></li>
                 
+                    <li><a class="toctree-l4" href="#_9">关于停机维护</a></li>
+                
             
             </ul>
         
@@ -175,7 +177,7 @@
 <p>王鸿飞(后端): brucewhf^gmail.com</p>
 <p>王富诚(前端): wangfucheng56^gmail.com</p>
 <blockquote>
-<p>最后更新时间: 2015-11-18</p>
+<p>最后更新时间: 2015-11-19</p>
 </blockquote>
 <h2 id="_2">接口测试地址</h2>
 <p><code>http://182.92.153.221/</code></p>
@@ -490,6 +492,8 @@ App-Token: WEFEIASIWEdfrilkzxcv
 </tbody>
 </table>
 <p>注： 客户端应<strong>首先验证HTTP状态码是否为5XX</strong>, 如果不是则按上面的错误代码表解析返回报文，如果是则忽略返回报文。</p>
+<h2 id="_9">关于停机维护</h2>
+<p><strong>客户端每收到一个HTTP响应，都应当判断是否存在名为<code>Server-Status</code>的请求头，如果存在则说明服务器正在维护暂时无法提供服务，并提示用户。</strong></p>
               
             </div>
           </div>
@@ -535,5 +539,5 @@ App-Token: WEFEIASIWEdfrilkzxcv
 
 <!--
 MkDocs version : 0.14.0
-Build Date UTC : 2015-11-18 16:04:37.581516
+Build Date UTC : 2015-11-19 12:25:29.477191
 -->
