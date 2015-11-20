@@ -129,6 +129,10 @@
                 
                     <li><a class="toctree-l4" href="#d14">D14 查询代审核列表</a></li>
                 
+                    <li><a class="toctree-l4" href="#d15">D15 查询所有订单</a></li>
+                
+                    <li><a class="toctree-l4" href="#d151-id">D15.1 根据id查询订单</a></li>
+                
             
             </ul>
         
@@ -796,6 +800,146 @@
 </tr>
 </tbody>
 </table>
+<h2 id="d15">D15 查询所有订单</h2>
+<pre><code>GET /api/manage/order/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 58,
+        &quot;cashAccId&quot;: 3,
+        &quot;memberId&quot;: 3,
+        &quot;title&quot;: &quot;钱包充值&quot;,
+        &quot;createdTime&quot;: &quot;2015-10-30 02:41:46&quot;,
+        &quot;updateTime&quot;: &quot;2015-10-30 02:41:46&quot;,
+        &quot;amount&quot;: 1, // 充值数量
+        &quot;type&quot;: &quot;00&quot;, // 见下面表格
+        &quot;status&quot;: &quot;00&quot;, // 见下面表格
+        &quot;payChan&quot;: 0, // 充值渠道. 0: 支付宝, 1:微信支付
+        &quot;alipayTradeNum&quot;: null,
+        &quot;memo&quot;: null
+      },
+      {
+        &quot;id&quot;: 57,
+        &quot;cashAccId&quot;: 1,
+        &quot;memberId&quot;: 1,
+        &quot;title&quot;: &quot;钱包充值&quot;,
+        &quot;createdTime&quot;: &quot;2015-10-30 02:24:20&quot;,
+        &quot;updateTime&quot;: &quot;2015-10-30 02:24:20&quot;,
+        &quot;amount&quot;: 1.1,
+        &quot;type&quot;: &quot;03&quot;,
+        &quot;status&quot;: &quot;03&quot;,
+        &quot;payChan&quot;: 0,
+        &quot;alipayTradeNum&quot;: null,
+        &quot;memo&quot;: null
+      },
+      {
+        &quot;id&quot;: 56,
+        &quot;cashAccId&quot;: 3,
+        &quot;memberId&quot;: 3,
+        &quot;title&quot;: &quot;钱包充值&quot;,
+        &quot;createdTime&quot;: &quot;2015-10-30 02:23:01&quot;,
+        &quot;updateTime&quot;: &quot;2015-10-30 02:23:01&quot;,
+        &quot;amount&quot;: 1,
+        &quot;type&quot;: &quot;00&quot;,
+        &quot;status&quot;: &quot;01&quot;,
+        &quot;payChan&quot;: 0,
+        &quot;alipayTradeNum&quot;: null,
+        &quot;memo&quot;: null
+      }
+    ],
+    &quot;resultCount&quot;: 3
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<p><code>type</code>字段：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>钱包充值订单</td>
+</tr>
+<tr>
+<td>01</td>
+<td>任务推荐订单</td>
+</tr>
+<tr>
+<td>02</td>
+<td>任务加标签订单</td>
+</tr>
+<tr>
+<td>03</td>
+<td>发布任务订单</td>
+</tr>
+</tbody>
+</table>
+<p><code>status</code>字段：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>等待支付</td>
+</tr>
+<tr>
+<td>01</td>
+<td>交易成功</td>
+</tr>
+<tr>
+<td>02</td>
+<td>支付失败</td>
+</tr>
+<tr>
+<td>03</td>
+<td>支付成功</td>
+</tr>
+</tbody>
+</table>
+<h2 id="d151-id">D15.1 根据id查询订单</h2>
+<pre><code>GET /api/manage/order/{id}
+</code></pre>
+
+<p>返回报文类似<code>D15</code>😬</p>
               
             </div>
           </div>

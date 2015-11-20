@@ -805,6 +805,116 @@ GET /api/user/quest/coupon/check
 | ---- | ---- | ---- |
 | code | Y    | 卡券编号 |
 
+
+
+## B9.3 商家查询已经创建的卡券信息
+
+只有商家可以调用。
+
+``` 
+GET /api/user/quest/coupon/emp/list
+```
+
+参数：
+
+| 参数名  | 必填   | 说明   |
+| ---- | ---- | ---- |
+| pn   | N    |      |
+| ps   |      |      |
+
+返回报文示例：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [ // list中的每一条记录表示一张卡券信息
+      {
+        // 卡券详细信息
+        "coupon": {
+          "id": 1,
+          "createdTime": "2015-10-27 03:07:40",
+          "empId": 1, // 创建卡券的用户id
+          "memId": 2, // 忽略
+          "questTitle": "title", // 卡券对应的任务的标题
+          "questId": 27, // 卡券对应的任务id
+          "title": "coupon", // 卡券标题
+          "description": "desp", // 卡券描述
+          "expiredTime": "2019-12-31 16:00:00",
+          "logoPath": "logo" // 卡券logo路径
+        },
+        "total": 1, // 卡券总数量
+        "left": 1 // 目前剩余数量
+      },
+      {
+        "coupon": {
+          "id": 21,
+          "createdTime": "2015-10-27 03:15:23",
+          "empId": 1,
+          "questTitle": "title",
+          "questId": 28,
+          "title": "coupon",
+          "description": "desp",
+          "expiredTime": "2019-12-31 16:00:00",
+          "logoPath": "logo"
+        },
+        "total": 10,
+        "left": 10
+      },
+      {
+        "coupon": {
+          "id": 41,
+          "createdTime": "2015-11-12 15:11:45",
+          "empId": 1,
+          "questTitle": "SHIT2",
+          "questId": 45,
+          "title": "couponTitle",
+          "description": "desp",
+          "expiredTime": "2020-10-09 16:00:00"
+        },
+        "total": 10,
+        "left": 10
+      },
+      {
+        "coupon": {
+          "id": 141,
+          "createdTime": "2015-11-13 14:20:26",
+          "empId": 1,
+          "questTitle": "SHIT2",
+          "questId": 46,
+          "title": "couponTitle",
+          "description": "desp",
+          "expiredTime": "2020-10-09 16:00:00"
+        },
+        "total": 4,
+        "left": 4
+      },
+      {
+        "coupon": {
+          "id": 241,
+          "createdTime": "2015-11-13 14:24:56",
+          "empId": 1,
+          "questTitle": "SHIT2",
+          "questId": 47,
+          "title": "couponTitle",
+          "description": "desp",
+          "expiredTime": "2020-10-09 16:00:00"
+        },
+        "total": 4,
+        "left": 3
+      }
+    ],
+    "resultCount": 5
+  },
+  "ok": true
+}
+```
+
+
+
+
+
 ## B10 查询指定任务的提交记录
 
 只有商家和ADMIN可以调用。

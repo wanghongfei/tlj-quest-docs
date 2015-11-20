@@ -115,6 +115,8 @@
                 
                     <li><a class="toctree-l4" href="#b92">B9.2 商家验证卡券</a></li>
                 
+                    <li><a class="toctree-l4" href="#b93">B9.3 商家查询已经创建的卡券信息</a></li>
+                
                     <li><a class="toctree-l4" href="#b10">B10 查询指定任务的提交记录</a></li>
                 
                     <li><a class="toctree-l4" href="#b11">B11 条件查询</a></li>
@@ -1283,6 +1285,120 @@
 </tr>
 </tbody>
 </table>
+<h2 id="b93">B9.3 商家查询已经创建的卡券信息</h2>
+<p>只有商家可以调用。</p>
+<pre><code>GET /api/user/quest/coupon/emp/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>返回报文示例：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [ // list中的每一条记录表示一张卡券信息
+      {
+        // 卡券详细信息
+        &quot;coupon&quot;: {
+          &quot;id&quot;: 1,
+          &quot;createdTime&quot;: &quot;2015-10-27 03:07:40&quot;,
+          &quot;empId&quot;: 1, // 创建卡券的用户id
+          &quot;memId&quot;: 2, // 忽略
+          &quot;questTitle&quot;: &quot;title&quot;, // 卡券对应的任务的标题
+          &quot;questId&quot;: 27, // 卡券对应的任务id
+          &quot;title&quot;: &quot;coupon&quot;, // 卡券标题
+          &quot;description&quot;: &quot;desp&quot;, // 卡券描述
+          &quot;expiredTime&quot;: &quot;2019-12-31 16:00:00&quot;,
+          &quot;logoPath&quot;: &quot;logo&quot; // 卡券logo路径
+        },
+        &quot;total&quot;: 1, // 卡券总数量
+        &quot;left&quot;: 1 // 目前剩余数量
+      },
+      {
+        &quot;coupon&quot;: {
+          &quot;id&quot;: 21,
+          &quot;createdTime&quot;: &quot;2015-10-27 03:15:23&quot;,
+          &quot;empId&quot;: 1,
+          &quot;questTitle&quot;: &quot;title&quot;,
+          &quot;questId&quot;: 28,
+          &quot;title&quot;: &quot;coupon&quot;,
+          &quot;description&quot;: &quot;desp&quot;,
+          &quot;expiredTime&quot;: &quot;2019-12-31 16:00:00&quot;,
+          &quot;logoPath&quot;: &quot;logo&quot;
+        },
+        &quot;total&quot;: 10,
+        &quot;left&quot;: 10
+      },
+      {
+        &quot;coupon&quot;: {
+          &quot;id&quot;: 41,
+          &quot;createdTime&quot;: &quot;2015-11-12 15:11:45&quot;,
+          &quot;empId&quot;: 1,
+          &quot;questTitle&quot;: &quot;SHIT2&quot;,
+          &quot;questId&quot;: 45,
+          &quot;title&quot;: &quot;couponTitle&quot;,
+          &quot;description&quot;: &quot;desp&quot;,
+          &quot;expiredTime&quot;: &quot;2020-10-09 16:00:00&quot;
+        },
+        &quot;total&quot;: 10,
+        &quot;left&quot;: 10
+      },
+      {
+        &quot;coupon&quot;: {
+          &quot;id&quot;: 141,
+          &quot;createdTime&quot;: &quot;2015-11-13 14:20:26&quot;,
+          &quot;empId&quot;: 1,
+          &quot;questTitle&quot;: &quot;SHIT2&quot;,
+          &quot;questId&quot;: 46,
+          &quot;title&quot;: &quot;couponTitle&quot;,
+          &quot;description&quot;: &quot;desp&quot;,
+          &quot;expiredTime&quot;: &quot;2020-10-09 16:00:00&quot;
+        },
+        &quot;total&quot;: 4,
+        &quot;left&quot;: 4
+      },
+      {
+        &quot;coupon&quot;: {
+          &quot;id&quot;: 241,
+          &quot;createdTime&quot;: &quot;2015-11-13 14:24:56&quot;,
+          &quot;empId&quot;: 1,
+          &quot;questTitle&quot;: &quot;SHIT2&quot;,
+          &quot;questId&quot;: 47,
+          &quot;title&quot;: &quot;couponTitle&quot;,
+          &quot;description&quot;: &quot;desp&quot;,
+          &quot;expiredTime&quot;: &quot;2020-10-09 16:00:00&quot;
+        },
+        &quot;total&quot;: 4,
+        &quot;left&quot;: 3
+      }
+    ],
+    &quot;resultCount&quot;: 5
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
 <h2 id="b10">B10 查询指定任务的提交记录</h2>
 <p>只有商家和ADMIN可以调用。</p>
 <pre><code>GET /api/user/quest/submit/{questId}/list
