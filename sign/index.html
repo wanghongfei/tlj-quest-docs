@@ -98,6 +98,8 @@
             
                 <li class="toctree-l3"><a href="#e2-url">E2 更新二手帖子图片URL</a></li>
                 
+                    <li><a class="toctree-l4" href="#e3-7token">E3 生成7牛上传token</a></li>
+                
             
             </ul>
         
@@ -171,7 +173,7 @@
 <p>S4: 上传成功后，浏览器调用<code>更新二手帖子图片URL</code>接口。</p>
 <h1 id="e1">E1 生成又拍上传凭证</h1>
 <p>调用此接口需要登陆。</p>
-<p>同一用户最小调用间隔时间为<code>2s</code>。</p>
+<p>同一用户最小调用间隔时间为<code>1s</code>。</p>
 <pre><code>GET /api/user/sign
 </code></pre>
 
@@ -285,6 +287,23 @@
 </code></pre>
 
 <p>表示该帖子有3张图片。</p>
+<h2 id="e3-7token">E3 生成7牛上传token</h2>
+<p>调用此接口需要登陆。</p>
+<p>同一用户最小调用间隔时间为<code>1s</code>。</p>
+<pre><code>GET /api/user/sign/n
+</code></pre>
+
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;sign&quot;: &quot;jiCcIJ426S8uHSN4fqL5OGjEmqSdENWTnk4Ze8I6:xKTc1kWT4IyofIEBANgbfVoPt94=:eyJzY29wZSI6InRhb2xpamllOi8yMDE1LzExLzIyLzI4MGNhMTI5YTJhYjkwNGZhZmM3ZGI0ZTRhMDI0MjBmIiwiZGVhZGxpbmUiOjE0NDgyMDUwNDF9&quot;, // 对应token参数
+    &quot;saveKey&quot;: &quot;/2015/11/22/280ca129a2ab904fafc7db4e4a02420f&quot; // 对应key参数
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
               
             </div>
           </div>

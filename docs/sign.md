@@ -12,7 +12,7 @@ S4: 上传成功后，浏览器调用`更新二手帖子图片URL`接口。
 
 调用此接口需要登陆。
 
-同一用户最小调用间隔时间为`2s`。
+同一用户最小调用间隔时间为`1s`。
 
 ``` 
 GET /api/user/sign
@@ -83,3 +83,30 @@ PUT /api/u/{shId}/pic
 ```
 
 表示该帖子有3张图片。
+
+
+
+## E3 生成7牛上传token
+
+调用此接口需要登陆。
+
+同一用户最小调用间隔时间为`1s`。
+
+``` 
+GET /api/user/sign/n
+```
+
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "sign": "jiCcIJ426S8uHSN4fqL5OGjEmqSdENWTnk4Ze8I6:xKTc1kWT4IyofIEBANgbfVoPt94=:eyJzY29wZSI6InRhb2xpamllOi8yMDE1LzExLzIyLzI4MGNhMTI5YTJhYjkwNGZhZmM3ZGI0ZTRhMDI0MjBmIiwiZGVhZGxpbmUiOjE0NDgyMDUwNDF9", // 对应token参数
+    "saveKey": "/2015/11/22/280ca129a2ab904fafc7db4e4a02420f" // 对应key参数
+  },
+  "ok": true
+}
+```
+
