@@ -122,6 +122,8 @@
                 
                     <li><a class="toctree-l4" href="#c15">C15 查询密保问题</a></li>
                 
+                    <li><a class="toctree-l4" href="#c16">C16 查询认证信息</a></li>
+                
             
             </ul>
         
@@ -848,6 +850,24 @@
     &quot;memberId&quot;: 3,
     &quot;accId&quot;: 3,
     &quot;content&quot;: &quot;content&quot; // 密保问题
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="c16">C16 查询认证信息</h2>
+<p>查询当前用户的认证信息，需要登陆。</p>
+<pre><code>GET /api/user/certi/status
+</code></pre>
+
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;idCerti&quot;: &quot;00&quot;, // 个人认证状态
+    &quot;empCerti&quot;: &quot;00&quot;, // 商家认证状态
+    &quot;stuCerti&quot;: &quot;02&quot; // 学生认证状态
   },
   &quot;ok&quot;: true
 }

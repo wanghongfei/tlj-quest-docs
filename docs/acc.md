@@ -444,3 +444,29 @@ GET /api/user/acc/question
   "ok": true
 }
 ```
+
+
+
+## C16 查询认证信息
+
+查询当前用户的认证信息，需要登陆。
+
+``` 
+GET /api/user/certi/status
+```
+
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "idCerti": "00", // 个人认证状态
+    "empCerti": "00", // 商家认证状态
+    "stuCerti": "02" // 学生认证状态
+  },
+  "ok": true
+}
+```
+
