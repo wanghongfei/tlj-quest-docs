@@ -466,18 +466,18 @@
 </tr>
 <tr>
 <td>collegeIds</td>
-<td>Y</td>
-<td>任务对象：大学. 以<code>;</code>隔的id字符串，如<code>1;2;3</code></td>
+<td>(Y)</td>
+<td>任务对象，仅当<code>all</code>数为<code>0</code>需要填写：大学. 以<code>;</code>隔的id字符串，如<code>1;2;3</code></td>
 </tr>
 <tr>
 <td>cityIds</td>
-<td>Y</td>
-<td>任务对象：城市. 同上</td>
+<td>(Y)</td>
+<td>任务对象,仅当<code>all</code>数为<code>0</code>需要填写：城市. 同上</td>
 </tr>
 <tr>
 <td>proIds</td>
-<td>Y</td>
-<td>任务对象：省. 同上</td>
+<td>(Y)</td>
+<td>任务对象,仅当<code>all</code>数为<code>0</code>需要填写：省. 同上</td>
 </tr>
 <tr>
 <td>couponTitle</td>
@@ -508,6 +508,11 @@
 <td>save</td>
 <td>N</td>
 <td><code>0</code> 直接发布. <code>1</code> 保存但不发布(一样扣钱). 默认为<code>0</code></td>
+</tr>
+<tr>
+<td>all</td>
+<td>N</td>
+<td>任务对象是否为所有人. <code>0</code> 默认值,不是所有人, <code>1</code> 所有人</td>
 </tr>
 </tbody>
 </table>

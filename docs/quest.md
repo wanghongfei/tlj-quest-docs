@@ -122,30 +122,31 @@ POST /api/user/quest
 
 参数：
 
-| 参数名          | 必填   | 说明                                     |
-| ------------ | ---- | -------------------------------------- |
-| title        | Y    | 任务标题                                   |
-| questCateId  | Y    | 任务分类的id                                |
-| startTime    | Y    | 任务开始时间                                 |
-| endTime      | Y    | 任务结束时间                                 |
-| totalAmt     | Y    | 任务总数量                                  |
-| award        | Y    | 单个任务的赏金                                |
-| contactName  | Y    | 联系人姓名                                  |
-| contactPhone | Y    | 联系人手机号                                 |
-| description  | Y    | 任务简述(100字以内)                           |
-| questDetail  | Y    | 任务详细描述(1000字以内)                        |
-| url          | N    | 任务链接                                   |
-| memo         | N    | 任务备注                                   |
-| orderId      | N    | 订单号。**如果填写此参数则不从钱包中扣钱, 而是验证对应的订单是否正确** |
-| collegeIds   | Y    | 任务对象：大学. 以`;`分隔的id字符串，如`1;2;3`         |
-| cityIds      | Y    | 任务对象：城市. 同上                            |
-| proIds       | Y    | 任务对象：省. 同上                             |
-| couponTitle  | (N)  | 卡券名                                    |
-| couponDesp   | (N)  | 卡券使用规则                                 |
-| expiredTime  | (N)  | 卡券过期时间, yyyy-mm-dd                     |
-| logo         | N    | 卡券店铺logo在又拍的路径                         |
-| couponAmt    | (N)  | 卡券数量                                   |
-| save         | N    | `0`: 直接发布. `1`: 保存但不发布(一样扣钱). 默认为`0`   |
+| 参数名          | 必填   | 说明                                       |
+| ------------ | ---- | ---------------------------------------- |
+| title        | Y    | 任务标题                                     |
+| questCateId  | Y    | 任务分类的id                                  |
+| startTime    | Y    | 任务开始时间                                   |
+| endTime      | Y    | 任务结束时间                                   |
+| totalAmt     | Y    | 任务总数量                                    |
+| award        | Y    | 单个任务的赏金                                  |
+| contactName  | Y    | 联系人姓名                                    |
+| contactPhone | Y    | 联系人手机号                                   |
+| description  | Y    | 任务简述(100字以内)                             |
+| questDetail  | Y    | 任务详细描述(1000字以内)                          |
+| url          | N    | 任务链接                                     |
+| memo         | N    | 任务备注                                     |
+| orderId      | N    | 订单号。**如果填写此参数则不从钱包中扣钱, 而是验证对应的订单是否正确**   |
+| collegeIds   | (Y)  | 任务对象，仅当`all`参数为`0`时需要填写：大学. 以`;`分隔的id字符串，如`1;2;3` |
+| cityIds      | (Y)  | 任务对象,仅当`all`参数为`0`时需要填写：城市. 同上           |
+| proIds       | (Y)  | 任务对象,仅当`all`参数为`0`时需要填写：省. 同上            |
+| couponTitle  | (N)  | 卡券名                                      |
+| couponDesp   | (N)  | 卡券使用规则                                   |
+| expiredTime  | (N)  | 卡券过期时间, yyyy-mm-dd                       |
+| logo         | N    | 卡券店铺logo在又拍的路径                           |
+| couponAmt    | (N)  | 卡券数量                                     |
+| save         | N    | `0`: 直接发布. `1`: 保存但不发布(一样扣钱). 默认为`0`     |
+| all          | N    | 任务对象是否为所有人. `0`: 默认值,不是所有人, `1`: 所有人     |
 
 接口调用后，服务器会自动计算总任务赏金，并从发布者的现金账户中扣除可用余额。
 
@@ -804,8 +805,6 @@ GET /api/user/quest/coupon/check
 | 参数名  | 必填   | 说明   |
 | ---- | ---- | ---- |
 | code | Y    | 卡券编号 |
-
-
 
 ## B9.3 商家查询已经创建的卡券信息
 
