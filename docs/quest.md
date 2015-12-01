@@ -322,6 +322,8 @@ PUT /api/user/quest/submit/{reqId}
 
 需要先完成个人身份认证。
 
+单个用户接口调用最小间隔为`10s`
+
 ``` 
 POST /api/user/offquest
 ```
@@ -341,6 +343,39 @@ POST /api/user/offquest
 | rid   | Y    | 任务所在区                                  |
 | la    | Y    | 纬度. 如: `37.20`                         |
 | lo    | Y    | 经度. 如: `122.18`                        |
+
+
+
+## B4.6 上(下)架线下任务
+
+需要登陆。
+
+``` 
+PUT api/user/offquest/offline
+```
+
+参数：
+
+| 参数名  | 必填   | 说明                           |
+| ---- | ---- | ---------------------------- |
+| q    | Y    | 任务id                         |
+| off  | N    | 是否下线. `1`: 下线(默认值 ), `0`: 上线 |
+
+## B4.7 刷新线下任务
+
+需要登陆。
+
+``` 
+PUT /api/user/offquest/f
+```
+
+参数：
+
+| 参数名  | 必填   | 说明   |
+| ---- | ---- | ---- |
+| q    | Y    | 任务id |
+
+
 
 ## B5 任务领取
 
@@ -647,6 +682,67 @@ GET /api/user/quest/question/result
 ```
 
 
+
+## B7.4 查询当前用户发布的线下任务
+
+需要登陆。
+
+``` 
+GET /api/user/offquest/list
+```
+
+参数：
+
+| 参数名  | 必填   | 说明   |
+| ---- | ---- | ---- |
+| pn   | N    |      |
+| ps   |      |      |
+
+对于请求
+
+``` 
+GET /api/user/offquest/list?ps=1
+```
+
+返回报文为：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "id": 13,
+        "memId": 2,
+        "username": "wanghongfei", // 发布者用户名
+        "title": "title", // 线下任务标题
+        "cateId": 1, // 任务分类id
+        "cateName": "off_cate", // 任务分类名称
+        "award": 10.5, // 赏金
+        "createdTime": "2015-12-01 14:24:58", // 发布时间
+        "workTime": "2020-02-02 02:10:20", // 任务执行时间
+        "workPlace": "work place", // 工作地点
+        "description": "description", // 工作详情
+        "contactPhone": "18518369058", // 联系电话
+        "status": "00",
+        "provinceId": 1, // 工作所在省id
+        "cityId": 1, // 工作所在城市id
+        "regionId": 1 // 工作所在区域id
+      }
+    ],
+    "resultCount": 9
+  },
+  "ok": true
+}
+```
+
+`status`取值如下：
+
+| 取值   | 含意   |
+| ---- | ---- |
+| 00   | 已发布  |
+| 02   | 已下线  |
 
 
 
@@ -1173,6 +1269,57 @@ GET /api/quest/{questId}
 ```
 
 
+
+## B12.1 查询附近的线下任务
+
+不需要登陆。
+
+``` 
+GET /api/offquest/near
+```
+
+参数：
+
+| 参数名  | 必填   | 说明               |
+| ---- | ---- | ---------------- |
+| lo   | Y    | 当前经度, 如`120.234` |
+| la   | Y    | 当前纬度, 如`25.12`   |
+| ps   | N    | 一页显示的记录数，默认为8条   |
+
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "id": 6,
+        "memId": 2,
+        "username": "wanghongfei", // 任务发布者用户名
+        "title": "title",
+        "cateId": 1,
+        "cateName": "off_cate", // 任务分类名
+        "award": 10.5,
+        "createdTime": "2015-12-01 10:52:40", // 任务发布时间(不要显示)
+        "workTime": "2020-02-02 02:10:20",
+        "workPlace": "work place",
+        "description": "description",
+        "contactPhone": "18518369058",
+        "status": "00",
+        "provinceId": 1,
+        "cityId": 1,
+        "regionId": 1,
+        "flushTime": null, // 任务最近一次刷新的时间(总是给客户显示这个时间)
+        "distance": 69 // 该任务距离当前位置的距离，单位: 米
+      }
+    ],
+    "resultCount": 1 // 忽略该值
+  },
+  "ok": true
+}
+```
 
 
 

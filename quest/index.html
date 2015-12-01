@@ -92,6 +92,10 @@
                 
                     <li><a class="toctree-l4" href="#b45">B4.5 发布线下任务</a></li>
                 
+                    <li><a class="toctree-l4" href="#b46">B4.6 上(下)架线下任务</a></li>
+                
+                    <li><a class="toctree-l4" href="#b47">B4.7 刷新线下任务</a></li>
+                
                     <li><a class="toctree-l4" href="#b5">B5 任务领取</a></li>
                 
                     <li><a class="toctree-l4" href="#b6">B6 提交任务完成申请</a></li>
@@ -109,6 +113,8 @@
                 
                     <li><a class="toctree-l4" href="#b73">B7.3 查询答题统计数据</a></li>
                 
+                    <li><a class="toctree-l4" href="#b74">B7.4 查询当前用户发布的线下任务</a></li>
+                
                     <li><a class="toctree-l4" href="#b8">B8 查询任务领取记录</a></li>
                 
                     <li><a class="toctree-l4" href="#b9">B9 查询任务提交记录</a></li>
@@ -124,6 +130,8 @@
                     <li><a class="toctree-l4" href="#b11">B11 条件查询</a></li>
                 
                     <li><a class="toctree-l4" href="#b12-id">B12 根据id查询任务</a></li>
+                
+                    <li><a class="toctree-l4" href="#b121">B12.1 查询附近的线下任务</a></li>
                 
             
                 <li class="toctree-l3"><a href="#taolijie">Taolijie代审核</a></li>
@@ -711,6 +719,7 @@
 </blockquote>
 <h2 id="b45">B4.5 发布线下任务</h2>
 <p>需要先完成个人身份认证。</p>
+<p>单个用户接口调用最小间隔为<code>10s</code></p>
 <pre><code>POST /api/user/offquest
 </code></pre>
 
@@ -778,6 +787,55 @@
 <td>lo</td>
 <td>Y</td>
 <td>经度. 如: <code>122.18</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="b46">B4.6 上(下)架线下任务</h2>
+<p>需要登陆。</p>
+<pre><code>PUT api/user/offquest/offline
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>q</td>
+<td>Y</td>
+<td>任务id</td>
+</tr>
+<tr>
+<td>off</td>
+<td>N</td>
+<td>是否下线. <code>1</code> 下线(默认值 ), <code>0</code> 上线</td>
+</tr>
+</tbody>
+</table>
+<h2 id="b47">B4.7 刷新线下任务</h2>
+<p>需要登陆。</p>
+<pre><code>PUT /api/user/offquest/f
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>q</td>
+<td>Y</td>
+<td>任务id</td>
 </tr>
 </tbody>
 </table>
@@ -1134,6 +1192,87 @@
 }
 </code></pre>
 
+<h2 id="b74">B7.4 查询当前用户发布的线下任务</h2>
+<p>需要登陆。</p>
+<pre><code>GET /api/user/offquest/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>对于请求</p>
+<pre><code>GET /api/user/offquest/list?ps=1
+</code></pre>
+
+<p>返回报文为：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 13,
+        &quot;memId&quot;: 2,
+        &quot;username&quot;: &quot;wanghongfei&quot;, // 发布者用户名
+        &quot;title&quot;: &quot;title&quot;, // 线下任务标题
+        &quot;cateId&quot;: 1, // 任务分类id
+        &quot;cateName&quot;: &quot;off_cate&quot;, // 任务分类名称
+        &quot;award&quot;: 10.5, // 赏金
+        &quot;createdTime&quot;: &quot;2015-12-01 14:24:58&quot;, // 发布时间
+        &quot;workTime&quot;: &quot;2020-02-02 02:10:20&quot;, // 任务执行时间
+        &quot;workPlace&quot;: &quot;work place&quot;, // 工作地点
+        &quot;description&quot;: &quot;description&quot;, // 工作详情
+        &quot;contactPhone&quot;: &quot;18518369058&quot;, // 联系电话
+        &quot;status&quot;: &quot;00&quot;,
+        &quot;provinceId&quot;: 1, // 工作所在省id
+        &quot;cityId&quot;: 1, // 工作所在城市id
+        &quot;regionId&quot;: 1 // 工作所在区域id
+      }
+    ],
+    &quot;resultCount&quot;: 9
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<p><code>status</code>取值如下：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>已发布</td>
+</tr>
+<tr>
+<td>02</td>
+<td>已下线</td>
+</tr>
+</tbody>
+</table>
 <h2 id="b8">B8 查询任务领取记录</h2>
 <p>需要学生用户登陆。</p>
 <pre><code>GET /api/user/quest/assign/list
@@ -1810,6 +1949,71 @@
         &quot;provinceName&quot;: &quot;山东&quot;
       }
     ] 
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="b121">B12.1 查询附近的线下任务</h2>
+<p>不需要登陆。</p>
+<pre><code>GET /api/offquest/near
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lo</td>
+<td>Y</td>
+<td>当前经度, 如<code>120.234</code></td>
+</tr>
+<tr>
+<td>la</td>
+<td>Y</td>
+<td>当前纬度, 如<code>25.12</code></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td>一页显示的记录数，默认为8条</td>
+</tr>
+</tbody>
+</table>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;id&quot;: 6,
+        &quot;memId&quot;: 2,
+        &quot;username&quot;: &quot;wanghongfei&quot;, // 任务发布者用户名
+        &quot;title&quot;: &quot;title&quot;,
+        &quot;cateId&quot;: 1,
+        &quot;cateName&quot;: &quot;off_cate&quot;, // 任务分类名
+        &quot;award&quot;: 10.5,
+        &quot;createdTime&quot;: &quot;2015-12-01 10:52:40&quot;, // 任务发布时间(不要显示)
+        &quot;workTime&quot;: &quot;2020-02-02 02:10:20&quot;,
+        &quot;workPlace&quot;: &quot;work place&quot;,
+        &quot;description&quot;: &quot;description&quot;,
+        &quot;contactPhone&quot;: &quot;18518369058&quot;,
+        &quot;status&quot;: &quot;00&quot;,
+        &quot;provinceId&quot;: 1,
+        &quot;cityId&quot;: 1,
+        &quot;regionId&quot;: 1,
+        &quot;flushTime&quot;: null, // 任务最近一次刷新的时间(总是给客户显示这个时间)
+        &quot;distance&quot;: 69 // 该任务距离当前位置的距离，单位: 米
+      }
+    ],
+    &quot;resultCount&quot;: 1 // 忽略该值
   },
   &quot;ok&quot;: true
 }
