@@ -90,6 +90,8 @@
                 
                     <li><a class="toctree-l4" href="#b44">B4.4 商家审核任务</a></li>
                 
+                    <li><a class="toctree-l4" href="#b45">B4.5 发布线下任务</a></li>
+                
                     <li><a class="toctree-l4" href="#b5">B5 任务领取</a></li>
                 
                     <li><a class="toctree-l4" href="#b6">B6 提交任务完成申请</a></li>
@@ -707,6 +709,78 @@
 <blockquote>
 <p>如果审核不通过，应当传入memo参数说明审核失败的原因。</p>
 </blockquote>
+<h2 id="b45">B4.5 发布线下任务</h2>
+<p>需要先完成个人身份认证。</p>
+<pre><code>POST /api/user/offquest
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>Y</td>
+<td>任务标题(45字内)</td>
+</tr>
+<tr>
+<td>cate</td>
+<td>Y</td>
+<td>任务分类id</td>
+</tr>
+<tr>
+<td>award</td>
+<td>Y</td>
+<td>任务赏金( &gt; 0 )</td>
+</tr>
+<tr>
+<td>wt</td>
+<td>Y</td>
+<td>任务执行的时间(2020-12-12 10:10:10)，必须填写未来的时间</td>
+</tr>
+<tr>
+<td>wp</td>
+<td>Y</td>
+<td>任务执行的地点</td>
+</tr>
+<tr>
+<td>desp</td>
+<td>Y</td>
+<td>任务要求，描述，说明</td>
+</tr>
+<tr>
+<td>proid</td>
+<td>Y</td>
+<td>任务所在省</td>
+</tr>
+<tr>
+<td>cid</td>
+<td>Y</td>
+<td>任务所在市</td>
+</tr>
+<tr>
+<td>rid</td>
+<td>Y</td>
+<td>任务所在区</td>
+</tr>
+<tr>
+<td>la</td>
+<td>Y</td>
+<td>纬度. 如: <code>37.20</code></td>
+</tr>
+<tr>
+<td>lo</td>
+<td>Y</td>
+<td>经度. 如: <code>122.18</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="b5">B5 任务领取</h2>
 <p>只有登陆状态下的学生用户才可以领取任务。</p>
 <pre><code>POST /api/user/quest/assign/{questId}
