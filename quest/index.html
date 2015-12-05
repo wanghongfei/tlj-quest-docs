@@ -133,6 +133,8 @@
                 
                     <li><a class="toctree-l4" href="#b121">B12.1 查询附近的线下任务</a></li>
                 
+                    <li><a class="toctree-l4" href="#b122">B12.2 根据区域查询线下任务</a></li>
+                
             
                 <li class="toctree-l3"><a href="#taolijie">Taolijie代审核</a></li>
                 
@@ -2019,6 +2021,39 @@
 }
 </code></pre>
 
+<h2 id="b122">B12.2 根据区域查询线下任务</h2>
+<p>不需要登陆。</p>
+<pre><code>GET /api/offquest/region
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rid</td>
+<td>Y</td>
+<td>区域id</td>
+</tr>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>返回结果同<code>B12.1</code></p>
 <h1 id="taolijie">Taolijie代审核</h1>
 <h2 id="b13">B13 计算桃李街代审核费用</h2>
 <p>商家可以申请桃李街代审核任务完成申请。</p>
