@@ -457,16 +457,45 @@ GET /api/user/certi/status
 
 返回报文：
 
+返回数据包括所有认证信息（个人认证、商家认证和学生认证），如果某个认证的认证状态为"已通过"，则会带有对应详细认证信息，如果未通过，则不带有详细认证信息。
+
 ``` json
 {
   "message": "success",
   "code": 0,
   "data": {
-    "idCerti": "00", // 个人认证状态
-    "empCerti": "00", // 商家认证状态
-    "stuCerti": "02" // 学生认证状态
+    "idCerti": "02",
+    "idInfo": {
+      "id": 2,
+      "name": "whf",
+      "memId": 1,
+      "username": "18518369058",
+      "status": "02",
+      "idNum": "123123123143",
+      "createdTime": "2015-11-16 09:14:56",
+      "updateTime": "2015-11-16 09:29:43",
+      "picIds": "1;2",
+      "memo": null
+    },
+    "empCerti": "02",
+    "empInfo": {
+      "id": 7,
+      "companyName": "comp",
+      "compPhone": "12557789565",
+      "memberId": 1,
+      "username": "18518369058",
+      "contactName": null,
+      "industryId": 1,
+      "memo": null,
+      "address": "addr",
+      "picIds": "1;2",
+      "status": "02",
+      "createdTime": "2015-11-16 08:25:23",
+      "updateTime": "2015-11-16 08:25:23"
+    },
+    "stuCerti": "00",
+    "stuInfo": null
   },
   "ok": true
 }
 ```
-

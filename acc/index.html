@@ -861,13 +861,42 @@
 </code></pre>
 
 <p>返回报文：</p>
+<p>返回数据包括所有认证信息（个人认证、商家认证和学生认证），如果某个认证的认证状态为"已通过"，则会带有对应详细认证信息，如果未通过，则不带有详细认证信息。</p>
 <pre><code class="json">{
   &quot;message&quot;: &quot;success&quot;,
   &quot;code&quot;: 0,
   &quot;data&quot;: {
-    &quot;idCerti&quot;: &quot;00&quot;, // 个人认证状态
-    &quot;empCerti&quot;: &quot;00&quot;, // 商家认证状态
-    &quot;stuCerti&quot;: &quot;02&quot; // 学生认证状态
+    &quot;idCerti&quot;: &quot;02&quot;,
+    &quot;idInfo&quot;: {
+      &quot;id&quot;: 2,
+      &quot;name&quot;: &quot;whf&quot;,
+      &quot;memId&quot;: 1,
+      &quot;username&quot;: &quot;18518369058&quot;,
+      &quot;status&quot;: &quot;02&quot;,
+      &quot;idNum&quot;: &quot;123123123143&quot;,
+      &quot;createdTime&quot;: &quot;2015-11-16 09:14:56&quot;,
+      &quot;updateTime&quot;: &quot;2015-11-16 09:29:43&quot;,
+      &quot;picIds&quot;: &quot;1;2&quot;,
+      &quot;memo&quot;: null
+    },
+    &quot;empCerti&quot;: &quot;02&quot;,
+    &quot;empInfo&quot;: {
+      &quot;id&quot;: 7,
+      &quot;companyName&quot;: &quot;comp&quot;,
+      &quot;compPhone&quot;: &quot;12557789565&quot;,
+      &quot;memberId&quot;: 1,
+      &quot;username&quot;: &quot;18518369058&quot;,
+      &quot;contactName&quot;: null,
+      &quot;industryId&quot;: 1,
+      &quot;memo&quot;: null,
+      &quot;address&quot;: &quot;addr&quot;,
+      &quot;picIds&quot;: &quot;1;2&quot;,
+      &quot;status&quot;: &quot;02&quot;,
+      &quot;createdTime&quot;: &quot;2015-11-16 08:25:23&quot;,
+      &quot;updateTime&quot;: &quot;2015-11-16 08:25:23&quot;
+    },
+    &quot;stuCerti&quot;: &quot;00&quot;,
+    &quot;stuInfo&quot;: null
   },
   &quot;ok&quot;: true
 }

@@ -480,6 +480,7 @@ GET /api/user/quest/publish/list
         "questDetail": "task", // 任务详细
         "url": null, // 任务链接地址
         "memo": null,
+        "empStatus": 1, // 状态. 0:未发布 1:审核中 2:审核失败 3:审核通过
         "offline": false, // 是否已经下线
         "provinceId": 1, // 任务对象：省id
         "cityId": 1, // 任务对象：城市id

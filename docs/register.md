@@ -26,6 +26,25 @@ POST /register
 | nickname   | Y    | 昵称                         |
 | isEmployer | Y    | 传递true表示开通商家账户，false开通学生账户 |
 
+## A1.1 完善企业信息
+
+商家用户在完成注册后调用该接口完善企业资料。
+
+需要登陆。
+
+``` 
+PUT /api/user/emp
+```
+
+参数：
+
+| 参数名      | 必填   | 说明          |
+| -------- | ---- | ----------- |
+| compName | Y    | 公司名(60字以内)  |
+| compAddr | Y    | 公司地址(60字以内) |
+
+
+
 ## A2: 请求短信验证码(App使用)
 
 该接口会向目标手机号发送一条短信验证码。
@@ -129,3 +148,42 @@ POST /api/user/acc/bind/wechat
 | 参数名    | 必填   | 说明     |
 | ------ | ---- | ------ |
 | openId | Y    | openid |
+
+## A6 查询用户资料
+
+``` 
+GET /api/user/{id}
+```
+
+> `id`: 用户id
+
+返回数据：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "id": 2,
+    "username": "wanghongfei",
+    "regType": 0,
+    "name": "wang",
+    "idCerti": "02",
+    "stuCerti": "02",
+    "empCerti": "00",
+    "createdTime": "2015-10-14 16:00:00",
+    "valid": true,
+    "complaint": 0,
+    "wechatToken": "1234",
+    "credits": 0,
+    "roleList": [
+      {
+        "rid": 2,
+        "rolename": "STUDENT",
+        "memo": "学生"
+      }
+    ]
+  },
+  "ok": true
+}
+```

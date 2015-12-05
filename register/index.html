@@ -66,6 +66,8 @@
                 
                     <li><a class="toctree-l4" href="#a1-app">A1: App注册</a></li>
                 
+                    <li><a class="toctree-l4" href="#a11">A1.1 完善企业信息</a></li>
+                
                     <li><a class="toctree-l4" href="#a2-app">A2: 请求短信验证码(App使用)</a></li>
                 
             
@@ -76,6 +78,8 @@
                     <li><a class="toctree-l4" href="#a4">A4 通过手机找回密码</a></li>
                 
                     <li><a class="toctree-l4" href="#a5-openid">A5 绑定微信openid</a></li>
+                
+                    <li><a class="toctree-l4" href="#a6">A6 查询用户资料</a></li>
                 
             
             </ul>
@@ -233,6 +237,34 @@
 </tr>
 </tbody>
 </table>
+<h2 id="a11">A1.1 完善企业信息</h2>
+<p>商家用户在完成注册后调用该接口完善企业资料。</p>
+<p>需要登陆。</p>
+<pre><code>PUT /api/user/emp
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compName</td>
+<td>Y</td>
+<td>公司名(60字以内)</td>
+</tr>
+<tr>
+<td>compAddr</td>
+<td>Y</td>
+<td>公司地址(60字以内)</td>
+</tr>
+</tbody>
+</table>
 <h2 id="a2-app">A2: 请求短信验证码(App使用)</h2>
 <p>该接口会向目标手机号发送一条短信验证码。</p>
 <pre><code>GET /register/sms
@@ -384,6 +416,41 @@
 </tr>
 </tbody>
 </table>
+<h2 id="a6">A6 查询用户资料</h2>
+<pre><code>GET /api/user/{id}
+</code></pre>
+
+<blockquote>
+<p><code>id</code>: 用户id</p>
+</blockquote>
+<p>返回数据：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;id&quot;: 2,
+    &quot;username&quot;: &quot;wanghongfei&quot;,
+    &quot;regType&quot;: 0,
+    &quot;name&quot;: &quot;wang&quot;,
+    &quot;idCerti&quot;: &quot;02&quot;,
+    &quot;stuCerti&quot;: &quot;02&quot;,
+    &quot;empCerti&quot;: &quot;00&quot;,
+    &quot;createdTime&quot;: &quot;2015-10-14 16:00:00&quot;,
+    &quot;valid&quot;: true,
+    &quot;complaint&quot;: 0,
+    &quot;wechatToken&quot;: &quot;1234&quot;,
+    &quot;credits&quot;: 0,
+    &quot;roleList&quot;: [
+      {
+        &quot;rid&quot;: 2,
+        &quot;rolename&quot;: &quot;STUDENT&quot;,
+        &quot;memo&quot;: &quot;学生&quot;
+      }
+    ]
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
               
             </div>
           </div>
