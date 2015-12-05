@@ -1022,6 +1022,16 @@ GET /api/user/quest/coupon/emp/list
 
 
 
+## 9.4 根据id查询卡券
+
+需要登陆，只能查询自己领取的卡券。
+
+``` 
+GET /api/user/quest/coupon/{id}
+```
+
+> `id`: 卡券id号
+
 
 
 ## B10 查询指定任务的提交记录
@@ -1334,6 +1344,50 @@ GET /api/offquest/region
 | ps   | N    |      |
 
 返回结果同`B12.1`
+
+
+
+## B12.3 根据id查询线下任务
+
+不需要登陆。
+
+``` 
+GET /api/offquest/{id}
+```
+
+> `id`: 线下任务id号
+
+返回报文：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "id": 19,
+    "memId": 2,
+    "username": "wanghongfei",
+    "title": "title",
+    "cateId": 1,
+    "cateName": "off_cate",
+    "award": 10.5,
+    "createdTime": "2015-12-02 06:47:13",
+    "workTime": "2020-02-02 02:10:20",
+    "workPlace": "work place",
+    "description": "description",
+    "contactPhone": "185XXXX9058",
+    "status": "00",
+    "provinceId": 1,
+    "cityId": 1,
+    "regionId": 1,
+    "flushTime": "2015-12-02 06:47:13",
+    "distance": null
+  },
+  "ok": true
+}
+```
+
+
 
 # Taolijie代审核
 

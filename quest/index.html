@@ -125,6 +125,8 @@
                 
                     <li><a class="toctree-l4" href="#b93">B9.3 商家查询已经创建的卡券信息</a></li>
                 
+                    <li><a class="toctree-l4" href="#94-id">9.4 根据id查询卡券</a></li>
+                
                     <li><a class="toctree-l4" href="#b10">B10 查询指定任务的提交记录</a></li>
                 
                     <li><a class="toctree-l4" href="#b11">B11 条件查询</a></li>
@@ -134,6 +136,8 @@
                     <li><a class="toctree-l4" href="#b121">B12.1 查询附近的线下任务</a></li>
                 
                     <li><a class="toctree-l4" href="#b122">B12.2 根据区域查询线下任务</a></li>
+                
+                    <li><a class="toctree-l4" href="#b123-id">B12.3 根据id查询线下任务</a></li>
                 
             
                 <li class="toctree-l3"><a href="#taolijie">Taolijie代审核</a></li>
@@ -1619,6 +1623,14 @@
 }
 </code></pre>
 
+<h2 id="94-id">9.4 根据id查询卡券</h2>
+<p>需要登陆，只能查询自己领取的卡券。</p>
+<pre><code>GET /api/user/quest/coupon/{id}
+</code></pre>
+
+<blockquote>
+<p><code>id</code>: 卡券id号</p>
+</blockquote>
 <h2 id="b10">B10 查询指定任务的提交记录</h2>
 <p>只有商家和ADMIN可以调用。</p>
 <pre><code>GET /api/user/quest/submit/{questId}/list
@@ -2054,6 +2066,42 @@
 </tbody>
 </table>
 <p>返回结果同<code>B12.1</code></p>
+<h2 id="b123-id">B12.3 根据id查询线下任务</h2>
+<p>不需要登陆。</p>
+<pre><code>GET /api/offquest/{id}
+</code></pre>
+
+<blockquote>
+<p><code>id</code>: 线下任务id号</p>
+</blockquote>
+<p>返回报文：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;id&quot;: 19,
+    &quot;memId&quot;: 2,
+    &quot;username&quot;: &quot;wanghongfei&quot;,
+    &quot;title&quot;: &quot;title&quot;,
+    &quot;cateId&quot;: 1,
+    &quot;cateName&quot;: &quot;off_cate&quot;,
+    &quot;award&quot;: 10.5,
+    &quot;createdTime&quot;: &quot;2015-12-02 06:47:13&quot;,
+    &quot;workTime&quot;: &quot;2020-02-02 02:10:20&quot;,
+    &quot;workPlace&quot;: &quot;work place&quot;,
+    &quot;description&quot;: &quot;description&quot;,
+    &quot;contactPhone&quot;: &quot;185XXXX9058&quot;,
+    &quot;status&quot;: &quot;00&quot;,
+    &quot;provinceId&quot;: 1,
+    &quot;cityId&quot;: 1,
+    &quot;regionId&quot;: 1,
+    &quot;flushTime&quot;: &quot;2015-12-02 06:47:13&quot;,
+    &quot;distance&quot;: null
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
 <h1 id="taolijie">Taolijie代审核</h1>
 <h2 id="b13">B13 计算桃李街代审核费用</h2>
 <p>商家可以申请桃李街代审核任务完成申请。</p>
