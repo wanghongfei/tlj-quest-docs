@@ -129,9 +129,11 @@
                 
                     <li><a class="toctree-l4" href="#b10">B10 查询指定任务的提交记录</a></li>
                 
-                    <li><a class="toctree-l4" href="#b11">B11 条件查询</a></li>
+                    <li><a class="toctree-l4" href="#b101">B10.1 查询商家任务审核列表</a></li>
                 
-                    <li><a class="toctree-l4" href="#b12-id">B12 根据id查询任务</a></li>
+                    <li><a class="toctree-l4" href="#b11">B11 条件查询线上任务</a></li>
+                
+                    <li><a class="toctree-l4" href="#b12-id">B12 根据id查询线上任务</a></li>
                 
                     <li><a class="toctree-l4" href="#b121">B12.1 查询附近的线下任务</a></li>
                 
@@ -1729,7 +1731,74 @@
 }
 </code></pre>
 
-<h2 id="b11">B11 条件查询</h2>
+<h2 id="b101">B10.1 查询商家任务审核列表</h2>
+<p>需要商家登陆状态。</p>
+<pre><code>GET /api/user/quest/submit/audit/list
+</code></pre>
+
+<p>参数:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>返回数据：</p>
+<pre><code class="json">{
+  &quot;message&quot;: &quot;success&quot;,
+  &quot;code&quot;: 0,
+  &quot;data&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;questId&quot;: 27,
+        &quot;quest&quot;: {  // 对应的任务信息
+          &quot;id&quot;: 27,
+          &quot;title&quot;: &quot;title&quot;, // 任务标题
+          &quot;createdTime&quot;: &quot;2015-10-27 03:07:40&quot;, // 显示该时间
+          &quot;totalAmt&quot;: 4, // 任务总数量
+
+        },
+        &quot;cateName&quot;: &quot;cate1&quot;, // 任务分类名
+        &quot;empId&quot;: 1,
+        &quot;imageIds&quot;: &quot;1;2&quot;,
+        &quot;amt&quot;: 1 // 已经提交的数量
+      },
+      {
+        &quot;questId&quot;: 1,
+        &quot;quest&quot;: {
+          &quot;id&quot;: 1,
+          &quot;title&quot;: &quot;quest-1&quot;,
+          &quot;createdTime&quot;: &quot;2015-10-15 02:09:43&quot;,
+          &quot;totalAmt&quot;: 10  
+        },
+        &quot;cateName&quot;: &quot;cate1&quot;,
+        &quot;empId&quot;: 1,
+        &quot;imageIds&quot;: &quot;/sh/;2/;&quot;,
+        &quot;amt&quot;: 2
+      }
+    ],
+    &quot;resultCount&quot;: 2
+  },
+  &quot;ok&quot;: true
+}
+</code></pre>
+
+<h2 id="b11">B11 条件查询线上任务</h2>
 <p>任何人都可以调用该接口.</p>
 <p>非管理员调用该接口，只返回<code>empStatus == 3</code>(已审核通过)的任务，如果是管理员调用，则可以指定<code>empStatus</code>类型。</p>
 <pre><code>GET /api/quest/list
@@ -1860,7 +1929,7 @@
 }
 </code></pre>
 
-<h2 id="b12-id">B12 根据id查询任务</h2>
+<h2 id="b12-id">B12 根据id查询线上任务</h2>
 <p>不需要登陆。</p>
 <pre><code>GET /api/quest/{questId}
 </code></pre>

@@ -1091,9 +1091,68 @@ GET /api/user/quest/submit/{questId}/list
 
 
 
+## B10.1 查询商家任务审核列表
+
+需要商家登陆状态。
+
+``` 
+GET /api/user/quest/submit/audit/list
+```
+
+参数:
+
+| 参数名  | 必填   | 说明   |
+| ---- | ---- | ---- |
+| pn   | N    |      |
+| ps   | N    |      |
+
+返回数据：
+
+``` json
+{
+  "message": "success",
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "questId": 27,
+        "quest": {  // 对应的任务信息
+          "id": 27,
+          "title": "title", // 任务标题
+          "createdTime": "2015-10-27 03:07:40", // 显示该时间
+          "totalAmt": 4, // 任务总数量
+
+        },
+        "cateName": "cate1", // 任务分类名
+        "empId": 1,
+        "imageIds": "1;2",
+        "amt": 1 // 已经提交的数量
+      },
+      {
+        "questId": 1,
+        "quest": {
+          "id": 1,
+          "title": "quest-1",
+          "createdTime": "2015-10-15 02:09:43",
+          "totalAmt": 10  
+        },
+        "cateName": "cate1",
+        "empId": 1,
+        "imageIds": "/sh/;2/;",
+        "amt": 2
+      }
+    ],
+    "resultCount": 2
+  },
+  "ok": true
+}
+```
 
 
-## B11 条件查询
+
+
+
+## B11 条件查询线上任务
 
 任何人都可以调用该接口.
 
@@ -1178,7 +1237,7 @@ GET /api/quest/list
 
 
 
-## B12 根据id查询任务
+## B12 根据id查询线上任务
 
 不需要登陆。
 
