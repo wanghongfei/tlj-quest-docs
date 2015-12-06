@@ -96,6 +96,8 @@
                 
                     <li><a class="toctree-l4" href="#b47">B4.7 刷新线下任务</a></li>
                 
+                    <li><a class="toctree-l4" href="#48">4.8 删除任务草稿</a></li>
+                
                     <li><a class="toctree-l4" href="#b5">B5 任务领取</a></li>
                 
                     <li><a class="toctree-l4" href="#b6">B6 提交任务完成申请</a></li>
@@ -847,6 +849,14 @@
 </tr>
 </tbody>
 </table>
+<h2 id="48">4.8 删除任务草稿</h2>
+<p>需要登陆，只能删除处于草稿状态的任务。</p>
+<pre><code>DELETE /api/user/quest/{id}
+</code></pre>
+
+<blockquote>
+<p><code>id</code>: 要删除的任务id</p>
+</blockquote>
 <h2 id="b5">B5 任务领取</h2>
 <p>只有登陆状态下的学生用户才可以领取任务。</p>
 <pre><code>POST /api/user/quest/assign/{questId}
@@ -960,6 +970,11 @@
 <td>ps</td>
 <td>N</td>
 <td>一页多少条记录. default = 8</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Y</td>
+<td><code>0</code>未发布<code>1</code>审核中 <code>2</code>审核失败 <code>3</code>审核通过 <code>4</code> 已结束</td>
 </tr>
 </tbody>
 </table>
@@ -1850,9 +1865,9 @@
 <td>学校id</td>
 </tr>
 <tr>
-<td>*empStatus</td>
+<td>empStatus</td>
 <td>N</td>
-<td><strong>只有管理员可以使用该参数</strong>。填写表示根据empStatus值筛选结果</td>
+<td><strong>**只有管理员可以使用该参数</strong>。填写表示根据empStatus值筛选结果</td>
 </tr>
 </tbody>
 </table>
