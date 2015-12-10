@@ -81,6 +81,8 @@
                 
                     <li><a class="toctree-l4" href="#a6">A6 查询用户资料</a></li>
                 
+                    <li><a class="toctree-l4" href="#a7">A7 修改登陆密码</a></li>
+                
             
             </ul>
         
@@ -451,6 +453,33 @@
   &quot;ok&quot;: true
 }
 </code></pre>
+
+<h2 id="a7">A7 修改登陆密码</h2>
+<pre><code>PUT /api/user/pwd
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>oldPwd</td>
+<td>Y</td>
+<td>老密码</td>
+</tr>
+<tr>
+<td>newPwd</td>
+<td>Y</td>
+<td>新密码(不超过30)</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
