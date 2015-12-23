@@ -134,6 +134,17 @@
                     <li><a class="toctree-l4" href="#d151-id">D15.1 根据id查询订单</a></li>
                 
             
+                <li class="toctree-l3"><a href="#_4">账号操作</a></li>
+                
+                    <li><a class="toctree-l4" href="#d16">D16 重置用户密码</a></li>
+                
+                    <li><a class="toctree-l4" href="#d17">D17 封号</a></li>
+                
+                    <li><a class="toctree-l4" href="#d18">D18 解封</a></li>
+                
+                    <li><a class="toctree-l4" href="#d19">D19 查询所有用户</a></li>
+                
+            
             </ul>
         
     </li>
@@ -940,6 +951,63 @@
 </code></pre>
 
 <p>返回报文类似<code>D15</code>😬</p>
+<h1 id="_4">账号操作</h1>
+<h2 id="d16">D16 重置用户密码</h2>
+<pre><code>PUT /api/manage/user/{userId}/pwd
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>newPwd</td>
+<td>N</td>
+<td>新1 ~ 30位</td>
+</tr>
+</tbody>
+</table>
+<h2 id="d17">D17 封号</h2>
+<pre><code>PUT /api/manage/user/block/{userId}
+</code></pre>
+
+<h2 id="d18">D18 解封</h2>
+<pre><code>DELETE /api/manage/user/block/{userId}
+</code></pre>
+
+<h2 id="d19">D19 查询所有用户</h2>
+<pre><code>GET /api/manage/user/list
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pn</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="_5"></h1>
               
             </div>
           </div>
