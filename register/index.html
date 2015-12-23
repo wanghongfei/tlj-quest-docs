@@ -83,6 +83,8 @@
                 
                     <li><a class="toctree-l4" href="#a7">A7 修改登陆密码</a></li>
                 
+                    <li><a class="toctree-l4" href="#a8">A8 头像上传</a></li>
+                
             
             </ul>
         
@@ -480,6 +482,35 @@
 </tr>
 </tbody>
 </table>
+<h2 id="a8">A8 头像上传</h2>
+<p>需要登陆。</p>
+<pre><code>POST /user/changePhoto
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file</td>
+<td>Y</td>
+<td>图片文件</td>
+</tr>
+</tbody>
+</table>
+<p>返回报文只有一个整数，表示刚才上传的图片id:</p>
+<pre><code>12
+</code></pre>
+
+<p>读取图片时，调用：</p>
+<pre><code>GET /static/images/users/{12}
+</code></pre>
               
             </div>
           </div>
