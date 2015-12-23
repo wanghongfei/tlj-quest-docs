@@ -169,6 +169,9 @@ GET /api/user/{id}
     "idCerti": "02",
     "stuCerti": "02",
     "empCerti": "00",
+    "companyName": "name", // 公司名
+    "companyAddr": "addr", // 公司地址
+    "companyDesp": "desp", // 公司简介
     "createdTime": "2015-10-14 16:00:00",
     "valid": true,
     "complaint": 0,
@@ -201,8 +204,6 @@ PUT /api/user/pwd
 | oldPwd | Y    | 老密码        |
 | newPwd | Y    | 新密码(不超过30) |
 
-
-
 ## A8 头像上传
 
 需要登陆。
@@ -228,4 +229,3 @@ POST /user/changePhoto
 ``` 
 GET /static/images/users/{12}
 ```
-
