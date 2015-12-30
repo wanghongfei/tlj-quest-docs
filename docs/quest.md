@@ -465,6 +465,7 @@ GET /api/user/quest/publish/list
 | pn     | N    | 显示第几页. default = 0                       |
 | ps     | N    | 一页多少条记录. default = 8                     |
 | status | Y    | `0`:未发布`1`:审核中 `2`:审核失败 `3`:审核通过 `4`: 已结束 |
+| memId  | N    | **该参数只对管理员有效**，表示查询指定用户的发布记录             |
 
 返回示例：
 
