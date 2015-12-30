@@ -144,6 +144,10 @@
                 
                     <li><a class="toctree-l4" href="#d19">D19 查询所有用户</a></li>
                 
+                    <li><a class="toctree-l4" href="#d20">D20 根据用户名精确查询用户</a></li>
+                
+                    <li><a class="toctree-l4" href="#d21">D21 根据用户名模糊查询用户</a></li>
+                
             
             </ul>
         
@@ -1007,7 +1011,58 @@
 </tr>
 </tbody>
 </table>
-<h1 id="_5"></h1>
+<h2 id="d20">D20 根据用户名精确查询用户</h2>
+<pre><code>POST /api/manage/user/name
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>Y</td>
+<td>要查询的用户名</td>
+</tr>
+</tbody>
+</table>
+<h2 id="d21">D21 根据用户名模糊查询用户</h2>
+<pre><code>POST /api/manage/user/search
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>Y</td>
+<td>查询所有用户名中包含<code>username</code>用户信息</td>
+</tr>
+<tr>
+<td>pn</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ps</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>

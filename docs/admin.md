@@ -456,8 +456,6 @@ PUT /api/manage/user/{userId}/pwd
 | ------ | ---- | -------- |
 | newPwd | N    | 新1 ~ 30位 |
 
-
-
 ## D17 封号
 
 ``` 
@@ -489,4 +487,30 @@ GET /api/manage/user/list
 
 
 
-#  
+## D20 根据用户名精确查询用户
+
+``` 
+POST /api/manage/user/name
+```
+
+参数：
+
+| 参数名      | 必填   | 说明      |
+| -------- | ---- | ------- |
+| username | Y    | 要查询的用户名 |
+
+
+
+## D21 根据用户名模糊查询用户
+
+``` 
+POST /api/manage/user/search
+```
+
+参数：
+
+| 参数名      | 必填   | 说明                        |
+| -------- | ---- | ------------------------- |
+| username | Y    | 查询所有用户名中包含`username`的用户信息 |
+| pn       |      |                           |
+| ps       |      |                           |
