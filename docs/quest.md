@@ -143,6 +143,8 @@ POST /api/user/quest
 | couponTitle  | (N)  | 卡券名                                      |
 | couponDesp   | (N)  | 卡券使用规则                                   |
 | expiredTime  | (N)  | 卡券过期时间, yyyy-mm-dd                       |
+| storeName    | N    | 店铺名(20字内)                                |
+| storeAddr    | N    | 店铺地址(45字内)                               |
 | logo         | N    | 卡券店铺logo在又拍的路径                           |
 | couponAmt    | (N)  | 卡券数量                                     |
 | save         | N    | `0`: 直接发布. `1`: 保存但不发布(一样扣钱). 默认为`0`     |
