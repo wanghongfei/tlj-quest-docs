@@ -148,6 +148,8 @@
                 
                     <li><a class="toctree-l4" href="#d21">D21 根据用户名模糊查询用户</a></li>
                 
+                    <li><a class="toctree-l4" href="#d22">D22 过虑查询用户</a></li>
+                
             
             </ul>
         
@@ -1060,6 +1062,37 @@
 <td>ps</td>
 <td></td>
 <td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="d22">D22 过虑查询用户</h2>
+<pre><code>POST /api/manage/user/filter
+</code></pre>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>un</td>
+<td>N</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td>valid</td>
+<td>N</td>
+<td>是否封号. <code>0</code> 封号, <code>1</code> 没封号</td>
+</tr>
+<tr>
+<td>role</td>
+<td>N</td>
+<td>角色名, 如<code>ADMIN</code> <code>STUDENT</code></td>
 </tr>
 </tbody>
 </table>

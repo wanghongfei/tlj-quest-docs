@@ -485,8 +485,6 @@ GET /api/manage/user/list
 | pn   | N    |      |
 | ps   | N    |      |
 
-
-
 ## D20 根据用户名精确查询用户
 
 ``` 
@@ -498,8 +496,6 @@ POST /api/manage/user/name
 | 参数名      | 必填   | 说明      |
 | -------- | ---- | ------- |
 | username | Y    | 要查询的用户名 |
-
-
 
 ## D21 根据用户名模糊查询用户
 
@@ -514,3 +510,19 @@ POST /api/manage/user/search
 | username | Y    | 查询所有用户名中包含`username`的用户信息 |
 | pn       |      |                           |
 | ps       |      |                           |
+
+
+
+## D22 过虑查询用户
+
+``` 
+POST /api/manage/user/filter
+```
+
+参数：
+
+| 参数名   | 必填   | 说明                       |
+| ----- | ---- | ------------------------ |
+| un    | N    | 用户名                      |
+| valid | N    | 是否封号. `0`: 封号, `1`: 没封号  |
+| role  | N    | 角色名, 如`ADMIN`, `STUDENT` |
