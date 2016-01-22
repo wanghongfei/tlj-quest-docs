@@ -526,3 +526,5 @@ POST /api/manage/user/filter
 | un    | N    | 用户名                      |
 | valid | N    | 是否封号. `0`: 封号, `1`: 没封号  |
 | role  | N    | 角色名, 如`ADMIN`, `STUDENT` |
+| pn    | N    |                          |
+| ps    | N    |                          |
